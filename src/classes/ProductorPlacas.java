@@ -5,7 +5,8 @@
 package classes;
 
 import java.util.concurrent.Semaphore;
-
+import interfaces.Dashboard;
+import interfaces.MSI;
 /**
  *
  * @author adminccs
@@ -32,8 +33,27 @@ public class ProductorPlacas extends Thread{
 
     }
     
+    public boolean isActivo() {
+        return activo;
+    }
+
     public void setActivo(boolean activo) {
         this.activo = activo;
     }
+
+    public static int getPlacasListasAlmacenH() {
+        return placasListasH;
+    }
     
+     public static void setPlacasListasAlmacenH(int placasListasH) {
+        ProductorPlacas.placasListasH -= placasListasH;
+    }
+
+    public static int getPlacasListasAlmacenM() {
+        return placasListasM;
+    }
+
+    public static void setGuionesSubidosDriveN(int placasListasM) {
+        ProductorPlacas.placasListasM -= placasListasM;
+    }
 }

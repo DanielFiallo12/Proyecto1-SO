@@ -72,8 +72,12 @@ public class Dashboard extends javax.swing.JFrame {
         this.dispose();
         
         // Abre el formulario MSI
-        MSI msiPage = new MSI();
-        msiPage.setVisible(true);
+       try {
+    MSI msiPage = new MSI();
+    msiPage.setVisible(true);
+} catch (Exception e) {
+    e.printStackTrace();  // Muestra cualquier error que ocurra
+}
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
