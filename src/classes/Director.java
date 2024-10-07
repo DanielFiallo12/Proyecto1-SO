@@ -16,7 +16,7 @@ import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class Director {
+public class Director extends Thread {
     Semaphore daysRemaining;
     private float totalIncome;
     int rand1;
@@ -31,7 +31,7 @@ public class Director {
     static int descontadoPmH;
     static int descontadoPmM;
 
-    public Director(Semaphore daysRemaining,String company) {
+    public Director(Semaphore daysRemaining, String company) {
         this.company = company;
         this.daysRemaining = daysRemaining;
         this.totalIncome = 0;
@@ -49,12 +49,13 @@ public class Director {
         int horasTrabajadas = 24;
         int salario = sueldoPorHora * horasTrabajadas;
         if ("H".equals(company)) {
-            /* HPCompany.totalPayH += salario; */
+            // Pago de HP
         } else {
-            // Pago de nintendo
+            // Pago de MSI
             MSICompany.totalPayM += salario;
         }
 
     }
+
 
 }
