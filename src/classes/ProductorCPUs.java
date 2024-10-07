@@ -33,6 +33,36 @@ public class ProductorCPUs extends Thread {
         this.company = company;
     }
     
+    public void payDayProductorCPUs() {
+        // Calcular el salario basado en las horas trabajadas y agregarlo al total de pago
+        int horasTrabajadas = 24;
+        int salario = sueldoPorHora * horasTrabajadas;
+        if (company == "H") {
+            // Pago de HP
+            
+        } else {
+            // Pago de MSI
+            MSICompany.totalPayM += salario;
+        }
+    }
+    
+    private void producirCPU() throws InterruptedException {
+        // Agregar el CPU al almacén
+        if ("H".equals(company)) {
+            // Producción CPU HP
+        } else {
+            // Producción CPU MSI
+            if (almacenCPU.availablePermits() > 0) {
+                almacenCPU.acquire(1);
+                CPUsListosM++; // Incrementa el contador 
+                MSI.actualizarCPUsAlmacen(CPUsListosM);
+
+            } else {
+                System.out.println("Almacén de CPUs lleno. Esperando que libere espacio.");
+            }
+        }
+
+    }
 
     public boolean isActivo() {
         return activo;

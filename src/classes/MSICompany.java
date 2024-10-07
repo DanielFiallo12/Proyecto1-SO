@@ -34,6 +34,7 @@ public class MSICompany {
     public static Semaphore almacenMemoriasM = new Semaphore(capacidadAlmacenMemoriasM);
     public static Semaphore almacenFuentesM = new Semaphore(capacidadAlmacenFuentesM);
     public static Semaphore almacenTarjetasM = new Semaphore(capacidadAlmacenTarjetasM);
+    public static Semaphore almacenPCsM = new Semaphore(Integer.MAX_VALUE);
     
     // Semáforo de los días restantes
     public static Semaphore diasRestantesSem = new Semaphore(diasRestantesM);
@@ -63,6 +64,7 @@ public class MSICompany {
     private static ProductorMemorias[] productoresMemorias = new ProductorMemorias[11];
     private static ProductorFuentes[] productoresFuentes = new ProductorFuentes[11];
     private static ProductorTarjetas[] productoresTarjetas = new ProductorTarjetas[11];
+    private static Ensamblador[] ensambladores = new Ensamblador[11];
     
     public static void crearProductorPlaca(Semaphore almacenPlacasM, int totalPay, int diasParaGenerar, String company, boolean activo) {
         ProductorPlacas productorPlacas = new ProductorPlacas(almacenPlacasM, totalPay, diasParaGenerar, company, activo);
@@ -240,5 +242,39 @@ public class MSICompany {
         }
     }
     
-    
+    public static void crearEnsamblador(Semaphore almacenPCsM, Semaphore almacenPlacasM, Semaphore almacenCPUsM, Semaphore almacenMemoriasM, Semaphore almacenFuentesM, Semaphore almacenTarjetasM, int pcsGeneradosM, int pcsTGGeneradosM, int diasParaGenerar, int placasNecesarias, int CPUsNecesarios, int memoriasNecesarias, int fuentesNecesarias, int tarjetasNecesarias, String company, boolean activo) {
+        Ensamblador ensamblador = new Ensamblador(almacenPCsM, almacenPlacasM, almacenCPUsM, almacenMemoriasM, almacenFuentesM, almacenTarjetasM, pcsGeneradosM, pcsTGGeneradosM, diasParaGenerar, placasNecesarias, CPUsNecesarios, memoriasNecesarias, fuentesNecesarias, tarjetasNecesarias, company, activo);
+
+        for (int i = 0; i < 11; i++) {
+            if (ensambladores[i] == null) {
+                ensambladores[i] = ensamblador;
+                ensambladoresCount++;
+                ensamblador.start();
+                break;
+            }
+        }
+    }
+
+    public static void stopEnsambladorAleatorio() {
+
+        if (ensambladoresCount == 0) {
+            return;
+        }
+
+        Random random = new Random();
+        int indiceAleatorio;
+
+        do {
+            indiceAleatorio = random.nextInt(11);
+        } while (ensambladores[indiceAleatorio] == null);
+
+        Ensamblador hilo = ensambladores[indiceAleatorio];
+
+        if (hilo != null) {
+            System.out.println("Cantidad de hilos de ensambladores antes de eliminar: " + ensambladoresCount);
+            hilo.setActivo(false);
+            ensambladores[indiceAleatorio] = null;
+            ensambladoresCount--;
+        }
+    }
 }

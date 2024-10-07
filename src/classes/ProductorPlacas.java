@@ -33,6 +33,34 @@ public class ProductorPlacas extends Thread{
 
     }
     
+    public void payDayProductorPlacas() {
+        // Calcular el salario basado en las horas trabajadas y agregarlo al total de pago
+        int horasTrabajadas = 24;
+        int salario = sueldoPorHora * horasTrabajadas;
+        if ("H".equals(company)) {
+            // Pago de HP
+        } else {
+            // Pago de MSI
+            MSICompany.totalPayM += salario;
+        }
+    }
+    
+    private void producirPlaca() throws InterruptedException {
+        // Agregar la placa al almacén
+        if ("H".equals(company)) {
+            // Producción CPU HP
+        } else {
+            // Producción placa MSI
+            if (almacenPlaca.availablePermits() > 0) {
+                almacenPlaca.acquire(1);
+                placasListasM++;
+                MSI.actualizarPlacasAlmacen(placasListasM);
+            } else {
+                System.out.println("Almacén de placas lleno. Esperando que libere espacio.");
+            }
+        }
+    }
+    
     public boolean isActivo() {
         return activo;
     }

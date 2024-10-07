@@ -45,6 +45,17 @@ public class Director extends Thread {
         this.descontadoPmM = 0;
     }
 
-    
+    public void payDayDirector() {
+        int horasTrabajadas = 24;
+        int salario = sueldoPorHora * horasTrabajadas;
+        if ("H".equals(company)) {
+            // Pago de HP
+        } else {
+            // Pago de MSI
+            MSICompany.totalPayM += salario;
+        }
+
+    }
+
 
 }
