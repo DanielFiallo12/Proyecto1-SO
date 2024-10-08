@@ -255,12 +255,12 @@
                       <Group type="102" attributes="0">
                           <Component id="jLabel47" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
-                          <Component id="computadorasGeneradasM" pref="52" max="32767" attributes="0"/>
+                          <Component id="computadorasListasM" pref="52" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <Component id="jLabel48" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="computadorasTarjetaGeneradasM" max="32767" attributes="0"/>
+                          <Component id="computadorasTarjetaListasM" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
@@ -273,12 +273,12 @@
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel47" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="computadorasGeneradasM" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="computadorasListasM" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel48" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="computadorasTarjetaGeneradasM" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="computadorasTarjetaListasM" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -308,7 +308,7 @@
             <Property name="text" type="java.lang.String" value="Computadoras c / tarjetas gr&#xe1;ficas:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="computadorasTarjetaGeneradasM">
+        <Component class="javax.swing.JLabel" name="computadorasTarjetaListasM">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="1"/>
@@ -323,7 +323,7 @@
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JLabel" name="computadorasGeneradasM">
+        <Component class="javax.swing.JLabel" name="computadorasListasM">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="1"/>
@@ -476,6 +476,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JSpinner" name="spinnerPlacasM">
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>
@@ -516,6 +519,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JSpinner" name="spinnerCPUsM">
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>
@@ -556,6 +562,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JSpinner" name="spinnerMemoriasM">
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>
@@ -596,6 +605,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JSpinner" name="spinnerFuentesM">
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>
@@ -636,6 +648,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JSpinner" name="spinnerTarjetasM">
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>
@@ -684,6 +699,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JSpinner" name="spinnerEnsambladoresM">
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>
@@ -703,6 +721,9 @@
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="0"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>

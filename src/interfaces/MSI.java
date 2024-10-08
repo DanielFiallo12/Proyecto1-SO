@@ -28,63 +28,64 @@ public class MSI extends javax.swing.JPanel {
     private int valorSpinnerTarjetasM;
     private int valorSpinnerEnsambladoresM;
     
+    public final int totalProductores = 14;
+    
     /**
      * Creates new form MSI
      */
     public MSI() {
         
         initComponents();
+        actualizarSpinnersDesdeDashboard();
         
         MSI.diasParaEntrega.setText(Integer.toString(MSICompany.diasRestantesSem.availablePermits()));
 
         Director director = new Director(MSICompany.diasRestantesSem, "M");
         director.start();
 
+        /*ProjectManager pm = new ProjectManager(MSICompany.diasRestantesSem, "M");
+        pm.start();
+
+        Funciones dia = new Funciones();
+        dia.start();*/
+        
         // Código para el spinner de las placas base
         valorSpinnerPlacasM = (int) spinnerPlacasM.getValue();
         if (valorSpinnerPlacasM == 1) {
             // Llama a la función para crear un productor de placa
-            MSICompany.crearProductorPlaca(MSICompany.almacenPlacasM, 0, 4, "M", true);  //MODIFICAR VALORES (LISTOOOO)
+            MSICompany.crearProductorPlaca(MSICompany.almacenPlacasM, 0, 2, "M", true);  //MODIFICAR VALORES (LISTOOOO)
         }
 
         spinnerPlacasM.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
+                // Obtenemos el nuevo valor del JSpinner
                 int nuevoValorSpinnerPlacas = (int) spinnerPlacasM.getValue();
-                int productoresRestantes = Integer.parseInt(productoresRestantesM.getText());
-                if (nuevoValorSpinnerPlacas > valorSpinnerPlacasM) {
-                    if (productoresRestantes > 0) {
-                        // función: Crear productor de placa base
-                        // Se llama a la función para crear un productor de placa base
-                        MSICompany.crearProductorPlaca(MSICompany.almacenPlacasM, 0, 4, "M", true);   //MODIFICAR VALORES (LISTOOOO)
-                        // Restamos 1 a productoresRestantesM si el nuevo valor es mayor
-                        int valorActual = Integer.parseInt(productoresRestantesM.getText());
-                        valorActual--;
-                        productoresRestantesM.setText(Integer.toString(valorActual));
-                        valorSpinnerPlacasM = nuevoValorSpinnerPlacas;
+                if (validarProductoresRestantes(nuevoValorSpinnerPlacas, valorSpinnerPlacasM)) {
+                    // Compara el nuevo valor del JSpinner con valorSpinnerPlacasM
+                    if (nuevoValorSpinnerPlacas > valorSpinnerPlacasM) {
+                        // función: Crear productor de placa
+                        // Se llama a la función para crear un productor de placa
+                        MSICompany.crearProductorPlaca(MSICompany.almacenPlacasM, 0, 2, "M", true);
                     } else {
-                        spinnerPlacasM.setValue(valorSpinnerPlacasM);
+                        // función: Detener productor de placa
+                        MSICompany.stopProductorPlacaAleatorio();
                     }
-                } else if (nuevoValorSpinnerPlacas < valorSpinnerPlacasM) {
-                    // función: Detener productor de placa base
-                    MSICompany.stopProductorPlacaAleatorio();
-                    // Sumamos 1 a productoresRestantesM si el nuevo valor es menor
-                    int valorActual = Integer.parseInt(productoresRestantesM.getText());
-                    valorActual++;
-                    productoresRestantesM.setText(Integer.toString(valorActual));
                     valorSpinnerPlacasM = nuevoValorSpinnerPlacas;
+                } else {
+                    spinnerPlacasM.setValue(valorSpinnerPlacasM);
                 }
-
-                // Actualiza valorSpinner con el nuevo valor del JSpinner
+                actualizarProductoresRestantes();
             }
+                // Actualiza valorSpinner con el nuevo valor del JSpinner
         });
-        
+                
         // Código para el spinner de los CPUs       
         // Obtenemos el valor inicial del JSpinner
         valorSpinnerCPUsM = (int) spinnerCPUsM.getValue();
         if (valorSpinnerCPUsM == 1) {
             // Llama a la función para crear un productor de CPU
-            MSICompany.crearProductorCPU(MSICompany.almacenCPUsM, 0, 4, "M", true); // (LISTOOOO Los valores)
+            MSICompany.crearProductorCPU(MSICompany.almacenCPUsM, 0, 2, "M", true); // (LISTOOOO Los valores)
         }
 
         // Agrega un ChangeListener al JSpinner
@@ -93,34 +94,23 @@ public class MSI extends javax.swing.JPanel {
             public void stateChanged(ChangeEvent e) {
                 // Obtenemos el nuevo valor del JSpinner
                 int nuevoValorSpinnerCPUs = (int) spinnerCPUsM.getValue();
-                int productoresRestantes = Integer.parseInt(productoresRestantesM.getText());
-                // Compara el nuevo valor del JSpinner con valorSpinnerCPUsM
-                if (nuevoValorSpinnerCPUs > valorSpinnerCPUsM) {
-                    if (productoresRestantes > 0) {
+                if (validarProductoresRestantes(nuevoValorSpinnerCPUs, valorSpinnerCPUsM)) {
+                    // Compara el nuevo valor del JSpinner con valorSpinnerCPUsM
+                    if (nuevoValorSpinnerCPUs > valorSpinnerCPUsM) {
                         // función: Crear productor de CPU
                         // Se llama a la función para crear un productor de CPU
-                        MSICompany.crearProductorCPU(MSICompany.almacenCPUsM, 0, 4, "M", true); // (LISTOOOO Los valores)
-                        // Restamos 1 a productoresRestantesM si el nuevo valor es mayor
-                        int valorActual = Integer.parseInt(productoresRestantesM.getText());
-                        valorActual--;
-                        productoresRestantesM.setText(Integer.toString(valorActual));
-                        valorSpinnerCPUsM = nuevoValorSpinnerCPUs;
+                        MSICompany.crearProductorCPU(MSICompany.almacenCPUsM, 0, 2, "M", true);
                     } else {
-                        spinnerCPUsM.setValue(valorSpinnerCPUsM);
+                        // función: Detener productor de CPU
+                        MSICompany.stopProductorCPUAleatorio();
                     }
-                } else if (nuevoValorSpinnerCPUs < valorSpinnerCPUsM) {
-
-                    // función: Detener productor de CPU
-                    MSICompany.stopProductorCPUAleatorio();
-                    // Sumamos 1 a productoresRestantesM si el nuevo valor es menor
-                    int valorActual = Integer.parseInt(productoresRestantesM.getText());
-                    valorActual++;
-                    productoresRestantesM.setText(Integer.toString(valorActual));
                     valorSpinnerCPUsM = nuevoValorSpinnerCPUs;
+                } else {
+                    spinnerCPUsM.setValue(valorSpinnerCPUsM);
                 }
-
-                // Actualiza valorSpinner con el nuevo valor del JSpinner
+                actualizarProductoresRestantes();
             }
+                // Actualiza valorSpinner con el nuevo valor del JSpinner
         });
         
         // Código para el spinner de las memorias       
@@ -128,7 +118,7 @@ public class MSI extends javax.swing.JPanel {
         valorSpinnerMemoriasM = (int) spinnerMemoriasM.getValue();
         if (valorSpinnerMemoriasM == 1) {
             // Se llama a la función para crear un productor de memoria
-            MSICompany.crearProductorMemoria(MSICompany.almacenMemoriasM, 0, 2, "M", true); // (LISTOOOO Los valores)
+            MSICompany.crearProductorMemoria(MSICompany.almacenMemoriasM, 0, 1, "M", true); // (LISTOOOO Los valores)
         }
 
         // Agrega un ChangeListener al JSpinner
@@ -137,32 +127,23 @@ public class MSI extends javax.swing.JPanel {
             public void stateChanged(ChangeEvent e) {
                 // Obtén el nuevo valor del JSpinner
                 int nuevoValorSpinnerMemorias = (int) spinnerMemoriasM.getValue();
-                int productoresRestantes = Integer.parseInt(productoresRestantesM.getText());
-                // Compara el nuevo valor del JSpinner con valorSpinnerMemoriasM
-                if (nuevoValorSpinnerMemorias > valorSpinnerMemoriasM) {
-                    if (productoresRestantes > 0) {
+                if (validarProductoresRestantes(nuevoValorSpinnerMemorias, valorSpinnerMemoriasM)) {
+                    // Compara el nuevo valor del JSpinner con valorSpinnerMemoriasM
+                    if (nuevoValorSpinnerMemorias > valorSpinnerMemoriasM) {
                         // función: Crear productor de memoria
                         // Se llama a la función para crear un productor de memoria
-                        MSICompany.crearProductorMemoria(MSICompany.almacenMemoriasM, 0, 2, "M", true); // (LISTOOOO Los valores)
-                        // Restamos 1 a productoresRestantesM si el nuevo valor es mayor
-                        int valorActual = Integer.parseInt(productoresRestantesM.getText());
-                        valorActual--;
-                        productoresRestantesM.setText(Integer.toString(valorActual));
-                        valorSpinnerMemoriasM = nuevoValorSpinnerMemorias;
+                        MSICompany.crearProductorMemoria(MSICompany.almacenMemoriasM, 0, 1, "M", true);
                     } else {
-                        spinnerMemoriasM.setValue(valorSpinnerMemoriasM);
+                        // función: Detener productor de memoria
+                        MSICompany.stopProductorMemoriaAleatorio();
                     }
-                } else if (nuevoValorSpinnerMemorias < valorSpinnerMemoriasM) {
-                    // función: Detener productor de memoria
-                    MSICompany.stopProductorMemoriaAleatorio();
-                    // Sumamos 1 a productoresRestantesM si el nuevo valor es menor
-                    int valorActual = Integer.parseInt(productoresRestantesM.getText());
-                    valorActual++;
-                    productoresRestantesM.setText(Integer.toString(valorActual));
                     valorSpinnerMemoriasM = nuevoValorSpinnerMemorias;
+                } else {
+                    spinnerMemoriasM.setValue(valorSpinnerMemoriasM);
                 }
-
+                actualizarProductoresRestantes();
             }
+                // Actualiza valorSpinner con el nuevo valor del JSpinner
         });
         
         // Código para el spinner de las fuentes       
@@ -178,32 +159,23 @@ public class MSI extends javax.swing.JPanel {
             public void stateChanged(ChangeEvent e) {
 
                 int nuevoValorSpinnerFuentes = (int) spinnerFuentesM.getValue();
-                int productoresRestantes = Integer.parseInt(productoresRestantesM.getText());
-                if (nuevoValorSpinnerFuentes > valorSpinnerFuentesM) {
-                    if (productoresRestantes > 0) {
+                if (validarProductoresRestantes(nuevoValorSpinnerFuentes, valorSpinnerFuentesM)) {
+                    // Compara el nuevo valor del JSpinner con valorSpinnerFuentesM
+                    if (nuevoValorSpinnerFuentes > valorSpinnerFuentesM) {
                         // función: Crear productor de fuente
                         // Se llama a la función para crear un productor de fuente
-                        MSICompany.crearProductorFuente(MSICompany.almacenFuentesM, 1, 0, "M", true); // (LISTOOOO Los valores)
-                        // Restamos 1 a productoresRestantesM si el nuevo valor es mayor
-                        int valorActual = Integer.parseInt(productoresRestantesM.getText());
-                        valorActual--;
-                        productoresRestantesM.setText(Integer.toString(valorActual));
-                        valorSpinnerFuentesM = nuevoValorSpinnerFuentes;
+                        MSICompany.crearProductorFuente(MSICompany.almacenFuentesM, 1, 0, "M", true);
                     } else {
-                        spinnerFuentesM.setValue(valorSpinnerFuentesM);
+                        // función: Detener productor de fuente
+                        MSICompany.stopProductorFuenteAleatorio();
                     }
-
-                } else if (nuevoValorSpinnerFuentes < valorSpinnerFuentesM) {
-                    // función: Detener productor de fuente
-                    MSICompany.stopProductorFuenteAleatorio();
-                    // Sumamos 1 a productoresRestantesM si el nuevo valor es menor
-                    int valorActual = Integer.parseInt(productoresRestantesM.getText());
-                    valorActual++;
-                    productoresRestantesM.setText(Integer.toString(valorActual));
                     valorSpinnerFuentesM = nuevoValorSpinnerFuentes;
+                } else {
+                    spinnerFuentesM.setValue(valorSpinnerFuentesM);
                 }
-
+                actualizarProductoresRestantes();
             }
+                // Actualiza valorSpinner con el nuevo valor del JSpinner
         });
         
         // Código para el spinner de las tarjetas       
@@ -211,7 +183,7 @@ public class MSI extends javax.swing.JPanel {
         valorSpinnerTarjetasM = (int) spinnerTarjetasM.getValue();
         if (valorSpinnerTarjetasM == 1) {
             // Se llama a la función para crear un productor de tarjeta
-            MSICompany.crearProductorTarjeta(MSICompany.almacenTarjetasM, 1, 0, "M", true); // (LISTOOOO Los valores)
+            MSICompany.crearProductorTarjeta(MSICompany.almacenTarjetasM, 3, 0, "M", true); // (LISTOOOO Los valores)
         }
 
         spinnerTarjetasM.addChangeListener(new ChangeListener() {
@@ -219,32 +191,23 @@ public class MSI extends javax.swing.JPanel {
             public void stateChanged(ChangeEvent e) {
 
                 int nuevoValorSpinnerTarjetas = (int) spinnerTarjetasM.getValue();
-                int productoresRestantes = Integer.parseInt(productoresRestantesM.getText());
-                if (nuevoValorSpinnerTarjetas > valorSpinnerTarjetasM) {
-                    if (productoresRestantes > 0) {
+                if (validarProductoresRestantes(nuevoValorSpinnerTarjetas, valorSpinnerTarjetasM)) {
+                    // Compara el nuevo valor del JSpinner con valorSpinnerTarjetasM
+                    if (nuevoValorSpinnerTarjetas > valorSpinnerTarjetasM) {
                         // función: Crear productor de tarjeta
                         // Se llama a la función para crear un productor de tarjeta
-                        MSICompany.crearProductorTarjeta(MSICompany.almacenTarjetasM, 1, 0, "M", true); // (LISTOOOO Los valores)
-                        // Restamos 1 a productoresRestantesM si el nuevo valor es mayor
-                        int valorActual = Integer.parseInt(productoresRestantesM.getText());
-                        valorActual--;
-                        productoresRestantesM.setText(Integer.toString(valorActual));
-                        valorSpinnerTarjetasM = nuevoValorSpinnerTarjetas;
+                        MSICompany.crearProductorTarjeta(MSICompany.almacenTarjetasM, 3, 0, "M", true);
                     } else {
-                        spinnerTarjetasM.setValue(valorSpinnerTarjetasM);
+                        // función: Detener productor de tarjeta
+                        MSICompany.stopProductorTarjetaAleatorio();
                     }
-
-                } else if (nuevoValorSpinnerTarjetas < valorSpinnerTarjetasM) {
-                    // función: Detener productor de tarjeta
-                    MSICompany.stopProductorTarjetaAleatorio();
-                    // Sumamos 1 a productoresRestantesM si el nuevo valor es menor
-                    int valorActual = Integer.parseInt(productoresRestantesM.getText());
-                    valorActual++;
-                    productoresRestantesM.setText(Integer.toString(valorActual));
                     valorSpinnerTarjetasM = nuevoValorSpinnerTarjetas;
+                } else {
+                    spinnerTarjetasM.setValue(valorSpinnerTarjetasM);
                 }
-
+                actualizarProductoresRestantes();
             }
+                // Actualiza valorSpinner con el nuevo valor del JSpinner
         });
         
         // Código para el spinner de los ensambladores       
@@ -260,35 +223,48 @@ public class MSI extends javax.swing.JPanel {
             public void stateChanged(ChangeEvent e) {
 
                 int nuevoValorspinnerEnsambladores = (int) spinnerEnsambladoresM.getValue();
-                int productoresRestantes = Integer.parseInt(productoresRestantesM.getText());
-                if (nuevoValorspinnerEnsambladores > valorSpinnerEnsambladoresM) {
-                    if (productoresRestantes > 0) {
+                if (validarProductoresRestantes(nuevoValorspinnerEnsambladores, valorSpinnerEnsambladoresM)) {
+                    if (nuevoValorspinnerEnsambladores > valorSpinnerEnsambladoresM) {
                         // función: Crear ensamblador
                         // Se llama a la función para crear un ensamblador
                         MSICompany.crearEnsamblador(MSICompany.almacenPCsM, MSICompany.almacenPlacasM, MSICompany.almacenCPUsM, MSICompany.almacenMemoriasM, MSICompany.almacenFuentesM, MSICompany.almacenTarjetasM, MSICompany.pcsGeneradosM, MSICompany.pcsTGGeneradosM, 2, 2, 3, 4, 6, 5, "M", true);
-                        // Restamos 1 a productoresRestantesM si el nuevo valor es mayor
-                        int valorActual = Integer.parseInt(productoresRestantesM.getText());
-                        valorActual--;
-                        productoresRestantesM.setText(Integer.toString(valorActual));
-                    valorSpinnerEnsambladoresM = nuevoValorspinnerEnsambladores;}
-                    else{
-                         spinnerEnsambladoresM.setValue(valorSpinnerEnsambladoresM);
-                    }
-
-                    } else if (nuevoValorspinnerEnsambladores < valorSpinnerEnsambladoresM) {
+                        } else { 
                         // función: Detener ensamblador
                         MSICompany.stopEnsambladorAleatorio();
-                        // Sumamos 1 a productoresRestantesM si el nuevo valor es menor
-                        int valorActual = Integer.parseInt(productoresRestantesM.getText());
-                        valorActual++;
-                        productoresRestantesM.setText(Integer.toString(valorActual));
-                    valorSpinnerEnsambladoresM = nuevoValorspinnerEnsambladores;}
-
-                    
+                    }
+                    valorSpinnerEnsambladoresM = nuevoValorspinnerEnsambladores;
+                } else {
+                    spinnerEnsambladoresM.setValue(valorSpinnerEnsambladoresM);
                 }
+                actualizarProductoresRestantes();
             }
+            });
+            /*Dashboard.generarGrafico (); //Genera el gráfico de utilidad*/
+    }
+    
+    public void actualizarSpinnersDesdeDashboard() {
+        spinnerPlacasM.setValue(Dashboard.placasM);
+        spinnerCPUsM.setValue(Dashboard.CPUsM);
+        spinnerMemoriasM.setValue(Dashboard.memoriasM);
+        spinnerFuentesM.setValue(Dashboard.fuentesM);
+        spinnerTarjetasM.setValue(Dashboard.tarjetasM);
+        spinnerEnsambladoresM.setValue(Dashboard.ensambladoresM);  
+        
+        int productoresAsignados = (int) spinnerPlacasM.getValue() + (int) spinnerCPUsM.getValue() + (int) spinnerTarjetasM.getValue() + (int) spinnerFuentesM.getValue() + (int) spinnerTarjetasM.getValue() + (int) spinnerEnsambladoresM.getValue();
+        int productoresRestantes = totalProductores - productoresAsignados;
+        productoresRestantesM.setText(Integer.toString(productoresRestantes));
+    }
+    
+    private void actualizarProductoresRestantes() {
+        int productoresAsignados = valorSpinnerPlacasM + valorSpinnerCPUsM + valorSpinnerMemoriasM + valorSpinnerFuentesM + valorSpinnerTarjetasM + valorSpinnerEnsambladoresM;
+        int productoresRestantes = totalProductores - productoresAsignados;
+        productoresRestantesM.setText(Integer.toString(productoresRestantes));
+    }
 
-            );
+    private boolean validarProductoresRestantes(int nuevoValor, int valorActual) {
+        int productoresAsignados = valorSpinnerPlacasM + valorSpinnerCPUsM + valorSpinnerMemoriasM + valorSpinnerFuentesM + valorSpinnerTarjetasM + valorSpinnerEnsambladoresM;
+        int productoresRestantes = totalProductores - productoresAsignados;
+        return productoresRestantes >= (nuevoValor - valorActual);
     }
     
     public static void actualizarPlacasAlmacen(int nuevoValor) {
@@ -303,6 +279,7 @@ public class MSI extends javax.swing.JPanel {
         memoriasAlmacenM.setText(Integer.toString(nuevoValor));
     }
 
+    // Desarrollador Logica
     public static void actualizarFuentesAlmacen(int nuevoValor) {
         fuentesAlmacenM.setText(Integer.toString(nuevoValor));
     }
@@ -338,8 +315,8 @@ public class MSI extends javax.swing.JPanel {
         jPanel17 = new javax.swing.JPanel();
         jLabel47 = new javax.swing.JLabel();
         jLabel48 = new javax.swing.JLabel();
-        computadorasTarjetaGeneradasM = new javax.swing.JLabel();
-        computadorasGeneradasM = new javax.swing.JLabel();
+        computadorasTarjetaListasM = new javax.swing.JLabel();
+        computadorasListasM = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -509,15 +486,15 @@ public class MSI extends javax.swing.JPanel {
         jLabel48.setForeground(new java.awt.Color(255, 255, 255));
         jLabel48.setText("Computadoras c / tarjetas gráficas:");
 
-        computadorasTarjetaGeneradasM.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        computadorasTarjetaGeneradasM.setForeground(new java.awt.Color(255, 255, 255));
-        computadorasTarjetaGeneradasM.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        computadorasTarjetaGeneradasM.setText("0");
+        computadorasTarjetaListasM.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        computadorasTarjetaListasM.setForeground(new java.awt.Color(255, 255, 255));
+        computadorasTarjetaListasM.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        computadorasTarjetaListasM.setText("0");
 
-        computadorasGeneradasM.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        computadorasGeneradasM.setForeground(new java.awt.Color(255, 255, 255));
-        computadorasGeneradasM.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        computadorasGeneradasM.setText("0");
+        computadorasListasM.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        computadorasListasM.setForeground(new java.awt.Color(255, 255, 255));
+        computadorasListasM.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        computadorasListasM.setText("0");
 
         javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
         jPanel17.setLayout(jPanel17Layout);
@@ -529,11 +506,11 @@ public class MSI extends javax.swing.JPanel {
                     .addGroup(jPanel17Layout.createSequentialGroup()
                         .addComponent(jLabel47)
                         .addGap(85, 85, 85)
-                        .addComponent(computadorasGeneradasM, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE))
+                        .addComponent(computadorasListasM, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE))
                     .addGroup(jPanel17Layout.createSequentialGroup()
                         .addComponent(jLabel48)
                         .addGap(18, 18, 18)
-                        .addComponent(computadorasTarjetaGeneradasM, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(computadorasTarjetaListasM, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(23, 23, 23))
         );
         jPanel17Layout.setVerticalGroup(
@@ -542,11 +519,11 @@ public class MSI extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel47)
-                    .addComponent(computadorasGeneradasM))
+                    .addComponent(computadorasListasM))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel48)
-                    .addComponent(computadorasTarjetaGeneradasM))
+                    .addComponent(computadorasTarjetaListasM))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -1252,28 +1229,28 @@ public class MSI extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    public static JLabel getComputadorasTarjetaGeneradasM() {
-        return computadorasTarjetaGeneradasM;
+    public static JLabel getComputadorasTarjetaListasM() {
+        return computadorasTarjetaListasM;
     }
 
-    public static void setComputadorasTarjetaGeneradasM(JLabel computadorasTarjetaGeneradasM) {
-        MSI.computadorasTarjetaGeneradasM = computadorasTarjetaGeneradasM;
+    public static void setComputadorasTarjetaListasM(JLabel computadorasTarjetaGeneradasM) {
+        MSI.computadorasTarjetaListasM = computadorasTarjetaGeneradasM;
     }
 
-    public static JLabel getComputadorasGeneradasM() {
-        return computadorasGeneradasM;
+    public static JLabel getComputadorasListasM() {
+        return computadorasListasM;
     }
 
-    public static void getComputadorasGeneradasM(JLabel computadorasGeneradasM) {
-        MSI.computadorasGeneradasM = computadorasGeneradasM;
+    public static void getComputadorasListasM(JLabel computadorasGeneradasM) {
+        MSI.computadorasListasM = computadorasGeneradasM;
     }
 
-    public static void actualizarComputadorasGeneradas(int nuevoValor) {
-        computadorasGeneradasM.setText(Integer.toString(nuevoValor));
+    public static void actualizarComputadorasListas(int nuevoValor) {
+        computadorasListasM.setText(Integer.toString(nuevoValor));
     }
 
-    public static void actualizarComputadorasTarjetaGeneradas(int nuevoValor) {
-        computadorasTarjetaGeneradasM.setText(Integer.toString(nuevoValor));
+    public static void actualizarComputadorasTarjetaListas(int nuevoValor) {
+        computadorasTarjetaListasM.setText(Integer.toString(nuevoValor));
     }
 
     public static JLabel getComputadorasTotalesM() {
@@ -1284,7 +1261,7 @@ public class MSI extends javax.swing.JPanel {
         MSI.computadorasTotalesM = computadorasTotalesM;
     }
 
-    public static void actualizarComputadorasGeneradasTotalesM(int nuevoValor) {
+    public static void actualizarComputadorasListasTotalesM(int nuevoValor) {
         computadorasTotalesM.setText(Integer.toString(nuevoValor));
     }
 
@@ -1406,8 +1383,8 @@ public class MSI extends javax.swing.JPanel {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JLabel CPUsAlmacenM;
-    public static javax.swing.JLabel computadorasGeneradasM;
-    public static javax.swing.JLabel computadorasTarjetaGeneradasM;
+    public static javax.swing.JLabel computadorasListasM;
+    public static javax.swing.JLabel computadorasTarjetaListasM;
     public static javax.swing.JLabel computadorasTotalesM;
     public static javax.swing.JLabel costosOperativosM;
     public static javax.swing.JLabel costosOperativosM1;
@@ -1481,13 +1458,13 @@ public class MSI extends javax.swing.JPanel {
     private javax.swing.JTextField jTextField20;
     public static javax.swing.JLabel memoriasAlmacenM;
     public static javax.swing.JLabel placasAlmacenM;
-    private javax.swing.JLabel productoresRestantesM;
-    private javax.swing.JSpinner spinnerCPUsM;
-    private javax.swing.JSpinner spinnerEnsambladoresM;
-    private javax.swing.JSpinner spinnerFuentesM;
-    private javax.swing.JSpinner spinnerMemoriasM;
-    private javax.swing.JSpinner spinnerPlacasM;
-    private javax.swing.JSpinner spinnerTarjetasM;
+    public static javax.swing.JLabel productoresRestantesM;
+    public static javax.swing.JSpinner spinnerCPUsM;
+    public static javax.swing.JSpinner spinnerEnsambladoresM;
+    public static javax.swing.JSpinner spinnerFuentesM;
+    public static javax.swing.JSpinner spinnerMemoriasM;
+    public static javax.swing.JSpinner spinnerPlacasM;
+    public static javax.swing.JSpinner spinnerTarjetasM;
     public static javax.swing.JLabel tarjetasAlmacenM;
     // End of variables declaration//GEN-END:variables
 }

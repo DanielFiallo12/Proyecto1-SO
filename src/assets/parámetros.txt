@@ -1,0 +1,14 @@
+duracionDias=5
+diasParaEntrega=30
+placasM=1
+CPUsM=2
+memoriasM=3
+fuentesM=4
+tarjetasM=5
+ensambladoresM=6
+placasH=7
+CPUsH=8
+memoriasH=9
+fuentesH=10
+tarjetasH=11
+ensambladoresH=12
