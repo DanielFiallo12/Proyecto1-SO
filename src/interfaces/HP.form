@@ -3,7 +3,7 @@
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
   <Properties>
     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+      <Color blue="66" green="66" red="0" type="rgb"/>
     </Property>
   </Properties>
   <AuxValues>
@@ -16,7 +16,7 @@
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
-    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,-7,0,0,4,16"/>
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,-39,0,0,4,13"/>
   </AuxValues>
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
@@ -36,7 +36,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="650" y="380" width="-1" height="-1"/>
+          <AbsoluteConstraints x="630" y="420" width="-1" height="-1"/>
         </Constraint>
       </Constraints>
 
@@ -62,7 +62,7 @@
                                   <EmptySpace min="0" pref="22" max="32767" attributes="0"/>
                                   <Component id="jTextField19" min="-2" pref="42" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="computadorasTotalesM" max="32767" attributes="0"/>
+                              <Component id="computadorasTotalesH" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -76,7 +76,7 @@
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel59" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="computadorasTotalesM" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="computadorasTotalesH" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -169,7 +169,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField20ActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="computadorasTotalesM">
+        <Component class="javax.swing.JLabel" name="computadorasTotalesH">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="1"/>
@@ -199,7 +199,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="650" y="300" width="381" height="-1"/>
+          <AbsoluteConstraints x="630" y="324" width="381" height="-1"/>
         </Constraint>
       </Constraints>
 
@@ -212,12 +212,12 @@
                       <Group type="102" attributes="0">
                           <Component id="jLabel47" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
-                          <Component id="computadorasListasM" pref="52" max="32767" attributes="0"/>
+                          <Component id="computadorasListasH" pref="52" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <Component id="jLabel48" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="computadorasTarjetaListasM" max="32767" attributes="0"/>
+                          <Component id="computadorasTarjetaListasH" pref="52" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
@@ -230,12 +230,12 @@
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel47" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="computadorasListasM" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="computadorasListasH" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel48" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="computadorasTarjetaListasM" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="computadorasTarjetaListasH" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -265,7 +265,7 @@
             <Property name="text" type="java.lang.String" value="Computadoras c / tarjetas gr&#xe1;ficas:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="computadorasTarjetaListasM">
+        <Component class="javax.swing.JLabel" name="computadorasTarjetaListasH">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="1"/>
@@ -280,7 +280,7 @@
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JLabel" name="computadorasListasM">
+        <Component class="javax.swing.JLabel" name="computadorasListasH">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="1"/>
@@ -300,12 +300,12 @@
     <Container class="javax.swing.JPanel" name="jPanel2">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="66" green="66" red="ff" type="rgb"/>
+          <Color blue="ff" green="cc" red="99" type="rgb"/>
         </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
             <LineBorder roundedCorners="true" thickness="5">
-              <Color PropertyName="color" blue="33" green="33" red="ff" type="rgb"/>
+              <Color PropertyName="color" blue="ff" green="cc" red="66" type="rgb"/>
             </LineBorder>
           </Border>
         </Property>
@@ -332,7 +332,7 @@
                           <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                           <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="productoresRestantesM" min="-2" max="-2" attributes="0"/>
+                          <Component id="productoresRestantesH" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
@@ -374,7 +374,7 @@
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="productoresRestantesM" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="productoresRestantesH" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="29" max="32767" attributes="0"/>
               </Group>
@@ -410,7 +410,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="spinnerPlacasM" min="-2" pref="84" max="-2" attributes="0"/>
+                      <Component id="spinnerPlacasH" min="-2" pref="84" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -421,7 +421,7 @@
                       <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="spinnerPlacasM" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="spinnerPlacasH" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -437,7 +437,7 @@
                 <Property name="text" type="java.lang.String" value="Productores de placas base:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JSpinner" name="spinnerPlacasM">
+            <Component class="javax.swing.JSpinner" name="spinnerPlacasH">
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
               </AuxValues>
@@ -453,7 +453,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel5" min="-2" pref="121" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="spinnerCPUsM" min="-2" pref="84" max="-2" attributes="0"/>
+                      <Component id="spinnerCPUsH" min="-2" pref="84" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -464,7 +464,7 @@
                       <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="spinnerCPUsM" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="spinnerCPUsH" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -480,7 +480,7 @@
                 <Property name="text" type="java.lang.String" value="Productores de CPUs:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JSpinner" name="spinnerCPUsM">
+            <Component class="javax.swing.JSpinner" name="spinnerCPUsH">
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
               </AuxValues>
@@ -496,7 +496,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="spinnerMemoriasM" min="-2" pref="84" max="-2" attributes="0"/>
+                      <Component id="spinnerMemoriasH" min="-2" pref="84" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -507,7 +507,7 @@
                       <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="spinnerMemoriasM" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="spinnerMemoriasH" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -523,7 +523,7 @@
                 <Property name="text" type="java.lang.String" value="Productores de memorias RAM:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JSpinner" name="spinnerMemoriasM">
+            <Component class="javax.swing.JSpinner" name="spinnerMemoriasH">
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
               </AuxValues>
@@ -539,7 +539,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="spinnerFuentesM" min="-2" pref="84" max="-2" attributes="0"/>
+                      <Component id="spinnerFuentesH" min="-2" pref="84" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -550,7 +550,7 @@
                       <EmptySpace pref="12" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="spinnerFuentesM" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="spinnerFuentesH" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -566,7 +566,7 @@
                 <Property name="text" type="java.lang.String" value="Productores de fuentes de poder:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JSpinner" name="spinnerFuentesM">
+            <Component class="javax.swing.JSpinner" name="spinnerFuentesH">
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
               </AuxValues>
@@ -582,7 +582,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="spinnerTarjetasM" max="32767" attributes="0"/>
+                      <Component id="spinnerTarjetasH" max="32767" attributes="0"/>
                       <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -593,7 +593,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="spinnerTarjetasM" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="spinnerTarjetasH" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -609,7 +609,7 @@
                 <Property name="text" type="java.lang.String" value="Productores de tarjetas gr&#xe1;ficas:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JSpinner" name="spinnerTarjetasM">
+            <Component class="javax.swing.JSpinner" name="spinnerTarjetasH">
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
               </AuxValues>
@@ -633,7 +633,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="spinnerEnsambladoresM" min="-2" pref="84" max="-2" attributes="0"/>
+                      <Component id="spinnerEnsambladoresH" min="-2" pref="84" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -644,7 +644,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel15" alignment="3" max="32767" attributes="0"/>
-                          <Component id="spinnerEnsambladoresM" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="spinnerEnsambladoresH" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -660,7 +660,7 @@
                 <Property name="text" type="java.lang.String" value="Ensambladores"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JSpinner" name="spinnerEnsambladoresM">
+            <Component class="javax.swing.JSpinner" name="spinnerEnsambladoresH">
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
               </AuxValues>
@@ -675,7 +675,7 @@
             <Property name="text" type="java.lang.String" value="TRABAJADORES RESTANTES:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="productoresRestantesM">
+        <Component class="javax.swing.JLabel" name="productoresRestantesH">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="1"/>
@@ -702,7 +702,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="650" y="10" width="381" height="-1"/>
+          <AbsoluteConstraints x="630" y="20" width="381" height="-1"/>
         </Constraint>
       </Constraints>
 
@@ -724,10 +724,10 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="costosOperativosM" max="32767" attributes="0"/>
-                              <Component id="costosOperativosM1" alignment="0" max="32767" attributes="0"/>
-                              <Component id="gananciaM" alignment="0" max="32767" attributes="0"/>
-                              <Component id="estadoPM" pref="165" max="32767" attributes="0"/>
+                              <Component id="costosOperativosH" max="32767" attributes="0"/>
+                              <Component id="costosOperativosH1" alignment="0" max="32767" attributes="0"/>
+                              <Component id="gananciaH" alignment="0" max="32767" attributes="0"/>
+                              <Component id="estadoPM" pref="179" max="32767" attributes="0"/>
                               <Component id="estadoDirector" alignment="1" max="32767" attributes="0"/>
                               <Component id="descontadoPM" max="32767" attributes="0"/>
                               <Component id="faltasPM" alignment="1" max="32767" attributes="0"/>
@@ -758,17 +758,17 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel37" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
-                      <Component id="costosOperativosM" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="costosOperativosH" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel38" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="costosOperativosM1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="costosOperativosH1" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel39" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="gananciaM" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="gananciaH" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jLabel40" min="-2" max="-2" attributes="0"/>
@@ -913,7 +913,7 @@
             <Property name="text" type="java.lang.String" value="Descontado ($):"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="costosOperativosM">
+        <Component class="javax.swing.JLabel" name="costosOperativosH">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="1"/>
@@ -928,7 +928,7 @@
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JLabel" name="costosOperativosM1">
+        <Component class="javax.swing.JLabel" name="costosOperativosH1">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="1"/>
@@ -943,7 +943,7 @@
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JLabel" name="gananciaM">
+        <Component class="javax.swing.JLabel" name="gananciaH">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="1"/>
@@ -1020,39 +1020,22 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JLabel" name="jLabel49">
-      <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="33" red="99" type="rgb"/>
-        </Property>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI" size="16" style="1"/>
-        </Property>
-        <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="PRODUCCI&#xd3;N ACTUAL"/>
-      </Properties>
-      <Constraints>
-        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="650" y="280" width="381" height="22"/>
-        </Constraint>
-      </Constraints>
-    </Component>
     <Container class="javax.swing.JPanel" name="jPanel5">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="66" green="66" red="ff" type="rgb"/>
+          <Color blue="ff" green="cc" red="99" type="rgb"/>
         </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
             <LineBorder thickness="5">
-              <Color PropertyName="color" blue="33" green="33" red="ff" type="rgb"/>
+              <Color PropertyName="color" blue="ff" green="cc" red="66" type="rgb"/>
             </LineBorder>
           </Border>
         </Property>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="360" y="300" width="-1" height="64"/>
+          <AbsoluteConstraints x="380" y="420" width="220" height="64"/>
         </Constraint>
       </Constraints>
 
@@ -1132,6 +1115,23 @@
         </Component>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JLabel" name="jLabel49">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="33" red="99" type="rgb"/>
+        </Property>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="16" style="1"/>
+        </Property>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="text" type="java.lang.String" value="PRODUCCI&#xd3;N ACTUAL"/>
+      </Properties>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="630" y="296" width="381" height="22"/>
+        </Constraint>
+      </Constraints>
+    </Component>
     <Component class="javax.swing.JLabel" name="jLabel46">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -1145,33 +1145,33 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="650" y="360" width="381" height="22"/>
+          <AbsoluteConstraints x="630" y="392" width="381" height="22"/>
         </Constraint>
       </Constraints>
     </Component>
     <Container class="javax.swing.JPanel" name="jPanel10">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="66" green="66" red="ff" type="rgb"/>
+          <Color blue="ff" green="cc" red="99" type="rgb"/>
         </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
             <LineBorder thickness="5">
-              <Color PropertyName="color" blue="33" green="33" red="ff" type="rgb"/>
+              <Color PropertyName="color" blue="ff" green="cc" red="66" type="rgb"/>
             </LineBorder>
           </Border>
         </Property>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="360" y="10" width="229" height="-1"/>
+          <AbsoluteConstraints x="380" y="130" width="229" height="270"/>
         </Constraint>
       </Constraints>
 
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
+              <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel20" alignment="1" max="32767" attributes="0"/>
@@ -1180,10 +1180,10 @@
                       <Component id="jPanel14" alignment="0" max="32767" attributes="0"/>
                       <Component id="jPanel12" alignment="0" max="32767" attributes="0"/>
                       <Component id="jPanel15" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jLabel19" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
-              <Component id="jLabel19" alignment="1" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -1191,7 +1191,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel19" min="-2" pref="20" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                   <Component id="jLabel20" min="-2" pref="18" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jPanel11" min="-2" max="-2" attributes="0"/>
@@ -1203,7 +1203,7 @@
                   <Component id="jPanel14" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jPanel15" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="9" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -1237,7 +1237,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel21" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
-                      <Component id="placasAlmacenM" min="-2" max="-2" attributes="0"/>
+                      <Component id="placasAlmacenH" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jLabel32" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
@@ -1250,7 +1250,7 @@
                       <EmptySpace pref="12" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel21" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="placasAlmacenM" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="placasAlmacenH" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel32" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -1267,7 +1267,7 @@
                 <Property name="text" type="java.lang.String" value="Placas base:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="placasAlmacenM">
+            <Component class="javax.swing.JLabel" name="placasAlmacenH">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="13" style="1"/>
@@ -1297,7 +1297,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel23" min="-2" pref="109" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                      <Component id="CPUsAlmacenM" min="-2" max="-2" attributes="0"/>
+                      <Component id="CPUsAlmacenH" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jLabel33" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
@@ -1310,7 +1310,7 @@
                       <EmptySpace pref="12" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel23" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="CPUsAlmacenM" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="CPUsAlmacenH" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel33" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -1327,7 +1327,7 @@
                 <Property name="text" type="java.lang.String" value="CPUs:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="CPUsAlmacenM">
+            <Component class="javax.swing.JLabel" name="CPUsAlmacenH">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="13" style="1"/>
@@ -1357,7 +1357,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel25" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                      <Component id="memoriasAlmacenM" min="-2" max="-2" attributes="0"/>
+                      <Component id="memoriasAlmacenH" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jLabel34" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
@@ -1370,7 +1370,7 @@
                       <EmptySpace pref="12" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel25" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="memoriasAlmacenM" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="memoriasAlmacenH" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel34" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -1387,7 +1387,7 @@
                 <Property name="text" type="java.lang.String" value="Memorias RAM:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="memoriasAlmacenM">
+            <Component class="javax.swing.JLabel" name="memoriasAlmacenH">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="13" style="1"/>
@@ -1417,10 +1417,10 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel27" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                      <Component id="fuentesAlmacenM" min="-2" max="-2" attributes="0"/>
+                      <Component id="fuentesAlmacenH" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jLabel35" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="13" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1430,7 +1430,7 @@
                       <EmptySpace pref="12" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel27" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="fuentesAlmacenM" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="fuentesAlmacenH" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel35" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -1447,7 +1447,7 @@
                 <Property name="text" type="java.lang.String" value="Fuentes de poder:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="fuentesAlmacenM">
+            <Component class="javax.swing.JLabel" name="fuentesAlmacenH">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="12" style="1"/>
@@ -1477,7 +1477,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel29" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                      <Component id="tarjetasAlmacenM" min="-2" max="-2" attributes="0"/>
+                      <Component id="tarjetasAlmacenH" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jLabel36" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
@@ -1490,7 +1490,7 @@
                       <EmptySpace pref="12" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel29" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="tarjetasAlmacenM" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="tarjetasAlmacenH" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel36" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -1507,7 +1507,7 @@
                 <Property name="text" type="java.lang.String" value="Tarjetas gr&#xe1;ficas:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="tarjetasAlmacenM">
+            <Component class="javax.swing.JLabel" name="tarjetasAlmacenH">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="12" style="1"/>
@@ -1532,12 +1532,10 @@
     </Container>
     <Component class="javax.swing.JLabel" name="jLabel8">
       <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-        </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/assets/msi-logo-png_seeklogo-533860-2.png"/>
+          <Image iconType="3" name="/assets/hp-logo-png-photo.png"/>
         </Property>
+        <Property name="text" type="java.lang.String" value="jLabel8"/>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[413, 409]"/>
         </Property>
@@ -1550,7 +1548,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="10" y="420" width="1020" height="340"/>
+          <AbsoluteConstraints x="0" y="0" width="1050" height="730"/>
         </Constraint>
       </Constraints>
     </Component>
