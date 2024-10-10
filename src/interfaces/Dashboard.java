@@ -38,7 +38,7 @@ public class Dashboard extends javax.swing.JPanel {
     }
     
     public static void cargarValoresDesdeArchivo() {
-        try ( FileReader fileReader = new FileReader("src/assets/valoresIniciales.txt");  Scanner scanner = new Scanner(fileReader)) {
+        try ( FileReader fileReader = new FileReader("src/assets/parámetros.txt");  Scanner scanner = new Scanner(fileReader)) {
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
                 String[] parts = line.split("=");

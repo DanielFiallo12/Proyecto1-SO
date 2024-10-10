@@ -6,6 +6,8 @@ package classes;
 
 import interfaces.Dashboard;
 import interfaces.MSI;
+import interfaces.HP;
+
 import java.util.concurrent.Semaphore;
 
 /**
@@ -39,7 +41,7 @@ public class ProductorCPUs extends Thread {
         int salario = sueldoPorHora * horasTrabajadas;
         if (company == "H") {
             // Pago de productor CPUs de HP
-            // HPCompany.totalPayH += salario;
+             HPCompany.totalPayH += salario;
             
         } else {
             // Pago de productor CPUs de MSI
@@ -71,7 +73,7 @@ public class ProductorCPUs extends Thread {
             if (almacenCPU.availablePermits() > 0) {
                 almacenCPU.acquire(1);
                 CPUsListosH++; // Incrementa el contador 
-               // HP.actualizarCPUsAlmacen(CPUsListosH);
+                HP.actualizarCPUsAlmacen(CPUsListosH);
             } else {
                 System.out.println("Almacén de CPUs lleno. Esperando que libere espacio.");
             }

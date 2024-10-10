@@ -6,6 +6,7 @@ package classes;
 
 import interfaces.Dashboard;
 import interfaces.MSI;
+import interfaces.HP;
 import java.util.concurrent.Semaphore;
 
 /**
@@ -89,7 +90,7 @@ public class Ensamblador extends Thread {
         int horasTrabajadas = 24;
         int salario = sueldoPorHora * horasTrabajadas;
         if (company == "H") {
-            /* Pago ensamblador de HP */
+            HPCompany.totalPayH += salario;
         } else {
             MSICompany.totalPayM += salario;
         }

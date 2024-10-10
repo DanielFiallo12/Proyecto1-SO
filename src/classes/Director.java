@@ -11,6 +11,7 @@ package classes;
 
 import interfaces.Dashboard;
 import interfaces.MSI;
+import interfaces.HP;
 import java.util.Random;
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
@@ -50,7 +51,7 @@ public class Director extends Thread {
         int salario = sueldoPorHora * horasTrabajadas;
         if ("H".equals(company)) {
             // Pago director de HP
-            // HPCompany.totalPayH += salario;
+             HPCompany.totalPayH += salario;
         } else {
             // Pago director de MSI
             MSICompany.totalPayM += salario;
@@ -61,14 +62,14 @@ public class Director extends Thread {
     public void entregarPCs() {
 
         if ("H".equals(company)) {
-           // ingresoH += Ensamblador.countComputadorasListasH * 90000;
-           // ingresoH += Ensamblador.countComputadorasTarjetaListasH * 140000;
-           // Ensamblador.countComputadorasListasH = 0;
-           // HP.actualizarComputadorasListas(Ensamblador.countComputadorasListasH);
-           // Ensamblador.countComputadorasTarjetaListasH = 0;
-           // HP.actualizarComputadorasTarjetaListas(Ensamblador.countComputadorasTarjetaListasH);
-           // daysRemaining.release(HPCompany.diasRestantesH);  //Resetea días restantes
-           // HP.estadoDirector.setText("Labores administrativas");
+            ingresoH += Ensamblador.countComputadorasListasH * 90000;
+            ingresoH += Ensamblador.countComputadorasTarjetaListasH * 140000;
+            Ensamblador.countComputadorasListasH = 0;
+            HP.actualizarComputadorasListas(Ensamblador.countComputadorasListasH);
+            Ensamblador.countComputadorasTarjetaListasH = 0;
+            HP.actualizarComputadorasTarjetaListas(Ensamblador.countComputadorasTarjetaListasH);
+            daysRemaining.release(HPCompany.diasRestantesH);  //Resetea días restantes
+            HP.estadoDirector.setText("Labores administrativas");
         } else {
             ingresoM += Ensamblador.countComputadorasListasM * 180000;
             ingresoM += Ensamblador.countComputadorasTarjetaListasM * 250000;
@@ -90,7 +91,7 @@ public class Director extends Thread {
                 if ("H".equals(company)) {
                     if (daysRemaining.availablePermits() == 0) {
 
-                        // HP.actualizarEstadoDirector("Entregando computadoras");
+                         HP.actualizarEstadoDirector("Entregando computadoras");
                         Thread.sleep(1000*Dashboard.duracionDias);  // Pasa un día
                         payDayDirector();
                         entregarPCs();
@@ -135,18 +136,18 @@ public class Director extends Thread {
 
         if ("H".equals(company)) {
 
-            // HP.actualizarEstadoDirector("Vigilando P.M.");
+             HP.actualizarEstadoDirector("Vigilando P.M.");
         } else {
             MSI.actualizarEstadoDirector("Vigilando P.M.");
         }
-        // if (ProjectManager.isWatchingStreams == true) {
+         if (ProjectManager.isWatchingStreams == true) {
 
             if ("H".equals(company)) {
                 faltasCounterH++;
                 descontadoPmH -= 100;
-                // HP.faltasPM.setText(Integer.toString(faltasCounterH));
-                // HP.descontadoPM.setText(Integer.toString(descontadoPmH));
-                // HP.actualizarEstadoDirector("Labores administrativas");
+                 HP.faltasPM.setText(Integer.toString(faltasCounterH));
+                 HP.descontadoPM.setText(Integer.toString(descontadoPmH));
+                 HP.actualizarEstadoDirector("Labores administrativas");
             } else {
                 faltasCounterM++;
                 descontadoPmM -= 100;
@@ -154,7 +155,7 @@ public class Director extends Thread {
                 MSI.descontadoPM.setText(Integer.toString(descontadoPmM));
                 MSI.estadoDirector.setText("Labores administrativas");
 
-            // }
+             }
 
         }
     }

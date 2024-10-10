@@ -7,6 +7,8 @@ package classes;
 import java.util.concurrent.Semaphore;
 import interfaces.Dashboard;
 import interfaces.MSI;
+import interfaces.HP;
+
 /**
  *
  * @author adminccs
@@ -39,7 +41,7 @@ public class ProductorPlacas extends Thread{
         int salario = sueldoPorHora * horasTrabajadas;
         if ("H".equals(company)) {
             // Pago de HP
-             // HPCompany.totalPayH += salario;
+              HPCompany.totalPayH += salario;
         } else {
             // Pago de MSI
             MSICompany.totalPayM += salario;
@@ -71,7 +73,7 @@ public class ProductorPlacas extends Thread{
             if (almacenPlaca.availablePermits() > 0) {
                 almacenPlaca.acquire(1);
                 placasListasH++; // Incrementa el contador 
-                // HP.actualizarPlacasAlmacen(placasListasH);
+                HP.actualizarPlacasAlmacen(placasListasH);
             } else {
                 System.out.println("Almacén de placas lleno. Esperando que libere espacio.");
             }

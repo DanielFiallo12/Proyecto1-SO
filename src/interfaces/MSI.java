@@ -5,6 +5,8 @@
 package interfaces;
 
 import classes.Director;
+import classes.ProjectManager;
+import classes.Funciones;
 import classes.MSICompany;
 import interfaces.MSI;
 import javax.swing.JSpinner;
@@ -43,11 +45,11 @@ public class MSI extends javax.swing.JPanel {
         Director director = new Director(MSICompany.diasRestantesSem, "M");
         director.start();
 
-        /*ProjectManager pm = new ProjectManager(MSICompany.diasRestantesSem, "M");
+        ProjectManager pm = new ProjectManager(MSICompany.diasRestantesSem, "M");
         pm.start();
 
         Funciones dia = new Funciones();
-        dia.start();*/
+        dia.start();
         
         // Código para el spinner de las placas base
         valorSpinnerPlacasM = (int) spinnerPlacasM.getValue();

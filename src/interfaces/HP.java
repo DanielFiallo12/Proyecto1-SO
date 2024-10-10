@@ -6,6 +6,8 @@ package interfaces;
 
 import classes.Director;
 import classes.MSICompany;
+import classes.ProjectManager;
+import classes.Funciones;
 import interfaces.HP;
 import javax.swing.JSpinner;
 import javax.swing.event.ChangeEvent;
@@ -43,11 +45,11 @@ public class HP extends javax.swing.JPanel {
         Director director = new Director(MSICompany.diasRestantesSem, "M");
         director.start();
 
-        /*ProjectManager pm = new ProjectManager(MSICompany.diasRestantesSem, "M");
+        ProjectManager pm = new ProjectManager(MSICompany.diasRestantesSem, "M");
         pm.start();
 
         Funciones dia = new Funciones();
-        dia.start();*/
+        dia.start();
         
         // Código para el spinner de las placas base
         valorSpinnerPlacasM = (int) spinnerPlacasH.getValue();
@@ -478,7 +480,7 @@ public class HP extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        add(jPanel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 420, -1, -1));
+        add(jPanel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 430, -1, -1));
 
         jPanel17.setBackground(new java.awt.Color(34, 46, 60));
         jPanel17.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
@@ -532,7 +534,7 @@ public class HP extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        add(jPanel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 324, 381, -1));
+        add(jPanel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 330, 381, -1));
 
         jPanel2.setBackground(new java.awt.Color(153, 204, 255));
         jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 204, 255), 5, true));
@@ -912,7 +914,7 @@ public class HP extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        add(jPanel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 20, 381, -1));
+        add(jPanel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 20, 381, -1));
 
         jPanel5.setBackground(new java.awt.Color(153, 204, 255));
         jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 204, 255), 5));
@@ -960,19 +962,19 @@ public class HP extends javax.swing.JPanel {
                 .addGap(21, 21, 21))
         );
 
-        add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 420, 220, 64));
+        add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 510, 220, 64));
 
         jLabel49.setBackground(new java.awt.Color(153, 51, 255));
         jLabel49.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel49.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel49.setText("PRODUCCIÓN ACTUAL");
-        add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 296, 381, 22));
+        add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 300, 381, 22));
 
         jLabel46.setBackground(new java.awt.Color(153, 51, 255));
         jLabel46.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel46.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel46.setText("PRODUCCIONES PASADAS");
-        add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 392, 381, 22));
+        add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 400, 381, 22));
 
         jPanel10.setBackground(new java.awt.Color(153, 204, 255));
         jPanel10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 204, 255), 5));
@@ -1184,17 +1186,17 @@ public class HP extends javax.swing.JPanel {
                 .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(9, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
-        add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 130, 229, 270));
+        add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, 229, 280));
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/hp-logo-png-photo.png"))); // NOI18N
         jLabel8.setText("jLabel8");
         jLabel8.setMaximumSize(new java.awt.Dimension(413, 409));
         jLabel8.setMinimumSize(new java.awt.Dimension(413, 409));
         jLabel8.setPreferredSize(new java.awt.Dimension(413, 409));
-        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1050, 730));
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1020, 940));
     }// </editor-fold>//GEN-END:initComponents
 
     public static JLabel getComputadorasTarjetaListasM() {
