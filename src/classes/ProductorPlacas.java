@@ -11,8 +11,12 @@ import interfaces.HP;
 
 /**
  *
+ * 
  * @author adminccs
  */
+
+
+
 public class ProductorPlacas extends Thread{
     
     public static int placasListasH = 0;

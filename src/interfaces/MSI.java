@@ -356,10 +356,10 @@ public class MSI extends javax.swing.JPanel {
         costosOperativosM = new javax.swing.JLabel();
         costosOperativosM1 = new javax.swing.JLabel();
         gananciaM = new javax.swing.JLabel();
-        estadoPM = new javax.swing.JLabel();
         estadoDirector = new javax.swing.JLabel();
-        descontadoPM = new javax.swing.JLabel();
+        estadoPM = new javax.swing.JLabel();
         faltasPM = new javax.swing.JLabel();
+        descontadoPM = new javax.swing.JLabel();
         jLabel49 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel50 = new javax.swing.JLabel();
@@ -818,25 +818,22 @@ public class MSI extends javax.swing.JPanel {
         gananciaM.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         gananciaM.setText("0");
 
-        estadoPM.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        estadoPM.setForeground(new java.awt.Color(255, 255, 255));
-        estadoPM.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        estadoPM.setText("Por comenzar");
-
         estadoDirector.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         estadoDirector.setForeground(new java.awt.Color(255, 255, 255));
         estadoDirector.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         estadoDirector.setText("Por comenzar");
 
-        descontadoPM.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        descontadoPM.setForeground(new java.awt.Color(255, 255, 255));
-        descontadoPM.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        descontadoPM.setText("0");
+        estadoPM.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        estadoPM.setForeground(new java.awt.Color(255, 255, 255));
+        estadoPM.setText("Trabajando");
 
-        faltasPM.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        faltasPM.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         faltasPM.setForeground(new java.awt.Color(255, 255, 255));
-        faltasPM.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         faltasPM.setText("0");
+
+        descontadoPM.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        descontadoPM.setForeground(new java.awt.Color(255, 255, 255));
+        descontadoPM.setText("0");
 
         javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
         jPanel16.setLayout(jPanel16Layout);
@@ -856,13 +853,15 @@ public class MSI extends javax.swing.JPanel {
                             .addComponent(jLabel45))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(descontadoPM, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(faltasPM, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(costosOperativosM, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(costosOperativosM1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(gananciaM, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(estadoPM, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
-                            .addComponent(estadoDirector, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(descontadoPM, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(faltasPM, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(estadoDirector, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel16Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(estadoPM)))
                         .addGap(23, 23, 23))
                     .addGroup(jPanel16Layout.createSequentialGroup()
                         .addContainerGap()
@@ -910,11 +909,11 @@ public class MSI extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel45)
-                    .addComponent(descontadoPM))
-                .addContainerGap())
+                    .addComponent(descontadoPM, javax.swing.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
-        add(jPanel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 10, 381, -1));
+        add(jPanel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 0, 381, -1));
 
         jLabel49.setBackground(new java.awt.Color(153, 51, 255));
         jLabel49.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
@@ -1283,12 +1282,12 @@ public class MSI extends javax.swing.JPanel {
         MSI.costosOperativosM = costosOperativosM;
     }
 
-    public static JLabel getEstadoPM() {
+    public  JLabel getEstadoPM() {
         return estadoPM;
     }
 
-    public static void setEstadoPM(JLabel estadoPM) {
-        MSI.estadoPM = estadoPM;
+    public void setEstadoPM(JLabel estadoPM) {
+        this.estadoPM = estadoPM; // Usa 'this' para referirse a la variable de instancia
     }
 
     public static void actualizarEstadoPM(String estado) {
@@ -1319,11 +1318,11 @@ public class MSI extends javax.swing.JPanel {
         diasParaEntrega.setText(Integer.toString(nuevoValor));
     }
 
-    public static JLabel getDescontadoPM() {
+    public  JLabel getDescontadoPM() {
         return descontadoPM;
     }
 
-    public static void setDescontadoPM(JLabel descontadoPM) {
+    public void setDescontadoPM(JLabel descontadoPM) {
         MSI.descontadoPM = descontadoPM;
     }
 

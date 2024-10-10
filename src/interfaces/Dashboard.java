@@ -214,7 +214,7 @@ public class Dashboard extends javax.swing.JPanel {
         add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(84, 77, 213, -1));
 
         spinnerDuracionDias.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
-        add(spinnerDuracionDias, new org.netbeans.lib.awtextra.AbsoluteConstraints(309, 75, -1, -1));
+        add(spinnerDuracionDias, new org.netbeans.lib.awtextra.AbsoluteConstraints(309, 75, 80, -1));
 
         jLabel24.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel24.setForeground(new java.awt.Color(255, 255, 255));
@@ -222,8 +222,8 @@ public class Dashboard extends javax.swing.JPanel {
         add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(396, 75, 135, 20));
 
         spinnerDiasParaEntrega.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
-        add(spinnerDiasParaEntrega, new org.netbeans.lib.awtextra.AbsoluteConstraints(543, 75, -1, -1));
-        add(chartPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 450, 646, 233));
+        add(spinnerDiasParaEntrega, new org.netbeans.lib.awtextra.AbsoluteConstraints(543, 75, 80, -1));
+        add(chartPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 493, 646, 190));
 
         jPanel2.setBackground(new java.awt.Color(34, 46, 60));
         jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 5, true));
