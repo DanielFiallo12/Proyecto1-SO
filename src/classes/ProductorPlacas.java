@@ -113,7 +113,7 @@ public class ProductorPlacas extends Thread{
         return placasListasM;
     }
 
-    public static void setGuionesSubidosDriveN(int placasListasM) {
+    public static void setPlacasListasAlmacenM(int placasListasM) {
         ProductorPlacas.placasListasM -= placasListasM;
     }
 }

@@ -53,8 +53,8 @@ public class MSI extends javax.swing.JPanel {
         
         // Código para el spinner de las placas base
         valorSpinnerPlacasM = (int) spinnerPlacasM.getValue();
-        if (valorSpinnerPlacasM == 1) {
-            // Llama a la función para crear un productor de placa
+        for (int i = 0; i < valorSpinnerPlacasM; i++) {
+        // Llama a la función para crear un productor de placa
             MSICompany.crearProductorPlaca(MSICompany.almacenPlacasM, 0, 2, "M", true);  //MODIFICAR VALORES (LISTOOOO)
         }
 
@@ -85,7 +85,7 @@ public class MSI extends javax.swing.JPanel {
         // Código para el spinner de los CPUs       
         // Obtenemos el valor inicial del JSpinner
         valorSpinnerCPUsM = (int) spinnerCPUsM.getValue();
-        if (valorSpinnerCPUsM == 1) {
+        for (int i = 0; i < valorSpinnerCPUsM; i++) {
             // Llama a la función para crear un productor de CPU
             MSICompany.crearProductorCPU(MSICompany.almacenCPUsM, 0, 2, "M", true); // (LISTOOOO Los valores)
         }
@@ -118,9 +118,9 @@ public class MSI extends javax.swing.JPanel {
         // Código para el spinner de las memorias       
         // Obtenemos el valor inicial del JSpinner
         valorSpinnerMemoriasM = (int) spinnerMemoriasM.getValue();
-        if (valorSpinnerMemoriasM == 1) {
-            // Se llama a la función para crear un productor de memoria
-            MSICompany.crearProductorMemoria(MSICompany.almacenMemoriasM, 0, 1, "M", true); // (LISTOOOO Los valores)
+        for (int i = 0; i < valorSpinnerMemoriasM; i++) {
+        // Se llama a la función para crear un productor de memoria
+             MSICompany.crearProductorMemoria(MSICompany.almacenMemoriasM, 0, 1, "M", true); // (LISTOOOO Los valores)
         }
 
         // Agrega un ChangeListener al JSpinner
@@ -151,7 +151,7 @@ public class MSI extends javax.swing.JPanel {
         // Código para el spinner de las fuentes       
         // Obtenemos el valor inicial del JSpinner
         valorSpinnerFuentesM = (int) spinnerFuentesM.getValue();
-        if (valorSpinnerFuentesM == 1) {
+        for (int i = 0; i < valorSpinnerFuentesM; i++) {
             // Se llama a la función para crear un productor de fuente
             MSICompany.crearProductorFuente(MSICompany.almacenFuentesM, 1, 0, "M", true); // (LISTOOOO Los valores)
         }
@@ -182,8 +182,8 @@ public class MSI extends javax.swing.JPanel {
         
         // Código para el spinner de las tarjetas       
         // Obtenemos el valor inicial del JSpinner
-        valorSpinnerTarjetasM = (int) spinnerTarjetasM.getValue();
-        if (valorSpinnerTarjetasM == 1) {
+        valorSpinnerTarjetasM = (int) spinnerTarjetasM.getValue();    
+        for (int i = 0; i < valorSpinnerTarjetasM; i++) {
             // Se llama a la función para crear un productor de tarjeta
             MSICompany.crearProductorTarjeta(MSICompany.almacenTarjetasM, 3, 0, "M", true); // (LISTOOOO Los valores)
         }
@@ -214,8 +214,8 @@ public class MSI extends javax.swing.JPanel {
         
         // Código para el spinner de los ensambladores       
         // Obtenemos el valor inicial del JSpinner
-        valorSpinnerEnsambladoresM = (int) spinnerEnsambladoresM.getValue();
-        if (valorSpinnerEnsambladoresM == 1) {
+        valorSpinnerEnsambladoresM = (int) spinnerEnsambladoresM.getValue();    
+        for (int i = 0; i < valorSpinnerEnsambladoresM; i++) {
             // Se llama a la función para crear un ensamblador
             MSICompany.crearEnsamblador(MSICompany.almacenPCsM, MSICompany.almacenPlacasM, MSICompany.almacenCPUsM, MSICompany.almacenMemoriasM, MSICompany.almacenFuentesM, MSICompany.almacenTarjetasM, MSICompany.pcsGeneradosM, MSICompany.pcsTGGeneradosM, 2, 2, 3, 4, 6, 5, "M", true);
         }
@@ -354,7 +354,7 @@ public class MSI extends javax.swing.JPanel {
         jLabel44 = new javax.swing.JLabel();
         jLabel45 = new javax.swing.JLabel();
         costosOperativosM = new javax.swing.JLabel();
-        costosOperativosM1 = new javax.swing.JLabel();
+        ingresosBrutosM = new javax.swing.JLabel();
         gananciaM = new javax.swing.JLabel();
         estadoDirector = new javax.swing.JLabel();
         estadoPM = new javax.swing.JLabel();
@@ -457,7 +457,7 @@ public class MSI extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel22Layout.createSequentialGroup()
-                                .addGap(0, 22, Short.MAX_VALUE)
+                                .addGap(0, 49, Short.MAX_VALUE)
                                 .addComponent(jTextField19, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(computadorasTotalesM, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(23, 23, 23))
@@ -480,7 +480,7 @@ public class MSI extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        add(jPanel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 380, -1, -1));
+        add(jPanel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 440, 380, 90));
 
         jPanel17.setBackground(new java.awt.Color(34, 46, 60));
         jPanel17.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
@@ -513,7 +513,7 @@ public class MSI extends javax.swing.JPanel {
                     .addGroup(jPanel17Layout.createSequentialGroup()
                         .addComponent(jLabel47)
                         .addGap(85, 85, 85)
-                        .addComponent(computadorasListasM, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE))
+                        .addComponent(computadorasListasM, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE))
                     .addGroup(jPanel17Layout.createSequentialGroup()
                         .addComponent(jLabel48)
                         .addGap(18, 18, 18)
@@ -534,7 +534,7 @@ public class MSI extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        add(jPanel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 300, 381, -1));
+        add(jPanel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 340, 381, 70));
 
         jPanel2.setBackground(new java.awt.Color(255, 102, 102));
         jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 51, 51), 5, true));
@@ -720,14 +720,14 @@ public class MSI extends javax.swing.JPanel {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addContainerGap())))
+                        .addContainerGap())
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -752,10 +752,10 @@ public class MSI extends javax.swing.JPanel {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17)
                     .addComponent(productoresRestantesM))
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
-        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
 
         jPanel16.setBackground(new java.awt.Color(34, 46, 60));
         jPanel16.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
@@ -808,10 +808,10 @@ public class MSI extends javax.swing.JPanel {
         costosOperativosM.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         costosOperativosM.setText("0");
 
-        costosOperativosM1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        costosOperativosM1.setForeground(new java.awt.Color(255, 255, 255));
-        costosOperativosM1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        costosOperativosM1.setText("0");
+        ingresosBrutosM.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        ingresosBrutosM.setForeground(new java.awt.Color(255, 255, 255));
+        ingresosBrutosM.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        ingresosBrutosM.setText("0");
 
         gananciaM.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         gananciaM.setForeground(new java.awt.Color(255, 255, 255));
@@ -856,9 +856,9 @@ public class MSI extends javax.swing.JPanel {
                             .addComponent(descontadoPM, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(faltasPM, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(costosOperativosM, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(costosOperativosM1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(ingresosBrutosM, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(gananciaM, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(estadoDirector, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
+                            .addComponent(estadoDirector, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel16Layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(estadoPM)))
@@ -885,7 +885,7 @@ public class MSI extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel38)
-                    .addComponent(costosOperativosM1))
+                    .addComponent(ingresosBrutosM))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel39)
@@ -910,16 +910,16 @@ public class MSI extends javax.swing.JPanel {
                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel45)
                     .addComponent(descontadoPM, javax.swing.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE))
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        add(jPanel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 0, 381, -1));
+        add(jPanel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 10, 381, 300));
 
         jLabel49.setBackground(new java.awt.Color(153, 51, 255));
         jLabel49.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel49.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel49.setText("PRODUCCIÓN ACTUAL");
-        add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 280, 381, 22));
+        add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 310, 381, 30));
 
         jPanel5.setBackground(new java.awt.Color(255, 102, 102));
         jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 51, 51), 5));
@@ -964,16 +964,16 @@ public class MSI extends javax.swing.JPanel {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(diasParaEntrega)
                     .addComponent(jLabel51))
-                .addGap(21, 21, 21))
+                .addContainerGap())
         );
 
-        add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 300, -1, 64));
+        add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 304, 230, 70));
 
         jLabel46.setBackground(new java.awt.Color(153, 51, 255));
         jLabel46.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel46.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel46.setText("PRODUCCIONES PASADAS");
-        add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 360, 381, 22));
+        add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 410, 381, 30));
 
         jPanel10.setBackground(new java.awt.Color(255, 102, 102));
         jPanel10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 51, 51), 5));
@@ -1188,7 +1188,7 @@ public class MSI extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 10, 229, -1));
+        add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 10, 229, -1));
 
         jLabel8.setBackground(new java.awt.Color(255, 255, 255));
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/msi-logo-png_seeklogo-533860-2.png"))); // NOI18N
@@ -1356,7 +1356,6 @@ public class MSI extends javax.swing.JPanel {
     public static javax.swing.JLabel computadorasTarjetaListasM;
     public static javax.swing.JLabel computadorasTotalesM;
     public static javax.swing.JLabel costosOperativosM;
-    public static javax.swing.JLabel costosOperativosM1;
     public static javax.swing.JLabel descontadoPM;
     private javax.swing.JLabel dias;
     public static javax.swing.JLabel diasParaEntrega;
@@ -1365,6 +1364,7 @@ public class MSI extends javax.swing.JPanel {
     public static javax.swing.JLabel faltasPM;
     public static javax.swing.JLabel fuentesAlmacenM;
     public static javax.swing.JLabel gananciaM;
+    public static javax.swing.JLabel ingresosBrutosM;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel13;

@@ -1,17 +1,17 @@
 package classes;
 
-import interfaces.HP;
 import interfaces.Dashboard;
 import interfaces.MSI;
+import interfaces.HP;
 import java.util.concurrent.Semaphore;
 
 public class ProjectManager extends Thread {
 
     Semaphore diasRestantesEntregaPCs;
     int totalPay;
-    public static boolean isWatchingStreams;
+    public static boolean isWatchingAnime;
     int sueldoPorHora;
-    String studio;
+    String company;
 
     // Tiempos basados en que 1 dia de trabajo (24 horas) son 1000 milisegundos.
     int currentTime = 0;
@@ -22,14 +22,14 @@ public class ProjectManager extends Thread {
 
     // Estados PM
     String estadoWork = "Trabajando";
-    String estadoStreams = "Viendo streams";
+    String estadoAnime = "Viendo ánime";
 
-    public ProjectManager(Semaphore diasRestantesEntregaJuegos, String studio) {
-        this.diasRestantesEntregaPCs = diasRestantesEntregaJuegos;
+    public ProjectManager(Semaphore diasRestantesEntregaPCs, String company) {
+        this.diasRestantesEntregaPCs = diasRestantesEntregaPCs;
         this.totalPay = 0;
-        this.isWatchingStreams = false;
-        this.sueldoPorHora = 40;
-        this.studio = studio;
+        this.isWatchingAnime = false;
+        this.sueldoPorHora = 40; 
+        this.company = company;
     }
 
     @Override
@@ -39,7 +39,7 @@ public class ProjectManager extends Thread {
             try {
                 while (currentTime < totalWorkTime) {
                     trabaja();
-                    veStreams();
+                    veAnime();
                     currentTime += (workInterval + streamInterval);
                 }
 
@@ -48,18 +48,18 @@ public class ProjectManager extends Thread {
                 Thread.sleep(tiempoRestanteDia);
 
                 changeDaysRemaining();
-                payDayPM();
-
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+                payDayPM(); // Pago correspondiente al PM
+            } catch (InterruptedException ex) {
+                System.out.println("Interrupción en ProjectManager");
             }
         }
     }
 
+   
     private void trabaja() {
-        if ("H".equals(studio)) {
+        if ("H".equals(company)) {
             try {
-                isWatchingStreams = false;
+                isWatchingAnime = false;
                 HP.actualizarEstadoPM(estadoWork);
                 Thread.sleep(workInterval); // 30 minutos en milisegundos
             } catch (InterruptedException e) {
@@ -67,7 +67,7 @@ public class ProjectManager extends Thread {
             }
         } else {
             try {
-                isWatchingStreams = false;
+                isWatchingAnime = false;
                 MSI.actualizarEstadoPM(estadoWork);
                 Thread.sleep(workInterval); // 30 minutos en milisegundos
             } catch (InterruptedException e) {
@@ -75,38 +75,38 @@ public class ProjectManager extends Thread {
             }
         }
     }
-
-    private void veStreams() {
-        if ("H".equals(studio)) {
+    
+    private void veAnime() {
+        if ("H".equals(company)) {
             try {
-                isWatchingStreams = true;
-                HP.actualizarEstadoPM(estadoStreams);
+                isWatchingAnime = true;
+                MSI.actualizarEstadoPM(estadoAnime);
                 Thread.sleep(streamInterval); // 30 minutos en milisegundos
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         } else {
             try {
-                isWatchingStreams = true;
-                MSI.actualizarEstadoPM(estadoStreams);
+                isWatchingAnime = true;
+                MSI.actualizarEstadoPM(estadoAnime);
                 Thread.sleep(streamInterval); // 30 minutos en milisegundos
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
     }
-
+    
     private void changeDaysRemaining() {
         try {
-            if ("H".equals(studio)) {
+            if ("H".equals(company)) {
                 // Cambia el contador de días restantes
                 diasRestantesEntregaPCs.acquire(1);
-            diasRestantesEntregaPCs.release(HPCompany.diasRestantesH);
+                HP.actualizarDiasParaEntrega(diasRestantesEntregaPCs.availablePermits());
                 currentTime = 0;
             } else {
                 // Cambia el contador de días restantes
                 diasRestantesEntregaPCs.acquire(1);
-            diasRestantesEntregaPCs.release(MSICompany.diasRestantesM);
+                MSI.actualizarDiasParaEntrega(diasRestantesEntregaPCs.availablePermits());
                 currentTime = 0;
             }
             // Simula el tiempo que lleva cambiar el contador
@@ -117,13 +117,13 @@ public class ProjectManager extends Thread {
     }
 
     public void payDayPM() {
-        // Calcular el salario basado en las horas trabajadas y agregarlo al total de pago
-        int horasTrabajadas = 24;
+        int horasTrabajadas = 24; // Asumimos que trabaja 24 horas en el día
         int salario = sueldoPorHora * horasTrabajadas;
-        if ("H".equals(studio)) {
-            HPCompany.totalPayH += salario;
+        if ("H".equals(company)) {
+            // Pago correspondiente en HP
+             HPCompany.totalPayH += salario;
         } else {
-            // Pago de nintendo
+            // Pago correspondiente en MSI
             MSICompany.totalPayM += salario;
         }
     }

@@ -140,7 +140,7 @@ public class Director extends Thread {
         } else {
             MSI.actualizarEstadoDirector("Vigilando P.M.");
         }
-         if (ProjectManager.isWatchingStreams == true) {
+         if (ProjectManager.isWatchingAnime == true) {
 
             if ("H".equals(company)) {
                 faltasCounterH++;

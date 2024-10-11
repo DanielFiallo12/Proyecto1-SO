@@ -26,13 +26,13 @@ public class Funciones extends Thread {
     public void run() {
         while (activo) {
             try {
-                Thread.sleep(1002 * Dashboard.duracionDias); // Ajustado para usar "duracionDias" de Dashboard
+                Thread.sleep(1002 * Dashboard.duracionDias); 
                 HP.costosOperativosH.setText(Integer.toString((HPCompany.totalPayH) + Director.descontadoPmH)); 
-                MSI.costosOperativosM.setText(Integer.toString((MSICompany.totalPayM) + Director.descontadoPmM)); // Actualización de costos operativos para MSI
+                MSI.costosOperativosM.setText(Integer.toString((MSICompany.totalPayM) + Director.descontadoPmM)); 
                 HP.gananciaH.setText(Integer.toString(Director.ingresoH - HPCompany.totalPayH + Math.abs(Director.descontadoPmH))); 
                 MSI.gananciaM.setText(Integer.toString(Director.ingresoM - MSICompany.totalPayM + Math.abs(Director.descontadoPmM))); 
-                HP.costosOperativosH1.setText(Integer.toString(Director.ingresoH)); 
-                MSI.costosOperativosM1.setText(Integer.toString(Director.ingresoM)); 
+                HP.ingresosBrutosH.setText(Integer.toString(Director.ingresoH)); 
+                MSI.ingresosBrutosM.setText(Integer.toString(Director.ingresoM)); 
             } catch (InterruptedException ex) {
                 Logger.getLogger(Funciones.class.getName()).log(Level.SEVERE, null, ex);
             }

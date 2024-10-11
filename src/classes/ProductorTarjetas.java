@@ -43,71 +43,73 @@ public class ProductorTarjetas extends Thread {
         this.activo = activo;
     }
     
-    public static int gettarjetasListasH() {
-        return tarjetasListasH;
-    }
-
-    public static void settarjetasListasH(int tarjetasListasH) {
-        ProductorTarjetas.tarjetasListasH -= tarjetasListasH;
-    }
-
-    public static int gettarjetasListasM() {
-        return tarjetasListasM;
-    }
-    public static void settarjetasListasM(int tarjetasListasM) {
-        ProductorTarjetas.tarjetasListasM -= tarjetasListasM;
-    }
-    
-    public void payDayDesarrolladorSprites() {
+    public void payDayProductorTarjetas() {
+        // Calcular el salario basado en las horas trabajadas y agregarlo al total de pago
         int horasTrabajadas = 24;
         int salario = sueldoPorHora * horasTrabajadas;
-        if (company == "H") {
-            HPCompany.totalPayH += salario;
+        if ("H".equals(company)) {
+            // Pago de HP
+              HPCompany.totalPayH += salario;
         } else {
-            // Pago de nintendo
+            // Pago de MSI
             MSICompany.totalPayM += salario;
         }
     }
+    
+    @Override
+    public void run() {
+        while (activo) {
+            try {
+                int count = 0;
 
-    public void generarSprite() throws InterruptedException {
+                while (count <= diasParaGenerar) {
+                    Thread.sleep(1000*Dashboard.duracionDias);
+                    payDayProductorTarjetas();
+                    count++;
+                }
+                producirTarjeta();
+            } catch (InterruptedException ex) {
+                System.out.println("TESTTT2");
 
-        if (company == "H") {
-            //HP
-            if (almacenTarjeta.availablePermits() > 1) {
-                almacenTarjeta.acquire(2);
-                tarjetasListasH += 2;
-                HP.actualizarTarjetasAlmacen(tarjetasListasH);
-            } else if (almacenTarjeta.availablePermits() == 1) {
+            }
+        }
+    }
+    
+    private void producirTarjeta() throws InterruptedException {
+        // Agregar la tarjeta al almacén
+        if ("H".equals(company)) {
+            if (almacenTarjeta.availablePermits() > 0) {
                 almacenTarjeta.acquire(1);
-                tarjetasListasH += 1;
+                tarjetasListasH++; // Incrementa el contador 
                 HP.actualizarTarjetasAlmacen(tarjetasListasH);
             } else {
-                System.out.println("Drive lleno");
+                System.out.println("Almacén de tarjetas lleno. Esperando que libere espacio.");
             }
         } else {
-            //MSI
+            // Producción tarjeta MSI
             if (almacenTarjeta.availablePermits() > 1) {
                 almacenTarjeta.acquire(1);
                 tarjetasListasM += 1;
                 MSI.actualizarTarjetasAlmacen(tarjetasListasM);
             } else {
-                System.out.println("Drive lleno");
+                System.out.println("Almacén de tarjetas lleno. Esperando que libere espacio.");
             }
         }
     }
-
-    @Override
-    public void run() {
-        while (activo) {
-            try {
-
-                Thread.sleep(1000*Dashboard.duracionDias);
-                payDayDesarrolladorSprites();
-                generarSprite();
-
-            } catch (InterruptedException ex) {
-                System.out.println("Metodo Run Desarrollador Sprites Catch");
-            }
-        }
+    
+    public static int getTarjetasListasAlmacenH() {
+        return tarjetasListasH;
     }
+
+    public static void setTarjetasListasAlmacenH(int tarjetasListasH) {
+        ProductorTarjetas.tarjetasListasH -= tarjetasListasH;
+    }
+
+    public static int getTarjetasListasAlmacenM() {
+        return tarjetasListasM;
+    }
+    public static void setTarjetasListasAlmacenM(int tarjetasListasM) {
+        ProductorTarjetas.tarjetasListasM -= tarjetasListasM;
+    }
+    
 }

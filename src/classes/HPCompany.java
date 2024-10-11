@@ -101,8 +101,8 @@ public class HPCompany {
         }
     }
     
-    public static void crearProductorCPU(Semaphore almacenCPUsM, int totalPay, int diasParaGenerar, String company, boolean activo) {
-        ProductorCPUs productorCPUs = new ProductorCPUs(almacenCPUsM, totalPay, diasParaGenerar, company, activo);
+    public static void crearProductorCPU(Semaphore almacenCPUsH, int totalPay, int diasParaGenerar, String company, boolean activo) {
+        ProductorCPUs productorCPUs = new ProductorCPUs(almacenCPUsH, totalPay, diasParaGenerar, company, activo);
         // Encuentra la primera posición libre en el arreglo
         for (int i = 0; i < 14; i++) {
             if (productoresCPUs[i] == null) {
@@ -136,8 +136,8 @@ public class HPCompany {
         }
     }
     
-    public static void crearProductorMemoria(Semaphore almacenMemoriasM, int totalPay, int diasParaGenerar, String company, boolean activo) {
-        ProductorMemorias productorMemorias = new ProductorMemorias(almacenMemoriasM, totalPay, diasParaGenerar, company, activo);
+    public static void crearProductorMemoria(Semaphore almacenMemoriasH, int totalPay, int diasParaGenerar, String company, boolean activo) {
+        ProductorMemorias productorMemorias = new ProductorMemorias(almacenMemoriasH, totalPay, diasParaGenerar, company, activo);
         // Encuentra la primera posición libre en el arreglo
         for (int i = 0; i < 14; i++) {
             if (productoresMemorias[i] == null) {
@@ -171,8 +171,8 @@ public class HPCompany {
         }
     }
 
-    public static void crearProductorFuente(Semaphore almacenFuentesM, int diasParaGenerar, int totalPay, String company, boolean activo) {
-        ProductorFuentes productorFuentes = new ProductorFuentes(almacenFuentesM, diasParaGenerar, totalPay, company, activo);
+    public static void crearProductorFuente(Semaphore almacenFuentesH, int diasParaGenerar, int totalPay, String company, boolean activo) {
+        ProductorFuentes productorFuentes = new ProductorFuentes(almacenFuentesH, diasParaGenerar, totalPay, company, activo);
         // Encuentra la primera posicion libre en el arreglo
         for (int i = 0; i < 14; i++) {
             if (productoresFuentes[i] == null) {
@@ -206,8 +206,8 @@ public class HPCompany {
         }
     }
     
-    public static void crearProductorTarjeta(Semaphore almacenTarjetasM, int diasParaGenerar, int totalPay, String company, boolean activo) {
-        ProductorTarjetas productorTarjetas = new ProductorTarjetas(almacenTarjetasM, diasParaGenerar, totalPay, company, activo);
+    public static void crearProductorTarjeta(Semaphore almacenTarjetasH, int diasParaGenerar, int totalPay, String company, boolean activo) {
+        ProductorTarjetas productorTarjetas = new ProductorTarjetas(almacenTarjetasH, diasParaGenerar, totalPay, company, activo);
 
         for (int i = 0; i < 14; i++) {
             if (productoresTarjetas[i] == null) {
@@ -242,8 +242,8 @@ public class HPCompany {
         }
     }
     
-    public static void crearEnsamblador(Semaphore almacenPCsM, Semaphore almacenPlacasM, Semaphore almacenCPUsM, Semaphore almacenMemoriasM, Semaphore almacenFuentesM, Semaphore almacenTarjetasM, int pcsGeneradosM, int pcsTGGeneradosM, int diasParaGenerar, int placasNecesarias, int CPUsNecesarios, int memoriasNecesarias, int fuentesNecesarias, int tarjetasNecesarias, String company, boolean activo) {
-        Ensamblador ensamblador = new Ensamblador(almacenPCsM, almacenPlacasM, almacenCPUsM, almacenMemoriasM, almacenFuentesM, almacenTarjetasM, pcsGeneradosM, pcsTGGeneradosM, diasParaGenerar, placasNecesarias, CPUsNecesarios, memoriasNecesarias, fuentesNecesarias, tarjetasNecesarias, company, activo);
+    public static void crearEnsamblador(Semaphore almacenPCsH, Semaphore almacenPlacasH, Semaphore almacenCPUsH, Semaphore almacenMemoriasH, Semaphore almacenFuentesH, Semaphore almacenTarjetasH, int pcsGeneradosH, int pcsTGGeneradosH, int diasParaGenerar, int placasNecesarias, int CPUsNecesarios, int memoriasNecesarias, int fuentesNecesarias, int tarjetasNecesarias, String company, boolean activo) {
+        Ensamblador ensamblador = new Ensamblador(almacenPCsH, almacenPlacasH, almacenCPUsH, almacenMemoriasH, almacenFuentesH, almacenTarjetasH, pcsGeneradosH, pcsTGGeneradosH, diasParaGenerar, placasNecesarias, CPUsNecesarios, memoriasNecesarias, fuentesNecesarias, tarjetasNecesarias, company, activo);
 
         for (int i = 0; i < 14; i++) {
             if (ensambladores[i] == null) {

@@ -5,7 +5,7 @@
 package interfaces;
 
 import classes.Director;
-import classes.MSICompany;
+import classes.HPCompany;
 import classes.ProjectManager;
 import classes.Funciones;
 import interfaces.HP;
@@ -23,14 +23,14 @@ import javax.swing.JLabel;
  */
 public class HP extends javax.swing.JPanel {
 
-    private int valorSpinnerPlacasM;
-    private int valorSpinnerCPUsM;
-    private int valorSpinnerMemoriasM;
-    private int valorSpinnerFuentesM;
-    private int valorSpinnerTarjetasM;
-    private int valorSpinnerEnsambladoresM;
+    private int valorSpinnerPlacasH;
+    private int valorSpinnerCPUsH;
+    private int valorSpinnerMemoriasH;
+    private int valorSpinnerFuentesH;
+    private int valorSpinnerTarjetasH;
+    private int valorSpinnerEnsambladoresH;
     
-    public final int totalProductores = 14;
+    public final int totalProductores = 17;
     
     /**
      * Creates new form MSI
@@ -40,22 +40,22 @@ public class HP extends javax.swing.JPanel {
         initComponents();
         actualizarSpinnersDesdeDashboard();
         
-        HP.diasParaEntrega.setText(Integer.toString(MSICompany.diasRestantesSem.availablePermits()));
+        HP.diasParaEntrega.setText(Integer.toString(HPCompany.diasRestantesSem.availablePermits()));
 
-        Director director = new Director(MSICompany.diasRestantesSem, "M");
+        Director director = new Director(HPCompany.diasRestantesSem, "H");
         director.start();
 
-        ProjectManager pm = new ProjectManager(MSICompany.diasRestantesSem, "M");
+        ProjectManager pm = new ProjectManager(HPCompany.diasRestantesSem, "H");
         pm.start();
 
         Funciones dia = new Funciones();
         dia.start();
         
         // Código para el spinner de las placas base
-        valorSpinnerPlacasM = (int) spinnerPlacasH.getValue();
-        if (valorSpinnerPlacasM == 1) {
+        valorSpinnerPlacasH = (int) spinnerPlacasH.getValue();
+        for (int i = 0; i < valorSpinnerPlacasH; i++) {
             // Llama a la función para crear un productor de placa
-            MSICompany.crearProductorPlaca(MSICompany.almacenPlacasM, 0, 2, "M", true);  //MODIFICAR VALORES (LISTOOOO)
+            HPCompany.crearProductorPlaca(HPCompany.almacenPlacasH, 0, 3, "H", true);  //MODIFICAR VALORES (LISTOOOO)
         }
 
         spinnerPlacasH.addChangeListener(new ChangeListener() {
@@ -63,19 +63,19 @@ public class HP extends javax.swing.JPanel {
             public void stateChanged(ChangeEvent e) {
                 // Obtenemos el nuevo valor del JSpinner
                 int nuevoValorSpinnerPlacas = (int) spinnerPlacasH.getValue();
-                if (validarProductoresRestantes(nuevoValorSpinnerPlacas, valorSpinnerPlacasM)) {
-                    // Compara el nuevo valor del JSpinner con valorSpinnerPlacasM
-                    if (nuevoValorSpinnerPlacas > valorSpinnerPlacasM) {
+                if (validarProductoresRestantes(nuevoValorSpinnerPlacas, valorSpinnerPlacasH)) {
+                    // Compara el nuevo valor del JSpinner con valorSpinnerPlacasH
+                    if (nuevoValorSpinnerPlacas > valorSpinnerPlacasH) {
                         // función: Crear productor de placa
                         // Se llama a la función para crear un productor de placa
-                        MSICompany.crearProductorPlaca(MSICompany.almacenPlacasM, 0, 2, "M", true);
+                        HPCompany.crearProductorPlaca(HPCompany.almacenPlacasH, 0, 3, "H", true);
                     } else {
                         // función: Detener productor de placa
-                        MSICompany.stopProductorPlacaAleatorio();
+                        HPCompany.stopProductorPlacaAleatorio();
                     }
-                    valorSpinnerPlacasM = nuevoValorSpinnerPlacas;
+                    valorSpinnerPlacasH = nuevoValorSpinnerPlacas;
                 } else {
-                    spinnerPlacasH.setValue(valorSpinnerPlacasM);
+                    spinnerPlacasH.setValue(valorSpinnerPlacasH);
                 }
                 actualizarProductoresRestantes();
             }
@@ -84,10 +84,10 @@ public class HP extends javax.swing.JPanel {
                 
         // Código para el spinner de los CPUs       
         // Obtenemos el valor inicial del JSpinner
-        valorSpinnerCPUsM = (int) spinnerCPUsH.getValue();
-        if (valorSpinnerCPUsM == 1) {
-            // Llama a la función para crear un productor de CPU
-            MSICompany.crearProductorCPU(MSICompany.almacenCPUsM, 0, 2, "M", true); // (LISTOOOO Los valores)
+        valorSpinnerCPUsH = (int) spinnerCPUsH.getValue();
+        for (int i = 0; i < valorSpinnerCPUsH; i++) {
+        // Llama a la función para crear un productor de CPU
+            HPCompany.crearProductorCPU(HPCompany.almacenCPUsH, 0, 3, "H", true); // (LISTOOOO Los valores)
         }
 
         // Agrega un ChangeListener al JSpinner
@@ -96,19 +96,19 @@ public class HP extends javax.swing.JPanel {
             public void stateChanged(ChangeEvent e) {
                 // Obtenemos el nuevo valor del JSpinner
                 int nuevoValorSpinnerCPUs = (int) spinnerCPUsH.getValue();
-                if (validarProductoresRestantes(nuevoValorSpinnerCPUs, valorSpinnerCPUsM)) {
-                    // Compara el nuevo valor del JSpinner con valorSpinnerCPUsM
-                    if (nuevoValorSpinnerCPUs > valorSpinnerCPUsM) {
+                if (validarProductoresRestantes(nuevoValorSpinnerCPUs, valorSpinnerCPUsH)) {
+                    // Compara el nuevo valor del JSpinner con valorSpinnerCPUsH
+                    if (nuevoValorSpinnerCPUs > valorSpinnerCPUsH) {
                         // función: Crear productor de CPU
                         // Se llama a la función para crear un productor de CPU
-                        MSICompany.crearProductorCPU(MSICompany.almacenCPUsM, 0, 2, "M", true);
+                        HPCompany.crearProductorCPU(HPCompany.almacenCPUsH, 0, 3, "H", true);
                     } else {
                         // función: Detener productor de CPU
-                        MSICompany.stopProductorCPUAleatorio();
+                        HPCompany.stopProductorCPUAleatorio();
                     }
-                    valorSpinnerCPUsM = nuevoValorSpinnerCPUs;
+                    valorSpinnerCPUsH = nuevoValorSpinnerCPUs;
                 } else {
-                    spinnerCPUsH.setValue(valorSpinnerCPUsM);
+                    spinnerCPUsH.setValue(valorSpinnerCPUsH);
                 }
                 actualizarProductoresRestantes();
             }
@@ -117,11 +117,11 @@ public class HP extends javax.swing.JPanel {
         
         // Código para el spinner de las memorias       
         // Obtenemos el valor inicial del JSpinner
-        valorSpinnerMemoriasM = (int) spinnerMemoriasH.getValue();
-        if (valorSpinnerMemoriasM == 1) {
+        valorSpinnerMemoriasH = (int) spinnerMemoriasH.getValue();
+        for (int i = 0; i < valorSpinnerMemoriasH; i++) {
             // Se llama a la función para crear un productor de memoria
-            MSICompany.crearProductorMemoria(MSICompany.almacenMemoriasM, 0, 1, "M", true); // (LISTOOOO Los valores)
-        }
+            HPCompany.crearProductorMemoria(HPCompany.almacenMemoriasH, 0, 1, "H", true); // (LISTOOOO Los valores)
+        }     
 
         // Agrega un ChangeListener al JSpinner
         spinnerMemoriasH.addChangeListener(new ChangeListener() {
@@ -129,19 +129,19 @@ public class HP extends javax.swing.JPanel {
             public void stateChanged(ChangeEvent e) {
                 // Obtén el nuevo valor del JSpinner
                 int nuevoValorSpinnerMemorias = (int) spinnerMemoriasH.getValue();
-                if (validarProductoresRestantes(nuevoValorSpinnerMemorias, valorSpinnerMemoriasM)) {
-                    // Compara el nuevo valor del JSpinner con valorSpinnerMemoriasM
-                    if (nuevoValorSpinnerMemorias > valorSpinnerMemoriasM) {
+                if (validarProductoresRestantes(nuevoValorSpinnerMemorias, valorSpinnerMemoriasH)) {
+                    // Compara el nuevo valor del JSpinner con valorSpinnerMemoriasH
+                    if (nuevoValorSpinnerMemorias > valorSpinnerMemoriasH) {
                         // función: Crear productor de memoria
                         // Se llama a la función para crear un productor de memoria
-                        MSICompany.crearProductorMemoria(MSICompany.almacenMemoriasM, 0, 1, "M", true);
+                        HPCompany.crearProductorMemoria(HPCompany.almacenMemoriasH, 0, 1, "H", true);
                     } else {
                         // función: Detener productor de memoria
-                        MSICompany.stopProductorMemoriaAleatorio();
+                        HPCompany.stopProductorMemoriaAleatorio();
                     }
-                    valorSpinnerMemoriasM = nuevoValorSpinnerMemorias;
+                    valorSpinnerMemoriasH = nuevoValorSpinnerMemorias;
                 } else {
-                    spinnerMemoriasH.setValue(valorSpinnerMemoriasM);
+                    spinnerMemoriasH.setValue(valorSpinnerMemoriasH);
                 }
                 actualizarProductoresRestantes();
             }
@@ -150,10 +150,10 @@ public class HP extends javax.swing.JPanel {
         
         // Código para el spinner de las fuentes       
         // Obtenemos el valor inicial del JSpinner
-        valorSpinnerFuentesM = (int) spinnerFuentesH.getValue();
-        if (valorSpinnerFuentesM == 1) {
+        valorSpinnerFuentesH = (int) spinnerFuentesH.getValue();        
+        for (int i = 0; i < valorSpinnerFuentesH; i++) {
             // Se llama a la función para crear un productor de fuente
-            MSICompany.crearProductorFuente(MSICompany.almacenFuentesM, 1, 0, "M", true); // (LISTOOOO Los valores)
+            HPCompany.crearProductorFuente(HPCompany.almacenFuentesH, 1, 0, "H", true); // (LISTOOOO Los valores)
         }
 
         spinnerFuentesH.addChangeListener(new ChangeListener() {
@@ -161,19 +161,19 @@ public class HP extends javax.swing.JPanel {
             public void stateChanged(ChangeEvent e) {
 
                 int nuevoValorSpinnerFuentes = (int) spinnerFuentesH.getValue();
-                if (validarProductoresRestantes(nuevoValorSpinnerFuentes, valorSpinnerFuentesM)) {
-                    // Compara el nuevo valor del JSpinner con valorSpinnerFuentesM
-                    if (nuevoValorSpinnerFuentes > valorSpinnerFuentesM) {
+                if (validarProductoresRestantes(nuevoValorSpinnerFuentes, valorSpinnerFuentesH)) {
+                    // Compara el nuevo valor del JSpinner con valorSpinnerFuentesH
+                    if (nuevoValorSpinnerFuentes > valorSpinnerFuentesH) {
                         // función: Crear productor de fuente
                         // Se llama a la función para crear un productor de fuente
-                        MSICompany.crearProductorFuente(MSICompany.almacenFuentesM, 1, 0, "M", true);
+                        HPCompany.crearProductorFuente(HPCompany.almacenFuentesH, 1, 0, "H", true);
                     } else {
                         // función: Detener productor de fuente
-                        MSICompany.stopProductorFuenteAleatorio();
+                        HPCompany.stopProductorFuenteAleatorio();
                     }
-                    valorSpinnerFuentesM = nuevoValorSpinnerFuentes;
+                    valorSpinnerFuentesH = nuevoValorSpinnerFuentes;
                 } else {
-                    spinnerFuentesH.setValue(valorSpinnerFuentesM);
+                    spinnerFuentesH.setValue(valorSpinnerFuentesH);
                 }
                 actualizarProductoresRestantes();
             }
@@ -182,10 +182,10 @@ public class HP extends javax.swing.JPanel {
         
         // Código para el spinner de las tarjetas       
         // Obtenemos el valor inicial del JSpinner
-        valorSpinnerTarjetasM = (int) spinnerTarjetasH.getValue();
-        if (valorSpinnerTarjetasM == 1) {
+        valorSpinnerTarjetasH = (int) spinnerTarjetasH.getValue();   
+        for (int i = 0; i < valorSpinnerTarjetasH; i++) {
             // Se llama a la función para crear un productor de tarjeta
-            MSICompany.crearProductorTarjeta(MSICompany.almacenTarjetasM, 3, 0, "M", true); // (LISTOOOO Los valores)
+            HPCompany.crearProductorTarjeta(HPCompany.almacenTarjetasH, 2, 0, "H", true); // (LISTOOOO Los valores)
         }
 
         spinnerTarjetasH.addChangeListener(new ChangeListener() {
@@ -193,19 +193,19 @@ public class HP extends javax.swing.JPanel {
             public void stateChanged(ChangeEvent e) {
 
                 int nuevoValorSpinnerTarjetas = (int) spinnerTarjetasH.getValue();
-                if (validarProductoresRestantes(nuevoValorSpinnerTarjetas, valorSpinnerTarjetasM)) {
-                    // Compara el nuevo valor del JSpinner con valorSpinnerTarjetasM
-                    if (nuevoValorSpinnerTarjetas > valorSpinnerTarjetasM) {
+                if (validarProductoresRestantes(nuevoValorSpinnerTarjetas, valorSpinnerTarjetasH)) {
+                    // Compara el nuevo valor del JSpinner con valorSpinnerTarjetasH
+                    if (nuevoValorSpinnerTarjetas > valorSpinnerTarjetasH) {
                         // función: Crear productor de tarjeta
                         // Se llama a la función para crear un productor de tarjeta
-                        MSICompany.crearProductorTarjeta(MSICompany.almacenTarjetasM, 3, 0, "M", true);
+                        HPCompany.crearProductorTarjeta(HPCompany.almacenTarjetasH, 2, 0, "H", true);
                     } else {
                         // función: Detener productor de tarjeta
-                        MSICompany.stopProductorTarjetaAleatorio();
+                        HPCompany.stopProductorTarjetaAleatorio();
                     }
-                    valorSpinnerTarjetasM = nuevoValorSpinnerTarjetas;
+                    valorSpinnerTarjetasH = nuevoValorSpinnerTarjetas;
                 } else {
-                    spinnerTarjetasH.setValue(valorSpinnerTarjetasM);
+                    spinnerTarjetasH.setValue(valorSpinnerTarjetasH);
                 }
                 actualizarProductoresRestantes();
             }
@@ -214,10 +214,10 @@ public class HP extends javax.swing.JPanel {
         
         // Código para el spinner de los ensambladores       
         // Obtenemos el valor inicial del JSpinner
-        valorSpinnerEnsambladoresM = (int) spinnerEnsambladoresH.getValue();
-        if (valorSpinnerEnsambladoresM == 1) {
+        valorSpinnerEnsambladoresH = (int) spinnerEnsambladoresH.getValue();
+        for (int i = 0; i < valorSpinnerEnsambladoresH; i++) {
             // Se llama a la función para crear un ensamblador
-            MSICompany.crearEnsamblador(MSICompany.almacenPCsM, MSICompany.almacenPlacasM, MSICompany.almacenCPUsM, MSICompany.almacenMemoriasM, MSICompany.almacenFuentesM, MSICompany.almacenTarjetasM, MSICompany.pcsGeneradosM, MSICompany.pcsTGGeneradosM, 2, 2, 3, 4, 6, 5, "M", true);
+            HPCompany.crearEnsamblador(HPCompany.almacenPCsH, HPCompany.almacenPlacasH, HPCompany.almacenCPUsH, HPCompany.almacenMemoriasH, HPCompany.almacenFuentesH, HPCompany.almacenTarjetasH, HPCompany.pcsGeneradosH, HPCompany.pcsTGGeneradosH, 2, 1, 1, 2, 4, 3, "H", true);
         }
 
         spinnerEnsambladoresH.addChangeListener(new ChangeListener() {
@@ -225,18 +225,18 @@ public class HP extends javax.swing.JPanel {
             public void stateChanged(ChangeEvent e) {
 
                 int nuevoValorspinnerEnsambladores = (int) spinnerEnsambladoresH.getValue();
-                if (validarProductoresRestantes(nuevoValorspinnerEnsambladores, valorSpinnerEnsambladoresM)) {
-                    if (nuevoValorspinnerEnsambladores > valorSpinnerEnsambladoresM) {
+                if (validarProductoresRestantes(nuevoValorspinnerEnsambladores, valorSpinnerEnsambladoresH)) {
+                    if (nuevoValorspinnerEnsambladores > valorSpinnerEnsambladoresH) {
                         // función: Crear ensamblador
                         // Se llama a la función para crear un ensamblador
-                        MSICompany.crearEnsamblador(MSICompany.almacenPCsM, MSICompany.almacenPlacasM, MSICompany.almacenCPUsM, MSICompany.almacenMemoriasM, MSICompany.almacenFuentesM, MSICompany.almacenTarjetasM, MSICompany.pcsGeneradosM, MSICompany.pcsTGGeneradosM, 2, 2, 3, 4, 6, 5, "M", true);
+                        HPCompany.crearEnsamblador(HPCompany.almacenPCsH, HPCompany.almacenPlacasH, HPCompany.almacenCPUsH, HPCompany.almacenMemoriasH, HPCompany.almacenFuentesH, HPCompany.almacenTarjetasH, HPCompany.pcsGeneradosH, HPCompany.pcsTGGeneradosH, 2, 2, 3, 4, 6, 5, "H", true);
                         } else { 
                         // función: Detener ensamblador
-                        MSICompany.stopEnsambladorAleatorio();
+                        HPCompany.stopEnsambladorAleatorio();
                     }
-                    valorSpinnerEnsambladoresM = nuevoValorspinnerEnsambladores;
+                    valorSpinnerEnsambladoresH = nuevoValorspinnerEnsambladores;
                 } else {
-                    spinnerEnsambladoresH.setValue(valorSpinnerEnsambladoresM);
+                    spinnerEnsambladoresH.setValue(valorSpinnerEnsambladoresH);
                 }
                 actualizarProductoresRestantes();
             }
@@ -245,26 +245,26 @@ public class HP extends javax.swing.JPanel {
     }
     
     public void actualizarSpinnersDesdeDashboard() {
-        spinnerPlacasH.setValue(Dashboard.placasM);
-        spinnerCPUsH.setValue(Dashboard.CPUsM);
-        spinnerMemoriasH.setValue(Dashboard.memoriasM);
-        spinnerFuentesH.setValue(Dashboard.fuentesM);
-        spinnerTarjetasH.setValue(Dashboard.tarjetasM);
-        spinnerEnsambladoresH.setValue(Dashboard.ensambladoresM);  
+        spinnerPlacasH.setValue(Dashboard.placasH);
+        spinnerCPUsH.setValue(Dashboard.CPUsH);
+        spinnerMemoriasH.setValue(Dashboard.memoriasH);
+        spinnerFuentesH.setValue(Dashboard.fuentesH);
+        spinnerTarjetasH.setValue(Dashboard.tarjetasH);
+        spinnerEnsambladoresH.setValue(Dashboard.ensambladoresH);  
         
-        int productoresAsignados = (int) spinnerPlacasH.getValue() + (int) spinnerCPUsH.getValue() + (int) spinnerTarjetasH.getValue() + (int) spinnerFuentesH.getValue() + (int) spinnerTarjetasH.getValue() + (int) spinnerEnsambladoresH.getValue();
+        int productoresAsignados = (int) spinnerPlacasH.getValue() + (int) spinnerCPUsH.getValue() + (int) spinnerMemoriasH.getValue() + (int) spinnerFuentesH.getValue() + (int) spinnerTarjetasH.getValue() + (int) spinnerEnsambladoresH.getValue();
         int productoresRestantes = totalProductores - productoresAsignados;
         productoresRestantesH.setText(Integer.toString(productoresRestantes));
     }
     
     private void actualizarProductoresRestantes() {
-        int productoresAsignados = valorSpinnerPlacasM + valorSpinnerCPUsM + valorSpinnerMemoriasM + valorSpinnerFuentesM + valorSpinnerTarjetasM + valorSpinnerEnsambladoresM;
+        int productoresAsignados = valorSpinnerPlacasH + valorSpinnerCPUsH + valorSpinnerMemoriasH + valorSpinnerFuentesH + valorSpinnerTarjetasH + valorSpinnerEnsambladoresH;
         int productoresRestantes = totalProductores - productoresAsignados;
         productoresRestantesH.setText(Integer.toString(productoresRestantes));
     }
 
     private boolean validarProductoresRestantes(int nuevoValor, int valorActual) {
-        int productoresAsignados = valorSpinnerPlacasM + valorSpinnerCPUsM + valorSpinnerMemoriasM + valorSpinnerFuentesM + valorSpinnerTarjetasM + valorSpinnerEnsambladoresM;
+        int productoresAsignados = valorSpinnerPlacasH + valorSpinnerCPUsH + valorSpinnerMemoriasH + valorSpinnerFuentesH + valorSpinnerTarjetasH + valorSpinnerEnsambladoresH;
         int productoresRestantes = totalProductores - productoresAsignados;
         return productoresRestantes >= (nuevoValor - valorActual);
     }
@@ -354,7 +354,7 @@ public class HP extends javax.swing.JPanel {
         jLabel44 = new javax.swing.JLabel();
         jLabel45 = new javax.swing.JLabel();
         costosOperativosH = new javax.swing.JLabel();
-        costosOperativosH1 = new javax.swing.JLabel();
+        ingresosBrutosH = new javax.swing.JLabel();
         gananciaH = new javax.swing.JLabel();
         estadoPM = new javax.swing.JLabel();
         estadoDirector = new javax.swing.JLabel();
@@ -457,7 +457,7 @@ public class HP extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel22Layout.createSequentialGroup()
-                                .addGap(0, 22, Short.MAX_VALUE)
+                                .addGap(0, 49, Short.MAX_VALUE)
                                 .addComponent(jTextField19, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(computadorasTotalesH, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(23, 23, 23))
@@ -480,7 +480,7 @@ public class HP extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        add(jPanel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 430, -1, -1));
+        add(jPanel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 440, 380, -1));
 
         jPanel17.setBackground(new java.awt.Color(34, 46, 60));
         jPanel17.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
@@ -534,7 +534,7 @@ public class HP extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        add(jPanel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 330, 381, -1));
+        add(jPanel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 340, 381, -1));
 
         jPanel2.setBackground(new java.awt.Color(153, 204, 255));
         jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 204, 255), 5, true));
@@ -597,7 +597,7 @@ public class HP extends javax.swing.JPanel {
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(10, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(spinnerCPUsH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -623,7 +623,7 @@ public class HP extends javax.swing.JPanel {
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addContainerGap(10, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(spinnerMemoriasH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -649,7 +649,7 @@ public class HP extends javax.swing.JPanel {
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                .addContainerGap(16, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
                     .addComponent(spinnerFuentesH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -715,8 +715,7 @@ public class HP extends javax.swing.JPanel {
         jLabel17.setText("TRABAJADORES RESTANTES:");
 
         productoresRestantesH.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        productoresRestantesH.setForeground(new java.awt.Color(255, 255, 255));
-        productoresRestantesH.setText("9");
+        productoresRestantesH.setText("0");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -726,9 +725,9 @@ public class HP extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
+                        .addGap(36, 36, 36)
                         .addComponent(jLabel17)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(productoresRestantesH, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -762,14 +761,14 @@ public class HP extends javax.swing.JPanel {
                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel17)
-                    .addComponent(productoresRestantesH, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(productoresRestantesH, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel17))
+                .addGap(30, 30, 30))
         );
 
-        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, 360));
 
         jPanel16.setBackground(new java.awt.Color(34, 46, 60));
         jPanel16.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
@@ -822,10 +821,10 @@ public class HP extends javax.swing.JPanel {
         costosOperativosH.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         costosOperativosH.setText("0");
 
-        costosOperativosH1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        costosOperativosH1.setForeground(new java.awt.Color(255, 255, 255));
-        costosOperativosH1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        costosOperativosH1.setText("0");
+        ingresosBrutosH.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        ingresosBrutosH.setForeground(new java.awt.Color(255, 255, 255));
+        ingresosBrutosH.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        ingresosBrutosH.setText("0");
 
         gananciaH.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         gananciaH.setForeground(new java.awt.Color(255, 255, 255));
@@ -871,7 +870,7 @@ public class HP extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(costosOperativosH, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(costosOperativosH1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(ingresosBrutosH, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(gananciaH, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(estadoPM, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
                             .addComponent(estadoDirector, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -900,7 +899,7 @@ public class HP extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel38)
-                    .addComponent(costosOperativosH1))
+                    .addComponent(ingresosBrutosH))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel39)
@@ -928,7 +927,7 @@ public class HP extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        add(jPanel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 20, 381, -1));
+        add(jPanel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 10, 381, -1));
 
         jPanel5.setBackground(new java.awt.Color(153, 204, 255));
         jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 204, 255), 5));
@@ -976,19 +975,19 @@ public class HP extends javax.swing.JPanel {
                 .addGap(21, 21, 21))
         );
 
-        add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 510, 220, 64));
+        add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 300, 230, 64));
 
         jLabel49.setBackground(new java.awt.Color(153, 51, 255));
         jLabel49.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel49.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel49.setText("PRODUCCIÓN ACTUAL");
-        add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 300, 381, 22));
+        add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 310, 381, 22));
 
         jLabel46.setBackground(new java.awt.Color(153, 51, 255));
         jLabel46.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel46.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel46.setText("PRODUCCIONES PASADAS");
-        add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 400, 381, 22));
+        add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 410, 381, 22));
 
         jPanel10.setBackground(new java.awt.Color(153, 204, 255));
         jPanel10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 204, 255), 5));
@@ -1203,7 +1202,7 @@ public class HP extends javax.swing.JPanel {
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
-        add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 440, 229, 280));
+        add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 10, 229, 280));
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/hp-logo-png-photo.png"))); // NOI18N
         jLabel8.setText("jLabel8");
@@ -1213,20 +1212,20 @@ public class HP extends javax.swing.JPanel {
         add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1020, 940));
     }// </editor-fold>//GEN-END:initComponents
 
-    public static JLabel getComputadorasTarjetaListasM() {
+    public static JLabel getComputadorasTarjetaListasH() {
         return computadorasTarjetaListasH;
     }
 
-    public static void setComputadorasTarjetaListasM(JLabel computadorasTarjetaGeneradasM) {
-        HP.computadorasTarjetaListasH = computadorasTarjetaGeneradasM;
+    public static void setComputadorasTarjetaListasH(JLabel computadorasTarjetaGeneradasH) {
+        HP.computadorasTarjetaListasH = computadorasTarjetaGeneradasH;
     }
 
-    public static JLabel getComputadorasListasM() {
+    public static JLabel getComputadorasListasH() {
         return computadorasListasH;
     }
 
-    public static void getComputadorasListasM(JLabel computadorasGeneradasM) {
-        HP.computadorasListasH = computadorasGeneradasM;
+    public static void getComputadorasListasH(JLabel computadorasGeneradasH) {
+        HP.computadorasListasH = computadorasGeneradasH;
     }
 
     public static void actualizarComputadorasListas(int nuevoValor) {
@@ -1237,15 +1236,15 @@ public class HP extends javax.swing.JPanel {
         computadorasTarjetaListasH.setText(Integer.toString(nuevoValor));
     }
 
-    public static JLabel getComputadorasTotalesM() {
+    public static JLabel getComputadorasTotalesH() {
         return computadorasTotalesH;
     }
 
-    public static void setComputadorasTotalesM(JLabel computadorasTotalesM) {
-        HP.computadorasTotalesH = computadorasTotalesM;
+    public static void setComputadorasTotalesH(JLabel computadorasTotalesH) {
+        HP.computadorasTotalesH = computadorasTotalesH;
     }
 
-    public static void actualizarComputadorasListasTotalesM(int nuevoValor) {
+    public static void actualizarComputadorasListasTotalesH(int nuevoValor) {
         computadorasTotalesH.setText(Integer.toString(nuevoValor));
     }
 
@@ -1289,12 +1288,12 @@ public class HP extends javax.swing.JPanel {
         HP.tarjetasAlmacenH = tarjetasAlmacenM;
     }
 
-    public static JLabel getCostosOperativosM() {
+    public static JLabel getCostosOperativosH() {
         return costosOperativosH;
     }
 
-    public static void setCostosOperativosM(JLabel costosOperativosM) {
-        HP.costosOperativosH = costosOperativosM;
+    public static void setCostosOperativosH(JLabel costosOperativosH) {
+        HP.costosOperativosH = costosOperativosH;
     }
 
     public static JLabel getEstadoPM() {
@@ -1371,15 +1370,15 @@ public class HP extends javax.swing.JPanel {
     public static javax.swing.JLabel computadorasTarjetaListasH;
     public static javax.swing.JLabel computadorasTotalesH;
     public static javax.swing.JLabel costosOperativosH;
-    public static javax.swing.JLabel costosOperativosH1;
     public static javax.swing.JLabel descontadoPM;
-    private javax.swing.JLabel dias;
+    public static javax.swing.JLabel dias;
     public static javax.swing.JLabel diasParaEntrega;
     public static javax.swing.JLabel estadoDirector;
     public static javax.swing.JLabel estadoPM;
     public static javax.swing.JLabel faltasPM;
     public static javax.swing.JLabel fuentesAlmacenH;
     public static javax.swing.JLabel gananciaH;
+    public static javax.swing.JLabel ingresosBrutosH;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel13;
@@ -1442,13 +1441,13 @@ public class HP extends javax.swing.JPanel {
     private javax.swing.JTextField jTextField20;
     public static javax.swing.JLabel memoriasAlmacenH;
     public static javax.swing.JLabel placasAlmacenH;
-    private javax.swing.JLabel productoresRestantesH;
-    private javax.swing.JSpinner spinnerCPUsH;
-    private javax.swing.JSpinner spinnerEnsambladoresH;
-    private javax.swing.JSpinner spinnerFuentesH;
-    private javax.swing.JSpinner spinnerMemoriasH;
-    private javax.swing.JSpinner spinnerPlacasH;
-    private javax.swing.JSpinner spinnerTarjetasH;
+    public static javax.swing.JLabel productoresRestantesH;
+    public static javax.swing.JSpinner spinnerCPUsH;
+    public static javax.swing.JSpinner spinnerEnsambladoresH;
+    public static javax.swing.JSpinner spinnerFuentesH;
+    public static javax.swing.JSpinner spinnerMemoriasH;
+    public static javax.swing.JSpinner spinnerPlacasH;
+    public static javax.swing.JSpinner spinnerTarjetasH;
     public static javax.swing.JLabel tarjetasAlmacenH;
     // End of variables declaration//GEN-END:variables
 }
