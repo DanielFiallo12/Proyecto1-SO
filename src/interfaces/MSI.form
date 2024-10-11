@@ -438,6 +438,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JSpinner" name="spinnerPlacasM">
+              <Properties>
+                <Property name="focusable" type="boolean" value="false"/>
+              </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
               </AuxValues>
@@ -481,6 +484,12 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JSpinner" name="spinnerCPUsM">
+              <Properties>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Default Cursor"/>
+                </Property>
+                <Property name="focusable" type="boolean" value="false"/>
+              </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
               </AuxValues>
@@ -524,6 +533,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JSpinner" name="spinnerMemoriasM">
+              <Properties>
+                <Property name="focusable" type="boolean" value="false"/>
+              </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
               </AuxValues>
@@ -567,6 +579,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JSpinner" name="spinnerFuentesM">
+              <Properties>
+                <Property name="focusable" type="boolean" value="false"/>
+              </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
               </AuxValues>
@@ -610,6 +625,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JSpinner" name="spinnerTarjetasM">
+              <Properties>
+                <Property name="focusable" type="boolean" value="false"/>
+              </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
               </AuxValues>
@@ -661,6 +679,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JSpinner" name="spinnerEnsambladoresM">
+              <Properties>
+                <Property name="focusable" type="boolean" value="false"/>
+              </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
               </AuxValues>

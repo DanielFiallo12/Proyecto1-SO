@@ -87,7 +87,7 @@ public class ProductorTarjetas extends Thread {
             }
         } else {
             // Producción tarjeta MSI
-            if (almacenTarjeta.availablePermits() > 1) {
+            if (almacenTarjeta.availablePermits() > 0) {
                 almacenTarjeta.acquire(1);
                 tarjetasListasM += 1;
                 MSI.actualizarTarjetasAlmacen(tarjetasListasM);

@@ -70,30 +70,36 @@ public class ProductorMemorias extends Thread {
     private void producirMemoria() throws InterruptedException {
     // Agregar la memoria al almacén
     if ("H".equals(company)) {
-        while (almacenMemoria.availablePermits() > 0) {
-            int toAcquire = Math.min(2, almacenMemoria.availablePermits());
-            almacenMemoria.acquire(toAcquire); // Produces hasta 2 memorias si hay permisos
-            memoriasListasH += toAcquire; // Incrementa el contador según lo adquirido
-            HP.actualizarMemoriasAlmacen(memoriasListasH);
-        }
-        if (almacenMemoria.availablePermits() == 0) {
-            System.out.println("Almacén de memorias RAM para HP lleno. Esperando que libere espacio.");
-            Thread.sleep(1000); // Espera un segundo antes de volver a verificar
-        }
+            if (almacenMemoria.availablePermits() >= 2) {
+                almacenMemoria.acquire(2);
+                memoriasListasH += 2;
+                HP.actualizarMemoriasAlmacen(memoriasListasH);
+            } else if (almacenMemoria.availablePermits() == 1) {
+                almacenMemoria.acquire(1);
+                memoriasListasH += 1;
+                HP.actualizarMemoriasAlmacen(memoriasListasH);
+            } else {
+                System.out.println("Almacén de memorias RAM de HP lleno. Esperando que libere espacio.");
+            }
     } else {
         // Producción memoria MSI
-        while (almacenMemoria.availablePermits() > 0) {
-            int toAcquire = Math.min(3, almacenMemoria.availablePermits());
-            almacenMemoria.acquire(toAcquire); // Produces hasta 3 memorias si hay permisos
-            memoriasListasM += toAcquire; // Incrementa el contador según lo adquirido
-            MSI.actualizarMemoriasAlmacen(memoriasListasM);
-        }
-        if (almacenMemoria.availablePermits() == 0) {
-            System.out.println("Almacén de memorias RAM para MSI lleno. Esperando que libere espacio.");
-            Thread.sleep(1000); // Espera un segundo antes de volver a verificar
+        if (almacenMemoria.availablePermits() >= 3) {
+                almacenMemoria.acquire(3);
+                memoriasListasM += 3;
+                MSI.actualizarMemoriasAlmacen(memoriasListasM);
+            } else if (almacenMemoria.availablePermits() == 2) {
+                almacenMemoria.acquire(2);
+                memoriasListasM += 2;
+                MSI.actualizarMemoriasAlmacen(memoriasListasM);
+            } else if (almacenMemoria.availablePermits() == 1) {
+                almacenMemoria.acquire(1);
+                memoriasListasM += 1;
+                MSI.actualizarMemoriasAlmacen(memoriasListasM);
+            } else {
+                System.out.println("Almacén de memorias RAM de MSI lleno. Esperando que libere espacio.");
+            }
         }
     }
-}
     
     public boolean isActivo() {
         return activo;

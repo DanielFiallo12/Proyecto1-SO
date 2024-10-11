@@ -74,6 +74,7 @@ public class HPCompany {
                 productoresPlacas[i] = productorPlacas;
                 productorPlacasCountH++; // Incrementar el contador
                 productorPlacas.start(); // Iniciar el hilo del productor de placas
+                System.out.println(": " + productorPlacasCountH);
                 break;
             }
         }

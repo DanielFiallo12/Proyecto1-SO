@@ -16,6 +16,9 @@ import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.SpinnerNumberModel;
+import java.awt.Color;
+import javax.swing.JFormattedTextField;
 
 /**
  *
@@ -51,6 +54,13 @@ public class HP extends javax.swing.JPanel {
         Funciones dia = new Funciones();
         dia.start();
         
+        setSpinnerEditable(spinnerPlacasH, 1); // Mínimo 1
+        setSpinnerEditable(spinnerCPUsH, 1);   // Mínimo 1
+        setSpinnerEditable(spinnerMemoriasH, 1); // Mínimo 1
+        setSpinnerEditable(spinnerFuentesH, 1); // Mínimo 1
+        setSpinnerEditable(spinnerTarjetasH, 1); // Mínimo 1
+        setSpinnerEditable(spinnerEnsambladoresH, 1); // Mínimo 1
+        
         // Código para el spinner de las placas base
         valorSpinnerPlacasH = (int) spinnerPlacasH.getValue();
         for (int i = 0; i < valorSpinnerPlacasH; i++) {
@@ -69,7 +79,7 @@ public class HP extends javax.swing.JPanel {
                         // función: Crear productor de placa
                         // Se llama a la función para crear un productor de placa
                         HPCompany.crearProductorPlaca(HPCompany.almacenPlacasH, 0, 3, "H", true);
-                    } else {
+                    } else if (nuevoValorSpinnerPlacas < valorSpinnerPlacasH){
                         // función: Detener productor de placa
                         HPCompany.stopProductorPlacaAleatorio();
                     }
@@ -78,6 +88,7 @@ public class HP extends javax.swing.JPanel {
                     spinnerPlacasH.setValue(valorSpinnerPlacasH);
                 }
                 actualizarProductoresRestantes();
+                bloquearSpinnersSiNoHayProductoresRestantes();
             }
                 // Actualiza valorSpinner con el nuevo valor del JSpinner
         });
@@ -102,7 +113,7 @@ public class HP extends javax.swing.JPanel {
                         // función: Crear productor de CPU
                         // Se llama a la función para crear un productor de CPU
                         HPCompany.crearProductorCPU(HPCompany.almacenCPUsH, 0, 3, "H", true);
-                    } else {
+                    } else if (nuevoValorSpinnerCPUs < valorSpinnerCPUsH){
                         // función: Detener productor de CPU
                         HPCompany.stopProductorCPUAleatorio();
                     }
@@ -111,6 +122,7 @@ public class HP extends javax.swing.JPanel {
                     spinnerCPUsH.setValue(valorSpinnerCPUsH);
                 }
                 actualizarProductoresRestantes();
+                bloquearSpinnersSiNoHayProductoresRestantes();
             }
                 // Actualiza valorSpinner con el nuevo valor del JSpinner
         });
@@ -135,7 +147,7 @@ public class HP extends javax.swing.JPanel {
                         // función: Crear productor de memoria
                         // Se llama a la función para crear un productor de memoria
                         HPCompany.crearProductorMemoria(HPCompany.almacenMemoriasH, 0, 1, "H", true);
-                    } else {
+                    } else if (nuevoValorSpinnerMemorias < valorSpinnerMemoriasH){
                         // función: Detener productor de memoria
                         HPCompany.stopProductorMemoriaAleatorio();
                     }
@@ -144,6 +156,7 @@ public class HP extends javax.swing.JPanel {
                     spinnerMemoriasH.setValue(valorSpinnerMemoriasH);
                 }
                 actualizarProductoresRestantes();
+                bloquearSpinnersSiNoHayProductoresRestantes();
             }
                 // Actualiza valorSpinner con el nuevo valor del JSpinner
         });
@@ -167,7 +180,7 @@ public class HP extends javax.swing.JPanel {
                         // función: Crear productor de fuente
                         // Se llama a la función para crear un productor de fuente
                         HPCompany.crearProductorFuente(HPCompany.almacenFuentesH, 1, 0, "H", true);
-                    } else {
+                    } else if (nuevoValorSpinnerFuentes < valorSpinnerFuentesH){
                         // función: Detener productor de fuente
                         HPCompany.stopProductorFuenteAleatorio();
                     }
@@ -176,6 +189,7 @@ public class HP extends javax.swing.JPanel {
                     spinnerFuentesH.setValue(valorSpinnerFuentesH);
                 }
                 actualizarProductoresRestantes();
+                bloquearSpinnersSiNoHayProductoresRestantes();
             }
                 // Actualiza valorSpinner con el nuevo valor del JSpinner
         });
@@ -199,7 +213,7 @@ public class HP extends javax.swing.JPanel {
                         // función: Crear productor de tarjeta
                         // Se llama a la función para crear un productor de tarjeta
                         HPCompany.crearProductorTarjeta(HPCompany.almacenTarjetasH, 2, 0, "H", true);
-                    } else {
+                    } else if (nuevoValorSpinnerTarjetas < valorSpinnerTarjetasH){
                         // función: Detener productor de tarjeta
                         HPCompany.stopProductorTarjetaAleatorio();
                     }
@@ -208,6 +222,7 @@ public class HP extends javax.swing.JPanel {
                     spinnerTarjetasH.setValue(valorSpinnerTarjetasH);
                 }
                 actualizarProductoresRestantes();
+                bloquearSpinnersSiNoHayProductoresRestantes();
             }
                 // Actualiza valorSpinner con el nuevo valor del JSpinner
         });
@@ -230,7 +245,7 @@ public class HP extends javax.swing.JPanel {
                         // función: Crear ensamblador
                         // Se llama a la función para crear un ensamblador
                         HPCompany.crearEnsamblador(HPCompany.almacenPCsH, HPCompany.almacenPlacasH, HPCompany.almacenCPUsH, HPCompany.almacenMemoriasH, HPCompany.almacenFuentesH, HPCompany.almacenTarjetasH, HPCompany.pcsGeneradosH, HPCompany.pcsTGGeneradosH, 2, 2, 3, 4, 6, 5, "H", true);
-                        } else { 
+                        } else if (nuevoValorspinnerEnsambladores < valorSpinnerEnsambladoresH) { 
                         // función: Detener ensamblador
                         HPCompany.stopEnsambladorAleatorio();
                     }
@@ -239,6 +254,7 @@ public class HP extends javax.swing.JPanel {
                     spinnerEnsambladoresH.setValue(valorSpinnerEnsambladoresH);
                 }
                 actualizarProductoresRestantes();
+                bloquearSpinnersSiNoHayProductoresRestantes();
             }
             });
             /*Dashboard.generarGrafico (); //Genera el gráfico de utilidad*/
@@ -257,6 +273,12 @@ public class HP extends javax.swing.JPanel {
         productoresRestantesH.setText(Integer.toString(productoresRestantes));
     }
     
+    private void setSpinnerEditable(JSpinner spinner, int minValue) {
+        spinner.setModel(new SpinnerNumberModel(minValue, minValue, null, 1)); // Mínimo 1
+        JFormattedTextField txt = ((JSpinner.DefaultEditor) spinner.getEditor()).getTextField();
+        txt.setEditable(false); // Deshabilita la edición directa en el campo de texto
+    }
+    
     private void actualizarProductoresRestantes() {
         int productoresAsignados = valorSpinnerPlacasH + valorSpinnerCPUsH + valorSpinnerMemoriasH + valorSpinnerFuentesH + valorSpinnerTarjetasH + valorSpinnerEnsambladoresH;
         int productoresRestantes = totalProductores - productoresAsignados;
@@ -268,6 +290,30 @@ public class HP extends javax.swing.JPanel {
         int productoresRestantes = totalProductores - productoresAsignados;
         return productoresRestantes >= (nuevoValor - valorActual);
     }
+         
+    public void bloquearSpinnersSiNoHayProductoresRestantes() {
+        int productoresRestantes = Integer.parseInt(productoresRestantesH.getText());
+
+        Color colorHabilitado = Color.WHITE; // Color normal cuando hay productores restantes
+        Color colorDeshabilitado = Color.LIGHT_GRAY; // Color simulado para bloqueo
+
+        if (productoresRestantes <= 0) {
+            // Cambia el color de fondo a gris si no hay productores restantes
+            spinnerPlacasH.getEditor().getComponent(0).setBackground(colorDeshabilitado);
+            spinnerCPUsH.getEditor().getComponent(0).setBackground(colorDeshabilitado);
+            spinnerMemoriasH.getEditor().getComponent(0).setBackground(colorDeshabilitado);
+            spinnerFuentesH.getEditor().getComponent(0).setBackground(colorDeshabilitado);
+            spinnerTarjetasH.getEditor().getComponent(0).setBackground(colorDeshabilitado);
+            spinnerEnsambladoresH.getEditor().getComponent(0).setBackground(colorDeshabilitado);
+        } else {
+            // Cambia el color de fondo a blanco si hay productores restantes
+            spinnerPlacasH.getEditor().getComponent(0).setBackground(colorHabilitado);
+            spinnerCPUsH.getEditor().getComponent(0).setBackground(colorHabilitado);
+            spinnerMemoriasH.getEditor().getComponent(0).setBackground(colorHabilitado);
+            spinnerFuentesH.getEditor().getComponent(0).setBackground(colorHabilitado);
+            spinnerTarjetasH.getEditor().getComponent(0).setBackground(colorHabilitado);
+            spinnerEnsambladoresH.getEditor().getComponent(0).setBackground(colorHabilitado);
+        }}
     
     public static void actualizarPlacasAlmacen(int nuevoValor) {
         placasAlmacenH.setText(Integer.toString(nuevoValor));

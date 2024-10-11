@@ -70,31 +70,48 @@ public class ProductorFuentes extends Thread {
     private void producirFuente() throws InterruptedException {
         // Agregar el fuente al almacén
         if ("H".equals(company)) {
-            while (true) { // Loop infinito para intentar producir continuamente
-            if (almacenFuente.availablePermits() > 0) {
-                int toAcquire = Math.min(5, almacenFuente.availablePermits()); // Puede producir hasta 5
-                almacenFuente.acquire(toAcquire); // Adquiere permisos para producir fuentes
-                fuentesListasH += toAcquire; // Incrementa el contador de fuentes de HP
+             if (almacenFuente.availablePermits() >= 5) {
+                almacenFuente.acquire(5);
+                fuentesListasH += 5;
                 HP.actualizarFuentesAlmacen(fuentesListasH);
+            } else if (almacenFuente.availablePermits() == 4) {
+                almacenFuente.acquire(4);
+                fuentesListasH += 4;
+               HP.actualizarFuentesAlmacen(fuentesListasH);
+            } else if (almacenFuente.availablePermits() == 3) {
+                almacenFuente.acquire(3);
+                fuentesListasH += 3;
+               HP.actualizarFuentesAlmacen(fuentesListasH);
+            } else if (almacenFuente.availablePermits() == 2) {
+                almacenFuente.acquire(2);
+                fuentesListasH += 2;
+               HP.actualizarFuentesAlmacen(fuentesListasH);
+            } else if (almacenFuente.availablePermits() == 1) {
+                almacenFuente.acquire(1);
+                fuentesListasH += 1;
+               HP.actualizarFuentesAlmacen(fuentesListasH);
             } else {
                 System.out.println("Almacén de fuentes de HP lleno. Esperando que libere espacio.");
-                Thread.sleep(1000); 
             }
-          } 
         } else {
             // Producción fuente MSI   
-            while (true) { // Loop infinito para intentar producir continuamente
-            if (almacenFuente.availablePermits() > 0) {
-                int toAcquire = Math.min(3, almacenFuente.availablePermits()); // Puede producir hasta 3
-                almacenFuente.acquire(toAcquire); 
-                fuentesListasM += toAcquire; // Incrementa el contador de fuentes de MSI
+            if (almacenFuente.availablePermits() >= 3) {
+                almacenFuente.acquire(3);
+                fuentesListasM += 3;
+                MSI.actualizarFuentesAlmacen(fuentesListasM);
+            } else if (almacenFuente.availablePermits() == 2) {
+                almacenFuente.acquire(2);
+                fuentesListasM += 2;
+                MSI.actualizarFuentesAlmacen(fuentesListasM);
+            } else if (almacenFuente.availablePermits() == 1) {
+                almacenFuente.acquire(1);
+                fuentesListasM += 1;
                 MSI.actualizarFuentesAlmacen(fuentesListasM);
             } else {
                 System.out.println("Almacén de fuentes de MSI lleno. Esperando que libere espacio.");
-                Thread.sleep(1000); 
             }
         }
-    }}
+    }
 
     public static int getFuentesListasAlmacenH() {
         return fuentesListasH;

@@ -74,6 +74,7 @@ public class MSICompany {
                 productoresPlacas[i] = productorPlacas;
                 productorPlacasCountM++; // Incrementar el contador
                 productorPlacas.start(); // Iniciar el hilo del productor de placas
+                System.out.println(": " + productorPlacasCountM);
                 break;
             }
         }
