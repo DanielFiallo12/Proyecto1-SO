@@ -978,7 +978,7 @@ public class MSI extends javax.swing.JPanel {
         jLabel49.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel49.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel49.setText("PRODUCCIÓN ACTUAL");
-        add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 310, 381, 30));
+        add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 310, 200, 30));
 
         jPanel5.setBackground(new java.awt.Color(255, 102, 102));
         jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 51, 51), 5));
@@ -1032,7 +1032,7 @@ public class MSI extends javax.swing.JPanel {
         jLabel46.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel46.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel46.setText("PRODUCCIONES PASADAS");
-        add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 410, 381, 30));
+        add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 410, 250, 30));
 
         jPanel10.setBackground(new java.awt.Color(255, 102, 102));
         jPanel10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 51, 51), 5));
@@ -1254,7 +1254,7 @@ public class MSI extends javax.swing.JPanel {
         jLabel8.setMaximumSize(new java.awt.Dimension(413, 409));
         jLabel8.setMinimumSize(new java.awt.Dimension(413, 409));
         jLabel8.setPreferredSize(new java.awt.Dimension(413, 409));
-        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 420, 1020, 340));
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 420, 1010, 340));
     }// </editor-fold>//GEN-END:initComponents
 
     public static JLabel getComputadorasTarjetaListasM() {

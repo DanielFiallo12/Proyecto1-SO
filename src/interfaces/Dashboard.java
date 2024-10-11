@@ -208,24 +208,24 @@ public class Dashboard extends javax.swing.JPanel {
         jLabel22.setFont(new java.awt.Font("Dialog", 1, 48)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(255, 255, 255));
         jLabel22.setText("DashBoard");
-        add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(227, 6, -1, -1));
+        add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 10, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Duración del días (segundos) = ");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(84, 77, 213, -1));
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, 213, -1));
 
         spinnerDuracionDias.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
-        add(spinnerDuracionDias, new org.netbeans.lib.awtextra.AbsoluteConstraints(309, 75, 80, -1));
+        add(spinnerDuracionDias, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 70, 80, -1));
 
         jLabel24.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel24.setForeground(new java.awt.Color(255, 255, 255));
         jLabel24.setText("Días para entrega = ");
-        add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(396, 75, 135, 20));
+        add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 70, 135, 20));
 
         spinnerDiasParaEntrega.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
-        add(spinnerDiasParaEntrega, new org.netbeans.lib.awtextra.AbsoluteConstraints(543, 75, 80, -1));
-        add(chartPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, 670, 190));
+        add(spinnerDiasParaEntrega, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 70, 80, -1));
+        add(chartPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 500, 670, 190));
 
         jPanel2.setBackground(new java.awt.Color(34, 46, 60));
         jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 5, true));
@@ -442,7 +442,7 @@ public class Dashboard extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(379, 112, -1, -1));
+        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 130, -1, 330));
 
         jPanel21.setBackground(new java.awt.Color(34, 46, 60));
         jPanel21.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 5, true));
@@ -656,10 +656,10 @@ public class Dashboard extends javax.swing.JPanel {
                 .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
 
-        add(jPanel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 112, -1, -1));
+        add(jPanel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, -1, 340));
 
         jButton1.setBackground(new java.awt.Color(255, 102, 102));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -671,10 +671,10 @@ public class Dashboard extends javax.swing.JPanel {
                 jButton1ActionPerformed(evt);
             }
         });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(637, 70, 80, 30));
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 70, 100, 30));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/210625658-fondo-de-pantalla-de-tecnología-de-placa-de-circuito-luz-de-neón-fondo-de-pantalla-de-seguridad.jpg"))); // NOI18N
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 740, 710));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1020, 850));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

@@ -438,7 +438,7 @@ public class HP extends javax.swing.JPanel {
         jLabel36 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(0, 102, 102));
+        setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel22.setBackground(new java.awt.Color(34, 46, 60));
@@ -503,7 +503,7 @@ public class HP extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel22Layout.createSequentialGroup()
-                                .addGap(0, 49, Short.MAX_VALUE)
+                                .addGap(0, 21, Short.MAX_VALUE)
                                 .addComponent(jTextField19, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(computadorasTotalesH, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(23, 23, 23))
@@ -526,7 +526,7 @@ public class HP extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        add(jPanel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 440, 380, -1));
+        add(jPanel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 410, 380, -1));
 
         jPanel17.setBackground(new java.awt.Color(34, 46, 60));
         jPanel17.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
@@ -580,7 +580,7 @@ public class HP extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        add(jPanel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 340, 381, -1));
+        add(jPanel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 310, 381, -1));
 
         jPanel2.setBackground(new java.awt.Color(153, 204, 255));
         jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 204, 255), 5, true));
@@ -814,7 +814,7 @@ public class HP extends javax.swing.JPanel {
                 .addGap(30, 30, 30))
         );
 
-        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, 360));
+        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, 380));
 
         jPanel16.setBackground(new java.awt.Color(34, 46, 60));
         jPanel16.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
@@ -973,7 +973,7 @@ public class HP extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        add(jPanel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 10, 381, -1));
+        add(jPanel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 10, 381, -1));
 
         jPanel5.setBackground(new java.awt.Color(153, 204, 255));
         jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 204, 255), 5));
@@ -997,11 +997,15 @@ public class HP extends javax.swing.JPanel {
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel50)
-                    .addComponent(jLabel51))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel51)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel50)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(dias, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(diasParaEntrega, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1021,19 +1025,19 @@ public class HP extends javax.swing.JPanel {
                 .addGap(21, 21, 21))
         );
 
-        add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 300, 230, 64));
+        add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 300, 230, 64));
 
         jLabel49.setBackground(new java.awt.Color(153, 51, 255));
         jLabel49.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel49.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel49.setText("PRODUCCIÓN ACTUAL");
-        add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 310, 381, 22));
+        add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 280, 210, 22));
 
         jLabel46.setBackground(new java.awt.Color(153, 51, 255));
         jLabel46.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel46.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel46.setText("PRODUCCIONES PASADAS");
-        add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 410, 381, 22));
+        add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 380, 260, 22));
 
         jPanel10.setBackground(new java.awt.Color(153, 204, 255));
         jPanel10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 204, 255), 5));
@@ -1248,14 +1252,13 @@ public class HP extends javax.swing.JPanel {
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
-        add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 10, 229, 280));
+        add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 10, 229, 280));
 
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/hp-logo-png-photo.png"))); // NOI18N
-        jLabel8.setText("jLabel8");
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/hp-logo-hp-icon-free-free-vector.jpg"))); // NOI18N
         jLabel8.setMaximumSize(new java.awt.Dimension(413, 409));
         jLabel8.setMinimumSize(new java.awt.Dimension(413, 409));
         jLabel8.setPreferredSize(new java.awt.Dimension(413, 409));
-        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1020, 940));
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 1020, 940));
     }// </editor-fold>//GEN-END:initComponents
 
     public static JLabel getComputadorasTarjetaListasH() {
