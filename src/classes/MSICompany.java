@@ -14,7 +14,7 @@ import java.util.concurrent.Semaphore;
  */
 public class MSICompany {
     
-    public static int diasRestantesM = 0;
+    public static int diasRestantesM = Dashboard.diasParaEntrega;
     public static int totalPayM = 0;
     public static int ingresoM = 0;
     public static int utilidadM = ingresoM - totalPayM;
@@ -59,21 +59,22 @@ public class MSICompany {
     }
     
     // Lista de productores
-    private static ProductorPlacas[] productoresPlacas = new ProductorPlacas[11];
-    private static ProductorCPUs[] productoresCPUs = new ProductorCPUs[11];
-    private static ProductorMemorias[] productoresMemorias = new ProductorMemorias[11];
-    private static ProductorFuentes[] productoresFuentes = new ProductorFuentes[11];
-    private static ProductorTarjetas[] productoresTarjetas = new ProductorTarjetas[11];
-    private static Ensamblador[] ensambladores = new Ensamblador[11];
+    private static ProductorPlacas[] productoresPlacas = new ProductorPlacas[14];
+    private static ProductorCPUs[] productoresCPUs = new ProductorCPUs[14];
+    private static ProductorMemorias[] productoresMemorias = new ProductorMemorias[14];
+    private static ProductorFuentes[] productoresFuentes = new ProductorFuentes[14];
+    private static ProductorTarjetas[] productoresTarjetas = new ProductorTarjetas[14];
+    private static Ensamblador[] ensambladores = new Ensamblador[14];
     
     public static void crearProductorPlaca(Semaphore almacenPlacasM, int totalPay, int diasParaGenerar, String company, boolean activo) {
         ProductorPlacas productorPlacas = new ProductorPlacas(almacenPlacasM, totalPay, diasParaGenerar, company, activo);
         // Encuentra la primera posición libre en el arreglo
-        for (int i = 0; i < 11; i++) {
+        for (int i = 0; i < 14; i++) {
             if (productoresPlacas[i] == null) {
                 productoresPlacas[i] = productorPlacas;
                 productorPlacasCountM++; // Incrementar el contador
                 productorPlacas.start(); // Iniciar el hilo del productor de placas
+                System.out.println(": " + productorPlacasCountM);
                 break;
             }
         }
@@ -88,7 +89,7 @@ public class MSICompany {
         int indiceAleatorio;
 
         do {
-            indiceAleatorio = random.nextInt(11); // Obtener un índice aleatorio
+            indiceAleatorio = random.nextInt(14); // Obtener un índice aleatorio
         } while (productoresPlacas[indiceAleatorio] == null);
 
         ProductorPlacas hilo = productoresPlacas[indiceAleatorio];
@@ -104,7 +105,7 @@ public class MSICompany {
     public static void crearProductorCPU(Semaphore almacenCPUsM, int totalPay, int diasParaGenerar, String company, boolean activo) {
         ProductorCPUs productorCPUs = new ProductorCPUs(almacenCPUsM, totalPay, diasParaGenerar, company, activo);
         // Encuentra la primera posición libre en el arreglo
-        for (int i = 0; i < capacidadAlmacenCPUsM; i++) {
+        for (int i = 0; i < 14; i++) {
             if (productoresCPUs[i] == null) {
                 productoresCPUs[i] = productorCPUs;
                 productorCPUsCountM++; // Incrementar el contador
@@ -123,7 +124,7 @@ public class MSICompany {
         int indiceAleatorio;
 
         do {
-            indiceAleatorio = random.nextInt(11); // Obtener un índice aleatorio
+            indiceAleatorio = random.nextInt(14); // Obtener un índice aleatorio
         } while (productoresCPUs[indiceAleatorio] == null);
 
         ProductorCPUs hilo = productoresCPUs[indiceAleatorio];
@@ -139,7 +140,7 @@ public class MSICompany {
     public static void crearProductorMemoria(Semaphore almacenMemoriasM, int totalPay, int diasParaGenerar, String company, boolean activo) {
         ProductorMemorias productorMemorias = new ProductorMemorias(almacenMemoriasM, totalPay, diasParaGenerar, company, activo);
         // Encuentra la primera posición libre en el arreglo
-        for (int i = 0; i < 11; i++) {
+        for (int i = 0; i < 14; i++) {
             if (productoresMemorias[i] == null) {
                 productoresMemorias[i] = productorMemorias;
                 productorMemoriasCountM++; // Incrementar el contador
@@ -158,7 +159,7 @@ public class MSICompany {
         int indiceAleatorio;
 
         do {
-            indiceAleatorio = random.nextInt(11); // Obtener un índice aleatorio
+            indiceAleatorio = random.nextInt(14); // Obtener un índice aleatorio
         } while (productoresMemorias[indiceAleatorio] == null);
 
         ProductorMemorias hilo = productoresMemorias[indiceAleatorio];
@@ -172,9 +173,9 @@ public class MSICompany {
     }
 
     public static void crearProductorFuente(Semaphore almacenFuentesM, int diasParaGenerar, int totalPay, String company, boolean activo) {
-        ProductorFuentes productorFuentes = new ProductorFuentes(almacenFuentesM, totalPay, diasParaGenerar, company, activo);
+        ProductorFuentes productorFuentes = new ProductorFuentes(almacenFuentesM, diasParaGenerar, totalPay, company, activo);
         // Encuentra la primera posicion libre en el arreglo
-        for (int i = 0; i < 11; i++) {
+        for (int i = 0; i < 14; i++) {
             if (productoresFuentes[i] == null) {
                 productoresFuentes[i] = productorFuentes;
                 productorFuentesCountM++;
@@ -193,7 +194,7 @@ public class MSICompany {
         int indiceAleatorio;
 
         do {
-            indiceAleatorio = random.nextInt(11);
+            indiceAleatorio = random.nextInt(14);
         } while (productoresFuentes[indiceAleatorio] == null);
 
         ProductorFuentes hilo = productoresFuentes[indiceAleatorio];
@@ -207,9 +208,9 @@ public class MSICompany {
     }
     
     public static void crearProductorTarjeta(Semaphore almacenTarjetasM, int diasParaGenerar, int totalPay, String company, boolean activo) {
-        ProductorTarjetas productorTarjetas = new ProductorTarjetas(almacenTarjetasM, totalPay, diasParaGenerar, company, activo);
+        ProductorTarjetas productorTarjetas = new ProductorTarjetas(almacenTarjetasM, diasParaGenerar, totalPay, company, activo);
 
-        for (int i = 0; i < 11; i++) {
+        for (int i = 0; i < 14; i++) {
             if (productoresTarjetas[i] == null) {
                 productoresTarjetas[i] = productorTarjetas;
                 productorTarjetasCountM++;
@@ -229,7 +230,7 @@ public class MSICompany {
         int indiceAleatorio;
 
         do {
-            indiceAleatorio = random.nextInt(11);
+            indiceAleatorio = random.nextInt(14);
         } while (productoresTarjetas[indiceAleatorio] == null);
 
         ProductorTarjetas hilo = productoresTarjetas[indiceAleatorio];
@@ -245,7 +246,7 @@ public class MSICompany {
     public static void crearEnsamblador(Semaphore almacenPCsM, Semaphore almacenPlacasM, Semaphore almacenCPUsM, Semaphore almacenMemoriasM, Semaphore almacenFuentesM, Semaphore almacenTarjetasM, int pcsGeneradosM, int pcsTGGeneradosM, int diasParaGenerar, int placasNecesarias, int CPUsNecesarios, int memoriasNecesarias, int fuentesNecesarias, int tarjetasNecesarias, String company, boolean activo) {
         Ensamblador ensamblador = new Ensamblador(almacenPCsM, almacenPlacasM, almacenCPUsM, almacenMemoriasM, almacenFuentesM, almacenTarjetasM, pcsGeneradosM, pcsTGGeneradosM, diasParaGenerar, placasNecesarias, CPUsNecesarios, memoriasNecesarias, fuentesNecesarias, tarjetasNecesarias, company, activo);
 
-        for (int i = 0; i < 11; i++) {
+        for (int i = 0; i < 14; i++) {
             if (ensambladores[i] == null) {
                 ensambladores[i] = ensamblador;
                 ensambladoresCount++;
@@ -265,7 +266,7 @@ public class MSICompany {
         int indiceAleatorio;
 
         do {
-            indiceAleatorio = random.nextInt(11);
+            indiceAleatorio = random.nextInt(14);
         } while (ensambladores[indiceAleatorio] == null);
 
         Ensamblador hilo = ensambladores[indiceAleatorio];

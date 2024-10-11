@@ -4,6 +4,9 @@
  */
 package classes;
 
+import interfaces.HP;
+import interfaces.Dashboard;
+import interfaces.MSI;
 import java.util.concurrent.Semaphore;
 
 /**
@@ -38,6 +41,75 @@ public class ProductorTarjetas extends Thread {
 
     public void setActivo(boolean activo) {
         this.activo = activo;
+    }
+    
+    public void payDayProductorTarjetas() {
+        // Calcular el salario basado en las horas trabajadas y agregarlo al total de pago
+        int horasTrabajadas = 24;
+        int salario = sueldoPorHora * horasTrabajadas;
+        if ("H".equals(company)) {
+            // Pago de HP
+              HPCompany.totalPayH += salario;
+        } else {
+            // Pago de MSI
+            MSICompany.totalPayM += salario;
+        }
+    }
+    
+    @Override
+    public void run() {
+        while (activo) {
+            try {
+                int count = 0;
+
+                while (count <= diasParaGenerar) {
+                    Thread.sleep(1000*Dashboard.duracionDias);
+                    payDayProductorTarjetas();
+                    count++;
+                }
+                producirTarjeta();
+            } catch (InterruptedException ex) {
+                System.out.println("TESTTT2");
+
+            }
+        }
+    }
+    
+    private void producirTarjeta() throws InterruptedException {
+        // Agregar la tarjeta al almacén
+        if ("H".equals(company)) {
+            if (almacenTarjeta.availablePermits() > 0) {
+                almacenTarjeta.acquire(1);
+                tarjetasListasH++; // Incrementa el contador 
+                HP.actualizarTarjetasAlmacen(tarjetasListasH);
+            } else {
+                System.out.println("Almacén de tarjetas lleno. Esperando que libere espacio.");
+            }
+        } else {
+            // Producción tarjeta MSI
+            if (almacenTarjeta.availablePermits() > 0) {
+                almacenTarjeta.acquire(1);
+                tarjetasListasM += 1;
+                MSI.actualizarTarjetasAlmacen(tarjetasListasM);
+            } else {
+                System.out.println("Almacén de tarjetas lleno. Esperando que libere espacio.");
+            }
+        }
+    }
+    
+    public static int getTarjetasListasAlmacenH() {
+        return tarjetasListasH;
+    }
+
+    public static void setTarjetasListasAlmacenH(int tarjetasListasH) {
+        ProductorTarjetas.tarjetasListasH -= tarjetasListasH;
+    }
+
+    public static int getTarjetasListasAlmacenM() {
+        return tarjetasListasM;
+    }
+    public static void setTarjetasListasAlmacenM(int tarjetasListasM) {
+        ProductorTarjetas.tarjetasListasM -= tarjetasListasM;
     }
     
 }

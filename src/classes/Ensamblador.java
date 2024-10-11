@@ -6,6 +6,7 @@ package classes;
 
 import interfaces.Dashboard;
 import interfaces.MSI;
+import interfaces.HP;
 import java.util.concurrent.Semaphore;
 
 /**
@@ -38,6 +39,8 @@ public class Ensamblador extends Thread {
     Semaphore almacenComputadoras;
     public static int computadorasListasTotalesH = 0;
     public static int computadorasListasTotalesM = 0;
+    public static int computadorasTarjetaListasTotalesH = 0;
+    public static int computadorasTarjetaListasTotalesM = 0;
     int computadorasListas;
     int computadorasTarjetaListas;
     int countComputadoras;
@@ -89,9 +92,191 @@ public class Ensamblador extends Thread {
         int horasTrabajadas = 24;
         int salario = sueldoPorHora * horasTrabajadas;
         if (company == "H") {
-            /* Pago ensamblador de HP */
+            HPCompany.totalPayH += salario;
         } else {
             MSICompany.totalPayM += salario;
         }
     }
+    
+    public void ensamblarComputador() {
+        if ("H".equals(company)) {
+            if (countComputadoras == 2) {
+                if (ProductorPlacas.getPlacasListasAlmacenH() >= placasNecesarias && 
+                        ProductorCPUs.getCPUsListasAlmacenH() >= CPUsNecesarios && 
+                        ProductorMemorias.getMemoriasListasAlmacenH() >= memoriasNecesarias && 
+                        ProductorFuentes.getFuentesListasAlmacenH() >= fuentesNecesarias &&
+                        ProductorTarjetas.getTarjetasListasAlmacenH() >= tarjetasNecesarias) {
+                    try {
+                        // Tiempo de ensamblaje (2 días)
+                        Thread.sleep(2000 * Dashboard.duracionDias);
+
+                        // LIBERAR Y ACTUALIZAR VALORES EN LA INTERFAZ
+                        // Placas base
+                        almacenPlacas.release(placasNecesarias);
+                        ProductorPlacas.setPlacasListasAlmacenH(placasNecesarias);
+
+                        // CPUs
+                        almacenCPUs.release(CPUsNecesarios);
+                        ProductorCPUs.setCPUsListasAlmacenH(CPUsNecesarios);
+
+                        // Memorias RAM
+                        almacenMemorias.release(memoriasNecesarias);
+                        ProductorMemorias.setMemoriasListasAlmacenH(memoriasNecesarias);
+
+                        // Fuentes de poder
+                        almacenFuentes.release(fuentesNecesarias);
+                        ProductorFuentes.setFuentesListasAlmacenH(fuentesNecesarias);
+
+                        // Tarjetas gráficas
+                        almacenTarjetas.release(tarjetasNecesarias);
+                        ProductorTarjetas.setTarjetasListasAlmacenH(tarjetasNecesarias);
+
+                        countComputadorasTarjetaListasH++;
+                        computadorasTarjetaListasTotalesH++;
+                        HP.actualizarComputadorasTarjetaListas(countComputadorasTarjetaListasH);
+                        countComputadoras = 0; // Se reinicia el contador de computadoras para poder contar otra vez la cantidad de computadoras necesarias para ensamblar una con tarjetas gráficas.
+                        HP.actualizarComputadorasTarjetaListasTotalesH(computadorasTarjetaListasTotalesH);
+                    } catch (InterruptedException ex) {
+                        System.out.println("testttt");
+                    }
+                } else {
+                    System.out.println("No hay recursos suficientes para ensamblar el computador");
+                }
+            } else {
+                if (ProductorPlacas.getPlacasListasAlmacenH() >= placasNecesarias && 
+                        ProductorCPUs.getCPUsListasAlmacenH() >= CPUsNecesarios && 
+                        ProductorMemorias.getMemoriasListasAlmacenH() >= memoriasNecesarias && 
+                        ProductorFuentes.getFuentesListasAlmacenH() >= fuentesNecesarias) {
+                    try {
+                        // Tiempo de ensamblaje (2 días)
+                        Thread.sleep(2000 * Dashboard.duracionDias);
+
+                        // LIBERAR Y ACTUALIZAR VALORES EN LA INTERFAZ
+                        // Placas base
+                        almacenPlacas.release(placasNecesarias);
+                        ProductorPlacas.setPlacasListasAlmacenH(placasNecesarias);
+
+                        // CPUs
+                        almacenCPUs.release(CPUsNecesarios);
+                        ProductorCPUs.setCPUsListasAlmacenH(CPUsNecesarios);
+
+                        // Memorias RAM
+                        almacenMemorias.release(memoriasNecesarias);
+                        ProductorMemorias.setMemoriasListasAlmacenH(memoriasNecesarias);
+
+                        // Fuentes de poder
+                        almacenFuentes.release(fuentesNecesarias);
+                        ProductorFuentes.setFuentesListasAlmacenH(fuentesNecesarias);
+
+                        countComputadorasListasH++;
+                        computadorasListasTotalesH++;
+                        HP.actualizarComputadorasListas(countComputadorasListasH);
+                        countComputadoras++;
+                        HP.actualizarComputadorasListasTotalesH(computadorasListasTotalesH);
+                    } catch (InterruptedException ex) {
+                        System.out.println("testttt");
+                    }
+                } else {
+                    System.out.println("No hay recursos suficientes para ensamblar el computador.");
+                }
+            }
+        } else {
+            // MSI
+            if (countComputadoras == 6) {
+                if (ProductorPlacas.getPlacasListasAlmacenM() >= placasNecesarias && 
+                        ProductorCPUs.getCPUsListasAlmacenM() >= CPUsNecesarios && 
+                        ProductorMemorias.getMemoriasListasAlmacenM() >= memoriasNecesarias && 
+                        ProductorFuentes.getFuentesListasAlmacenM() >= fuentesNecesarias &&
+                        ProductorTarjetas.getTarjetasListasAlmacenM() >= tarjetasNecesarias) {
+                    try {
+                        // Tiempo de ensamblaje (2 días)
+                        Thread.sleep(2000 * Dashboard.duracionDias);
+
+                        // LIBERAR Y ACTUALIZAR VALORES EN LA INTERFAZ
+                        // Placas base
+                        almacenPlacas.release(placasNecesarias);
+                        ProductorPlacas.setPlacasListasAlmacenM(placasNecesarias);
+                        
+                        // CPUs
+                        almacenCPUs.release(CPUsNecesarios);
+                        ProductorCPUs.setCPUsListasAlmacenM(CPUsNecesarios);
+
+                        // Memorias RAM
+                        almacenMemorias.release(memoriasNecesarias);
+                        ProductorMemorias.setMemoriasListasAlmacenM(memoriasNecesarias);
+
+                        // Fuentes de poder
+                        almacenFuentes.release(fuentesNecesarias);
+                        ProductorFuentes.setFuentesListasAlmacenM(fuentesNecesarias);
+
+                        // Tarjetas gráficas
+                        almacenTarjetas.release(tarjetasNecesarias);
+                        ProductorTarjetas.setTarjetasListasAlmacenM(tarjetasNecesarias);
+
+                        countComputadorasTarjetaListasM++;
+                        computadorasTarjetaListasTotalesM++;
+                        MSI.actualizarComputadorasTarjetaListas(countComputadorasTarjetaListasM);
+                        countComputadoras = 0; // Se reinicia el contador de computadoras para poder contar otra vez la cantidad de computadoras necesarias para ensamblar una con tarjetas gráficas.
+                        MSI.actualizarComputadorasTarjetaListasTotalesM(computadorasTarjetaListasTotalesM);
+                    } catch (InterruptedException ex) {
+                        System.out.println("testttt");
+                    }
+                } else {
+                    System.out.println("No hay recursos suficientes para ensamblar la computadora.");
+                }
+            } else {
+                if (ProductorPlacas.getPlacasListasAlmacenM() >= placasNecesarias && 
+                        ProductorCPUs.getCPUsListasAlmacenM() >= CPUsNecesarios && 
+                        ProductorMemorias.getMemoriasListasAlmacenM() >= memoriasNecesarias && 
+                        ProductorFuentes.getFuentesListasAlmacenM() >= fuentesNecesarias) {
+                    try {
+                        // Tiempo de ensamblaje (2 días)
+                        Thread.sleep(2000 * Dashboard.duracionDias);
+
+                        // LIBERAR Y ACTUALIZAR VALORES EN LA INTERFAZ
+                        // Placas base
+                        almacenPlacas.release(placasNecesarias);
+                        ProductorPlacas.setPlacasListasAlmacenM(placasNecesarias);
+                        
+                        // CPUs
+                        almacenCPUs.release(CPUsNecesarios);
+                        ProductorCPUs.setCPUsListasAlmacenM(CPUsNecesarios);
+
+                        // Memorias RAM
+                        almacenMemorias.release(memoriasNecesarias);
+                        ProductorMemorias.setMemoriasListasAlmacenM(memoriasNecesarias);
+
+                        // Fuentes de poder
+                        almacenFuentes.release(fuentesNecesarias);
+                        ProductorFuentes.setFuentesListasAlmacenM(fuentesNecesarias);
+
+                        countComputadorasListasM++;
+                        computadorasListasTotalesM++;
+                        MSI.actualizarComputadorasListas(countComputadorasListasM);
+                        countComputadoras++;
+                        MSI.actualizarComputadorasListasTotalesM(computadorasListasTotalesM);
+                    } catch (InterruptedException ex) {
+                        System.out.println("testttt");
+                    }
+                } else {
+                    System.out.println("No hay recursos suficientes para ensamblar la computadora.");
+                }
+            }
+        }
+    }
+
+    @Override
+    public void run() {
+        while (true) {
+            try {
+                Thread.sleep(1000 * Dashboard.duracionDias);
+                payDayEnsamblador();
+                ensamblarComputador();
+            } catch (InterruptedException ex) {
+                System.out.println("TESTTTT Ensamblador catch");
+            }
+        }
+    }
 }
+
+
