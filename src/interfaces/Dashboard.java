@@ -4,6 +4,7 @@
  */
 package interfaces;
 
+import classes.UtilidadChart;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -135,7 +136,8 @@ public class Dashboard extends javax.swing.JPanel {
     }
     
     public static void generarGrafico(){
-        
+        UtilidadChart chart = new UtilidadChart(); // Crea una instancia de UtilidadChart
+        chartPanel.add(chart); // Agrega el gráfico a chartPanel
     }
 
     /**
@@ -223,7 +225,7 @@ public class Dashboard extends javax.swing.JPanel {
 
         spinnerDiasParaEntrega.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
         add(spinnerDiasParaEntrega, new org.netbeans.lib.awtextra.AbsoluteConstraints(543, 75, 80, -1));
-        add(chartPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 493, 646, 190));
+        add(chartPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, 670, 190));
 
         jPanel2.setBackground(new java.awt.Color(34, 46, 60));
         jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 5, true));

@@ -88,7 +88,6 @@ public class ProductorCPUs extends Thread {
                 System.out.println("Almacén de CPUs lleno. Esperando que libere espacio.");
             }
         }
-
     }
 
     public boolean isActivo() {

@@ -70,26 +70,31 @@ public class ProductorFuentes extends Thread {
     private void producirFuente() throws InterruptedException {
         // Agregar el fuente al almacén
         if ("H".equals(company)) {
+            while (true) { // Loop infinito para intentar producir continuamente
             if (almacenFuente.availablePermits() > 0) {
-                almacenFuente.acquire(1);
-                fuentesListasH++; // Incrementa el contador 
+                int toAcquire = Math.min(5, almacenFuente.availablePermits()); // Puede producir hasta 5
+                almacenFuente.acquire(toAcquire); // Adquiere permisos para producir fuentes
+                fuentesListasH += toAcquire; // Incrementa el contador de fuentes de HP
                 HP.actualizarFuentesAlmacen(fuentesListasH);
             } else {
-                System.out.println("Almacén de fuentes lleno. Esperando que libere espacio.");
+                System.out.println("Almacén de fuentes de HP lleno. Esperando que libere espacio.");
+                Thread.sleep(1000); 
             }
+          } 
         } else {
-            // Producción fuente MSI
+            // Producción fuente MSI   
+            while (true) { // Loop infinito para intentar producir continuamente
             if (almacenFuente.availablePermits() > 0) {
-                almacenFuente.acquire(1);
-                fuentesListasM++; // Incrementa el contador 
+                int toAcquire = Math.min(3, almacenFuente.availablePermits()); // Puede producir hasta 3
+                almacenFuente.acquire(toAcquire); 
+                fuentesListasM += toAcquire; // Incrementa el contador de fuentes de MSI
                 MSI.actualizarFuentesAlmacen(fuentesListasM);
-
             } else {
-                System.out.println("Almacén de fuentes lleno. Esperando que libere espacio.");
+                System.out.println("Almacén de fuentes de MSI lleno. Esperando que libere espacio.");
+                Thread.sleep(1000); 
             }
         }
-
-    }
+    }}
 
     public static int getFuentesListasAlmacenH() {
         return fuentesListasH;

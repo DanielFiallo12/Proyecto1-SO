@@ -59,17 +59,17 @@ public class HPCompany {
     }
     
     // Lista de productores
-    private static ProductorPlacas[] productoresPlacas = new ProductorPlacas[14];
-    private static ProductorCPUs[] productoresCPUs = new ProductorCPUs[14];
-    private static ProductorMemorias[] productoresMemorias = new ProductorMemorias[14];
-    private static ProductorFuentes[] productoresFuentes = new ProductorFuentes[14];
-    private static ProductorTarjetas[] productoresTarjetas = new ProductorTarjetas[14];
-    private static Ensamblador[] ensambladores = new Ensamblador[14];
+    private static ProductorPlacas[] productoresPlacas = new ProductorPlacas[17];
+    private static ProductorCPUs[] productoresCPUs = new ProductorCPUs[17];
+    private static ProductorMemorias[] productoresMemorias = new ProductorMemorias[17];
+    private static ProductorFuentes[] productoresFuentes = new ProductorFuentes[17];
+    private static ProductorTarjetas[] productoresTarjetas = new ProductorTarjetas[17];
+    private static Ensamblador[] ensambladores = new Ensamblador[17];
     
     public static void crearProductorPlaca(Semaphore almacenPlacasH, int totalPay, int diasParaGenerar, String company, boolean activo) {
         ProductorPlacas productorPlacas = new ProductorPlacas(almacenPlacasH, totalPay, diasParaGenerar, company, activo);
         // Encuentra la primera posición libre en el arreglo
-        for (int i = 0; i < 14; i++) {
+        for (int i = 0; i < 17; i++) {
             if (productoresPlacas[i] == null) {
                 productoresPlacas[i] = productorPlacas;
                 productorPlacasCountH++; // Incrementar el contador
@@ -88,7 +88,7 @@ public class HPCompany {
         int indiceAleatorio;
 
         do {
-            indiceAleatorio = random.nextInt(14); // Obtener un índice aleatorio
+            indiceAleatorio = random.nextInt(17); // Obtener un índice aleatorio
         } while (productoresPlacas[indiceAleatorio] == null);
 
         ProductorPlacas hilo = productoresPlacas[indiceAleatorio];
@@ -104,7 +104,7 @@ public class HPCompany {
     public static void crearProductorCPU(Semaphore almacenCPUsH, int totalPay, int diasParaGenerar, String company, boolean activo) {
         ProductorCPUs productorCPUs = new ProductorCPUs(almacenCPUsH, totalPay, diasParaGenerar, company, activo);
         // Encuentra la primera posición libre en el arreglo
-        for (int i = 0; i < 14; i++) {
+        for (int i = 0; i < 17; i++) {
             if (productoresCPUs[i] == null) {
                 productoresCPUs[i] = productorCPUs;
                 productorCPUsCountH++; // Incrementar el contador
@@ -123,7 +123,7 @@ public class HPCompany {
         int indiceAleatorio;
 
         do {
-            indiceAleatorio = random.nextInt(14); // Obtener un índice aleatorio
+            indiceAleatorio = random.nextInt(17); // Obtener un índice aleatorio
         } while (productoresCPUs[indiceAleatorio] == null);
 
         ProductorCPUs hilo = productoresCPUs[indiceAleatorio];
@@ -139,7 +139,7 @@ public class HPCompany {
     public static void crearProductorMemoria(Semaphore almacenMemoriasH, int totalPay, int diasParaGenerar, String company, boolean activo) {
         ProductorMemorias productorMemorias = new ProductorMemorias(almacenMemoriasH, totalPay, diasParaGenerar, company, activo);
         // Encuentra la primera posición libre en el arreglo
-        for (int i = 0; i < 14; i++) {
+        for (int i = 0; i < 17; i++) {
             if (productoresMemorias[i] == null) {
                 productoresMemorias[i] = productorMemorias;
                 productorMemoriasCountH++; // Incrementar el contador
@@ -158,7 +158,7 @@ public class HPCompany {
         int indiceAleatorio;
 
         do {
-            indiceAleatorio = random.nextInt(14); // Obtener un índice aleatorio
+            indiceAleatorio = random.nextInt(17); // Obtener un índice aleatorio
         } while (productoresMemorias[indiceAleatorio] == null);
 
         ProductorMemorias hilo = productoresMemorias[indiceAleatorio];
@@ -174,7 +174,7 @@ public class HPCompany {
     public static void crearProductorFuente(Semaphore almacenFuentesH, int diasParaGenerar, int totalPay, String company, boolean activo) {
         ProductorFuentes productorFuentes = new ProductorFuentes(almacenFuentesH, diasParaGenerar, totalPay, company, activo);
         // Encuentra la primera posicion libre en el arreglo
-        for (int i = 0; i < 14; i++) {
+        for (int i = 0; i < 17; i++) {
             if (productoresFuentes[i] == null) {
                 productoresFuentes[i] = productorFuentes;
                 productorFuentesCountH++;
@@ -193,7 +193,7 @@ public class HPCompany {
         int indiceAleatorio;
 
         do {
-            indiceAleatorio = random.nextInt(14);
+            indiceAleatorio = random.nextInt(17);
         } while (productoresFuentes[indiceAleatorio] == null);
 
         ProductorFuentes hilo = productoresFuentes[indiceAleatorio];
@@ -209,7 +209,7 @@ public class HPCompany {
     public static void crearProductorTarjeta(Semaphore almacenTarjetasH, int diasParaGenerar, int totalPay, String company, boolean activo) {
         ProductorTarjetas productorTarjetas = new ProductorTarjetas(almacenTarjetasH, diasParaGenerar, totalPay, company, activo);
 
-        for (int i = 0; i < 14; i++) {
+        for (int i = 0; i < 17; i++) {
             if (productoresTarjetas[i] == null) {
                 productoresTarjetas[i] = productorTarjetas;
                 productorTarjetasCountH++;
@@ -229,7 +229,7 @@ public class HPCompany {
         int indiceAleatorio;
 
         do {
-            indiceAleatorio = random.nextInt(14);
+            indiceAleatorio = random.nextInt(17);
         } while (productoresTarjetas[indiceAleatorio] == null);
 
         ProductorTarjetas hilo = productoresTarjetas[indiceAleatorio];
@@ -245,7 +245,7 @@ public class HPCompany {
     public static void crearEnsamblador(Semaphore almacenPCsH, Semaphore almacenPlacasH, Semaphore almacenCPUsH, Semaphore almacenMemoriasH, Semaphore almacenFuentesH, Semaphore almacenTarjetasH, int pcsGeneradosH, int pcsTGGeneradosH, int diasParaGenerar, int placasNecesarias, int CPUsNecesarios, int memoriasNecesarias, int fuentesNecesarias, int tarjetasNecesarias, String company, boolean activo) {
         Ensamblador ensamblador = new Ensamblador(almacenPCsH, almacenPlacasH, almacenCPUsH, almacenMemoriasH, almacenFuentesH, almacenTarjetasH, pcsGeneradosH, pcsTGGeneradosH, diasParaGenerar, placasNecesarias, CPUsNecesarios, memoriasNecesarias, fuentesNecesarias, tarjetasNecesarias, company, activo);
 
-        for (int i = 0; i < 14; i++) {
+        for (int i = 0; i < 17; i++) {
             if (ensambladores[i] == null) {
                 ensambladores[i] = ensamblador;
                 ensambladoresCount++;
@@ -265,7 +265,7 @@ public class HPCompany {
         int indiceAleatorio;
 
         do {
-            indiceAleatorio = random.nextInt(14);
+            indiceAleatorio = random.nextInt(17);
         } while (ensambladores[indiceAleatorio] == null);
 
         Ensamblador hilo = ensambladores[indiceAleatorio];

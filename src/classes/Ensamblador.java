@@ -1,25 +1,27 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package classes;
 
-import interfaces.HP;
 import interfaces.Dashboard;
 import interfaces.MSI;
+import interfaces.HP;
 import java.util.concurrent.Semaphore;
 
-
+/**
+ *
+ * @author adminccs
+ */
 public class Ensamblador extends Thread {
-
+    
     public static int countComputadorasListasH = 0;
     public static int countComputadorasListasM = 0;
 
     public static int countComputadorasTarjetaListasH = 0;
     public static int countComputadorasTarjetaListasM = 0;
 
-     // Companía para el cual trabaja
+    // Companía para el cual trabaja
     String company;
 
     // Almacén de los productores
@@ -48,8 +50,10 @@ public class Ensamblador extends Thread {
     int fuentesNecesarias;
     int tarjetasNecesarias;
     int gananciaXComputador;
-    
-public Ensamblador(Semaphore almacenComputadoras, Semaphore almacenPlacas, Semaphore almacenCPUs, Semaphore almacenMemorias, Semaphore almacenFuentes, Semaphore almacenTarjetas, int computadorasListas, int computadorasTarjetaListas, int diasParaGenerar, int placasNecesarias, int CPUsNecesarios, int memoriasNecesarias, int fuentesNecesarias, int tarjetasNecesarias, String company, boolean activo) {
+
+    // Parámetros para una computadora con tarjeta gráfica
+    // Las tarjetas es un semáforo, ya que cuando se crean 6 computadoras, se toman 5 tarjetas gráficas del almacén.
+    public Ensamblador(Semaphore almacenComputadoras, Semaphore almacenPlacas, Semaphore almacenCPUs, Semaphore almacenMemorias, Semaphore almacenFuentes, Semaphore almacenTarjetas, int computadorasListas, int computadorasTarjetaListas, int diasParaGenerar, int placasNecesarias, int CPUsNecesarios, int memoriasNecesarias, int fuentesNecesarias, int tarjetasNecesarias, String company, boolean activo) {
 
         this.company = company;
 
@@ -81,9 +85,8 @@ public Ensamblador(Semaphore almacenComputadoras, Semaphore almacenPlacas, Semap
     public void setActivo(boolean activo) {
         this.activo = activo;
     }
-
-
-       public void payDayEnsamblador() {
+    
+    public void payDayEnsamblador() {
         int horasTrabajadas = 24;
         int salario = sueldoPorHora * horasTrabajadas;
         if (company == "H") {
@@ -92,17 +95,21 @@ public Ensamblador(Semaphore almacenComputadoras, Semaphore almacenPlacas, Semap
             MSICompany.totalPayM += salario;
         }
     }
-
-    public void generarVideoJuego() {
+    
+    public void ensamblarComputador() {
         if ("H".equals(company)) {
-            if (countComputadoras == 7) {
-                if (ProductorPlacas.getPlacasListasAlmacenH() >= placasNecesarias && ProductorCPUs.getCPUsListasAlmacenH() >= CPUsNecesarios && ProductorMemorias.getMemoriasListasAlmacenH() >= memoriasNecesarias && ProductorFuentes.getFuentesListasAlmacenH() >= fuentesNecesarias) {
+            if (countComputadoras == 2) {
+                if (ProductorPlacas.getPlacasListasAlmacenH() >= placasNecesarias && 
+                        ProductorCPUs.getCPUsListasAlmacenH() >= CPUsNecesarios && 
+                        ProductorMemorias.getMemoriasListasAlmacenH() >= memoriasNecesarias && 
+                        ProductorFuentes.getFuentesListasAlmacenH() >= fuentesNecesarias &&
+                        ProductorTarjetas.getTarjetasListasAlmacenH() >= tarjetasNecesarias) {
                     try {
-                        // Tiempo de armado (2 dias)
+                        // Tiempo de ensamblaje (2 días)
                         Thread.sleep(2000 * Dashboard.duracionDias);
 
                         // LIBERAR Y ACTUALIZAR VALORES EN LA INTERFAZ
-                        // Placas
+                        // Placas base
                         almacenPlacas.release(placasNecesarias);
                         ProductorPlacas.setPlacasListasAlmacenH(placasNecesarias);
 
@@ -110,135 +117,147 @@ public Ensamblador(Semaphore almacenComputadoras, Semaphore almacenPlacas, Semap
                         almacenCPUs.release(CPUsNecesarios);
                         ProductorCPUs.setCPUsListasAlmacenH(CPUsNecesarios);
 
-                        // DLC
+                        // Memorias RAM
                         almacenMemorias.release(memoriasNecesarias);
                         ProductorMemorias.setMemoriasListasAlmacenH(memoriasNecesarias);
 
-                        // Sistemas
+                        // Fuentes de poder
                         almacenFuentes.release(fuentesNecesarias);
                         ProductorFuentes.setFuentesListasAlmacenH(fuentesNecesarias);
 
-                        // Sprites
+                        // Tarjetas gráficas
                         almacenTarjetas.release(tarjetasNecesarias);
                         ProductorTarjetas.setTarjetasListasAlmacenH(tarjetasNecesarias);
 
                         countComputadorasTarjetaListasH++;
                         computadorasListasTotalesH++;
-                        HP.actualizarMemoriasAlmacen(countComputadorasTarjetaListasH);
-                        countComputadoras = 0; // Se reinicia el contador de juegos para poder contar otra vez la cantidad de juegos necesarios para desarrollar uno con DLC.
+                        HP.actualizarComputadorasTarjetaListas(countComputadorasTarjetaListasH);
+                        countComputadoras = 0; // Se reinicia el contador de computadoras para poder contar otra vez la cantidad de computadoras necesarias para ensamblar una con tarjetas gráficas.
                     } catch (InterruptedException ex) {
                         System.out.println("testttt");
                     }
                 } else {
-                    System.out.println("No hay recursos suficientes para generar el juego");
+                    System.out.println("No hay recursos suficientes para ensamblar el computador");
                 }
             } else {
-                if (ProductorPlacas.getPlacasListasAlmacenH() >= placasNecesarias && ProductorCPUs.getCPUsListasAlmacenH() >= CPUsNecesarios && ProductorFuentes.getFuentesListasAlmacenH() >= fuentesNecesarias && ProductorTarjetas.getTarjetasListasAlmacenH() >= tarjetasNecesarias) {
+                if (ProductorPlacas.getPlacasListasAlmacenH() >= placasNecesarias && 
+                        ProductorCPUs.getCPUsListasAlmacenH() >= CPUsNecesarios && 
+                        ProductorMemorias.getMemoriasListasAlmacenH() >= memoriasNecesarias && 
+                        ProductorFuentes.getFuentesListasAlmacenH() >= fuentesNecesarias) {
                     try {
-                        // Tiempo de armado (2 dias)
+                        // Tiempo de ensamblaje (2 días)
                         Thread.sleep(2000 * Dashboard.duracionDias);
 
                         // LIBERAR Y ACTUALIZAR VALORES EN LA INTERFAZ
-                        // Guiones
+                        // Placas base
                         almacenPlacas.release(placasNecesarias);
                         ProductorPlacas.setPlacasListasAlmacenH(placasNecesarias);
 
-                        // Niveles
+                        // CPUs
                         almacenCPUs.release(CPUsNecesarios);
                         ProductorCPUs.setCPUsListasAlmacenH(CPUsNecesarios);
 
-                        // Sistemas
+                        // Memorias RAM
+                        almacenMemorias.release(memoriasNecesarias);
+                        ProductorMemorias.setMemoriasListasAlmacenH(memoriasNecesarias);
+
+                        // Fuentes de poder
                         almacenFuentes.release(fuentesNecesarias);
                         ProductorFuentes.setFuentesListasAlmacenH(fuentesNecesarias);
 
-                        // Sprites
-                        almacenTarjetas.release(tarjetasNecesarias);
-                        ProductorTarjetas.setTarjetasListasAlmacenH(tarjetasNecesarias);
-
-                        countComputadorasTarjetaListasH++;
+                        countComputadorasListasH++;
                         computadorasListasTotalesH++;
-                        HP.actualizarMemoriasAlmacen(countComputadorasTarjetaListasH);
+                        HP.actualizarComputadorasListas(countComputadorasListasH);
                         countComputadoras++;
                     } catch (InterruptedException ex) {
                         System.out.println("testttt");
                     }
                 } else {
-                    System.out.println("No hay recursos suficientes para generar el juego");
+                    System.out.println("No hay recursos suficientes para ensamblar el computador.");
                 }
             }
-            HP.actualizarComputadorasListas(computadorasListasTotalesH);
+            HP.actualizarComputadorasListasTotalesH(computadorasListasTotalesH);
         } else {
             // MSI
-            if (countComputadoras == 5) {
-                if (ProductorPlacas.getPlacasListasAlmacenM() >= placasNecesarias && ProductorCPUs.getCPUsListasAlmacenM() >= CPUsNecesarios && ProductorMemorias.getMemoriasListasAlmacenM() >= memoriasNecesarias && ProductorFuentes.getFuentesListasAlmacenM() >= fuentesNecesarias) {
+            if (countComputadoras == 6) {
+                if (ProductorPlacas.getPlacasListasAlmacenM() >= placasNecesarias && 
+                        ProductorCPUs.getCPUsListasAlmacenM() >= CPUsNecesarios && 
+                        ProductorMemorias.getMemoriasListasAlmacenM() >= memoriasNecesarias && 
+                        ProductorFuentes.getFuentesListasAlmacenM() >= fuentesNecesarias &&
+                        ProductorTarjetas.getTarjetasListasAlmacenM() >= tarjetasNecesarias) {
                     try {
-                        // Tiempo de armado (2 dias)
-                        Thread.sleep(2000 * Dashboard.duracionDias);
-
-
-                        almacenPlacas.release(placasNecesarias);
-                        ProductorPlacas.setPlacasListasAlmacenM(placasNecesarias);
-
-                        
-                        almacenCPUs.release(CPUsNecesarios);
-                        ProductorCPUs.setCPUsListasAlmacenM(CPUsNecesarios);
-
-                        almacenMemorias.release(memoriasNecesarias);
-                        ProductorMemorias.setMemoriasListasAlmacenM(memoriasNecesarias);
-
-                       
-                        almacenFuentes.release(fuentesNecesarias);
-                        ProductorFuentes.setFuentesListasAlmacenM(fuentesNecesarias);
-
-                        almacenTarjetas.release(tarjetasNecesarias);
-                        ProductorTarjetas.setTarjetasListasAlmacenM(tarjetasNecesarias);
-
-                        countComputadorasTarjetaListasM++;
-                        computadorasListasTotalesM++;
-                        MSI.actualizarMemoriasAlmacen(countComputadorasTarjetaListasM);
-                        countComputadoras = 0; // Se reinicia el contador de juegos para poder contar otra vez la cantidad de juegos necesarios para desarrollar uno con DLC.
-                    } catch (InterruptedException ex) {
-                        System.out.println("testttt");
-                    }
-                } else {
-                    System.out.println("No hay recursos suficientes para generar el juego");
-                }
-            } else {
-
-                if (ProductorPlacas.getPlacasListasAlmacenM() >= placasNecesarias && ProductorCPUs.getCPUsListasAlmacenM() >= CPUsNecesarios && ProductorFuentes.getFuentesListasAlmacenM() >= fuentesNecesarias && ProductorTarjetas.getTarjetasListasAlmacenM() >= tarjetasNecesarias) {
-                    try {
-                        // Tiempo de armado (2 dias)
+                        // Tiempo de ensamblaje (2 días)
                         Thread.sleep(2000 * Dashboard.duracionDias);
 
                         // LIBERAR Y ACTUALIZAR VALORES EN LA INTERFAZ
-                        // Guiones
+                        // Placas base
                         almacenPlacas.release(placasNecesarias);
                         ProductorPlacas.setPlacasListasAlmacenM(placasNecesarias);
-
-                        // Niveles
+                        
+                        // CPUs
                         almacenCPUs.release(CPUsNecesarios);
                         ProductorCPUs.setCPUsListasAlmacenM(CPUsNecesarios);
 
-                        // Sistemas
+                        // Memorias RAM
+                        almacenMemorias.release(memoriasNecesarias);
+                        ProductorMemorias.setMemoriasListasAlmacenM(memoriasNecesarias);
+
+                        // Fuentes de poder
                         almacenFuentes.release(fuentesNecesarias);
                         ProductorFuentes.setFuentesListasAlmacenM(fuentesNecesarias);
 
-                        // Sprites
+                        // Tarjetas gráficas
                         almacenTarjetas.release(tarjetasNecesarias);
                         ProductorTarjetas.setTarjetasListasAlmacenM(tarjetasNecesarias);
 
                         countComputadorasTarjetaListasM++;
                         computadorasListasTotalesM++;
-                        MSI.actualizarMemoriasAlmacen(countComputadorasTarjetaListasM);
+                        MSI.actualizarComputadorasTarjetaListas(countComputadorasTarjetaListasM);
+                        countComputadoras = 0; // Se reinicia el contador de computadoras para poder contar otra vez la cantidad de computadoras necesarias para ensamblar una con tarjetas gráficas.
+                    } catch (InterruptedException ex) {
+                        System.out.println("testttt");
+                    }
+                } else {
+                    System.out.println("No hay recursos suficientes para ensamblar la computadora.");
+                }
+            } else {
+                if (ProductorPlacas.getPlacasListasAlmacenM() >= placasNecesarias && 
+                        ProductorCPUs.getCPUsListasAlmacenM() >= CPUsNecesarios && 
+                        ProductorMemorias.getMemoriasListasAlmacenM() >= memoriasNecesarias && 
+                        ProductorFuentes.getFuentesListasAlmacenM() >= fuentesNecesarias) {
+                    try {
+                        // Tiempo de ensamblaje (2 días)
+                        Thread.sleep(2000 * Dashboard.duracionDias);
+
+                        // LIBERAR Y ACTUALIZAR VALORES EN LA INTERFAZ
+                        // Placas base
+                        almacenPlacas.release(placasNecesarias);
+                        ProductorPlacas.setPlacasListasAlmacenM(placasNecesarias);
+                        
+                        // CPUs
+                        almacenCPUs.release(CPUsNecesarios);
+                        ProductorCPUs.setCPUsListasAlmacenM(CPUsNecesarios);
+
+                        // Memorias RAM
+                        almacenMemorias.release(memoriasNecesarias);
+                        ProductorMemorias.setMemoriasListasAlmacenM(memoriasNecesarias);
+
+                        // Fuentes de poder
+                        almacenFuentes.release(fuentesNecesarias);
+                        ProductorFuentes.setFuentesListasAlmacenM(fuentesNecesarias);
+
+                        countComputadorasListasM++;
+                        computadorasListasTotalesM++;
+                        MSI.actualizarComputadorasListas(countComputadorasListasM);
                         countComputadoras++;
                     } catch (InterruptedException ex) {
                         System.out.println("testttt");
                     }
                 } else {
-                    System.out.println("No hay recursos suficientes para generar el juego");
+                    System.out.println("No hay recursos suficientes para ensamblar la computadora.");
                 }
             }
-            MSI.actualizarComputadorasListas(computadorasListasTotalesM);
+            MSI.actualizarComputadorasListasTotalesM(computadorasListasTotalesM);
         }
     }
 
@@ -248,10 +267,12 @@ public Ensamblador(Semaphore almacenComputadoras, Semaphore almacenPlacas, Semap
             try {
                 Thread.sleep(1000 * Dashboard.duracionDias);
                 payDayEnsamblador();
-                generarVideoJuego();
+                ensamblarComputador();
             } catch (InterruptedException ex) {
                 System.out.println("TESTTTT Ensamblador catch");
             }
         }
     }
 }
+
+

@@ -80,7 +80,7 @@ public class ProjectManager extends Thread {
         if ("H".equals(company)) {
             try {
                 isWatchingAnime = true;
-                MSI.actualizarEstadoPM(estadoAnime);
+                HP.actualizarEstadoPM(estadoAnime);
                 Thread.sleep(streamInterval); // 30 minutos en milisegundos
             } catch (InterruptedException e) {
                 e.printStackTrace();

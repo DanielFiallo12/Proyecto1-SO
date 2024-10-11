@@ -241,7 +241,7 @@ public class MSI extends javax.swing.JPanel {
                 actualizarProductoresRestantes();
             }
             });
-            /*Dashboard.generarGrafico (); //Genera el gráfico de utilidad*/
+            Dashboard.generarGrafico (); //Genera el gráfico de utilidad*/
     }
     
     public void actualizarSpinnersDesdeDashboard() {
