@@ -9,6 +9,10 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
+import javax.swing.SpinnerNumberModel;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+import javax.swing.JSpinner;
 
 /**
  *
@@ -30,12 +34,31 @@ public class Dashboard extends javax.swing.JPanel {
     public static int fuentesH;
     public static int tarjetasH;
     public static int ensambladoresH;
+
+    private int valorSpinnerPlacasH;
+    private int valorSpinnerCPUsH;
+    private int valorSpinnerMemoriasH;
+    private int valorSpinnerFuentesH;
+    private int valorSpinnerTarjetasH;
+    private int valorSpinnerEnsambladoresH;
+    private int valorSpinnerPlacasM;
+    private int valorSpinnerCPUsM;
+    private int valorSpinnerMemoriasM;
+    private int valorSpinnerFuentesM;
+    private int valorSpinnerTarjetasM;
+    private int valorSpinnerEnsambladoresM;
+    
+    public final int totalProductoresM = 14;
+    public final int totalProductoresH = 17;
     
     public Dashboard() {
         initComponents();
         
         cargarValoresDesdeArchivo();
         cargarValoresEnSpinners(); 
+        actualizarProductoresM();
+        actualizarProductoresH();
+        
     }
     
     public static void cargarValoresDesdeArchivo() {
@@ -132,7 +155,52 @@ public class Dashboard extends javax.swing.JPanel {
         spinnerMemoriasH.setValue(memoriasH);
         spinnerFuentesH.setValue(fuentesH);
         spinnerTarjetasH.setValue(tarjetasH);
-        spinnerEnsambladoresH.setValue(ensambladoresH);    
+        spinnerEnsambladoresH.setValue(ensambladoresH);   
+        configurarSpinner(spinnerPlacasM);
+        configurarSpinner(spinnerCPUsM);
+        configurarSpinner(spinnerMemoriasM);
+        configurarSpinner(spinnerFuentesM);
+        configurarSpinner(spinnerTarjetasM);
+        configurarSpinner(spinnerEnsambladoresM);
+        configurarSpinner(spinnerPlacasH);
+        configurarSpinner(spinnerCPUsH);
+        configurarSpinner(spinnerMemoriasH);
+        configurarSpinner(spinnerFuentesH);
+        configurarSpinner(spinnerTarjetasH);
+        configurarSpinner(spinnerEnsambladoresH);        
+    }
+    
+    private void configurarSpinner(JSpinner spinner) {
+    // Crea un modelo de número con el valor actual del spinner y el mínimo deseado
+    SpinnerNumberModel model = new SpinnerNumberModel((int) spinner.getValue(), 1, null, 1);
+    spinner.setModel(model);
+    
+    // Agrega un ChangeListener para manejar cambios en el valor
+    spinner.addChangeListener(new ChangeListener() {
+        @Override
+        public void stateChanged(ChangeEvent e) {
+            int currentValue = (int) spinner.getValue();
+            if (currentValue < 1) {
+                // Si el valor es menor que 1, restablecer al mínimo (1)
+                spinner.setValue(1);
+            }
+        }
+    });
+}
+    
+    private void actualizarProductoresM() {
+        
+        int productoresAsignados = (int) spinnerPlacasM.getValue() + (int) spinnerCPUsM.getValue() + (int) spinnerTarjetasM.getValue() + (int) spinnerFuentesM.getValue() + (int) spinnerTarjetasM.getValue() + (int) spinnerEnsambladoresM.getValue();
+        int productoresRestantes = totalProductoresM - productoresAsignados;
+        productoresRestantesM.setText(Integer.toString(productoresRestantes));
+    }
+    
+    
+    private void actualizarProductoresH() {
+        
+        int productoresAsignados = (int) spinnerPlacasH.getValue() + (int) spinnerCPUsH.getValue() + (int) spinnerTarjetasH.getValue() + (int) spinnerFuentesH.getValue() + (int) spinnerTarjetasH.getValue() + (int) spinnerEnsambladoresH.getValue();
+        int productoresRestantes = totalProductoresH - productoresAsignados;
+        productoresRestantesH.setText(Integer.toString(productoresRestantes));
     }
     
     public static void generarGrafico(){
@@ -176,11 +244,11 @@ public class Dashboard extends javax.swing.JPanel {
         jPanel9 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         spinnerEnsambladoresH = new javax.swing.JSpinner();
-        desarrolladoresRestantesH = new javax.swing.JLabel();
+        productoresRestantesH = new javax.swing.JLabel();
         jPanel21 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
-        desarrolladoresRestantesM = new javax.swing.JLabel();
+        productoresRestantesM = new javax.swing.JLabel();
         jPanel15 = new javax.swing.JPanel();
         jLabel25 = new javax.swing.JLabel();
         spinnerPlacasM = new javax.swing.JSpinner();
@@ -202,30 +270,34 @@ public class Dashboard extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
 
+        setMaximumSize(new java.awt.Dimension(1020, 850));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel22.setBackground(new java.awt.Color(255, 255, 255));
         jLabel22.setFont(new java.awt.Font("Dialog", 1, 48)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(255, 255, 255));
         jLabel22.setText("DashBoard");
-        add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 10, -1, -1));
+        add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 100, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Duración del días (segundos) = ");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, 213, -1));
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 360, 213, -1));
 
         spinnerDuracionDias.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
-        add(spinnerDuracionDias, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 70, 80, -1));
+        add(spinnerDuracionDias, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 390, 80, -1));
 
         jLabel24.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel24.setForeground(new java.awt.Color(255, 255, 255));
         jLabel24.setText("Días para entrega = ");
-        add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 70, 135, 20));
+        add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 300, 135, 20));
 
         spinnerDiasParaEntrega.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
-        add(spinnerDiasParaEntrega, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 70, 80, -1));
-        add(chartPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 500, 670, 190));
+        add(spinnerDiasParaEntrega, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 330, 80, -1));
+
+        chartPanel.setMaximumSize(new java.awt.Dimension(650, 250));
+        chartPanel.setMinimumSize(new java.awt.Dimension(650, 250));
+        add(chartPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, 650, 250));
 
         jPanel2.setBackground(new java.awt.Color(34, 46, 60));
         jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 5, true));
@@ -241,7 +313,7 @@ public class Dashboard extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Desarrolladores restantes =");
+        jLabel2.setText("Trabajadores restantes =");
         jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -391,10 +463,10 @@ public class Dashboard extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        desarrolladoresRestantesH.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        desarrolladoresRestantesH.setForeground(new java.awt.Color(255, 255, 255));
-        desarrolladoresRestantesH.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        desarrolladoresRestantesH.setText("0");
+        productoresRestantesH.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        productoresRestantesH.setForeground(new java.awt.Color(255, 255, 255));
+        productoresRestantesH.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        productoresRestantesH.setText("0");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -411,10 +483,10 @@ public class Dashboard extends javax.swing.JPanel {
                     .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(45, 45, 45)
+                        .addGap(55, 55, 55)
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(desarrolladoresRestantesH, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(productoresRestantesH, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -426,8 +498,8 @@ public class Dashboard extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(desarrolladoresRestantesH))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(productoresRestantesH))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -439,10 +511,10 @@ public class Dashboard extends javax.swing.JPanel {
                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(60, 60, 60))
         );
 
-        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 130, -1, 330));
+        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 20, -1, 350));
 
         jPanel21.setBackground(new java.awt.Color(34, 46, 60));
         jPanel21.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 5, true));
@@ -458,13 +530,13 @@ public class Dashboard extends javax.swing.JPanel {
         jLabel23.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel23.setForeground(new java.awt.Color(255, 255, 255));
         jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel23.setText("Desarrolladores restantes =");
+        jLabel23.setText("Trabajadores restantes =");
         jLabel23.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        desarrolladoresRestantesM.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        desarrolladoresRestantesM.setForeground(new java.awt.Color(255, 255, 255));
-        desarrolladoresRestantesM.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        desarrolladoresRestantesM.setText("0");
+        productoresRestantesM.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        productoresRestantesM.setForeground(new java.awt.Color(255, 255, 255));
+        productoresRestantesM.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        productoresRestantesM.setText("0");
 
         jLabel25.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel25.setText("Productores de placas base:");
@@ -628,10 +700,10 @@ public class Dashboard extends javax.swing.JPanel {
                     .addComponent(jPanel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel21Layout.createSequentialGroup()
-                        .addGap(45, 45, 45)
+                        .addGap(55, 55, 55)
                         .addComponent(jLabel23)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(desarrolladoresRestantesM, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(productoresRestantesM, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -643,8 +715,8 @@ public class Dashboard extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(desarrolladoresRestantesM))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(productoresRestantesM))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -656,10 +728,10 @@ public class Dashboard extends javax.swing.JPanel {
                 .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
-        add(jPanel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, -1, 340));
+        add(jPanel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, 350));
 
         jButton1.setBackground(new java.awt.Color(255, 102, 102));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -671,10 +743,10 @@ public class Dashboard extends javax.swing.JPanel {
                 jButton1ActionPerformed(evt);
             }
         });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 70, 100, 30));
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 260, 100, 30));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/210625658-fondo-de-pantalla-de-tecnología-de-placa-de-circuito-luz-de-neón-fondo-de-pantalla-de-seguridad.jpg"))); // NOI18N
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1020, 850));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 730));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -684,8 +756,6 @@ public class Dashboard extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JPanel chartPanel;
-    private javax.swing.JLabel desarrolladoresRestantesH;
-    private javax.swing.JLabel desarrolladoresRestantesM;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -721,6 +791,8 @@ public class Dashboard extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
+    private javax.swing.JLabel productoresRestantesH;
+    public static javax.swing.JLabel productoresRestantesM;
     public static javax.swing.JSpinner spinnerCPUsH;
     public static javax.swing.JSpinner spinnerCPUsM;
     private javax.swing.JSpinner spinnerDiasParaEntrega;

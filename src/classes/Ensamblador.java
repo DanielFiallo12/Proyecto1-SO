@@ -39,6 +39,8 @@ public class Ensamblador extends Thread {
     Semaphore almacenComputadoras;
     public static int computadorasListasTotalesH = 0;
     public static int computadorasListasTotalesM = 0;
+    public static int computadorasTarjetaListasTotalesH = 0;
+    public static int computadorasTarjetaListasTotalesM = 0;
     int computadorasListas;
     int computadorasTarjetaListas;
     int countComputadoras;
@@ -130,9 +132,10 @@ public class Ensamblador extends Thread {
                         ProductorTarjetas.setTarjetasListasAlmacenH(tarjetasNecesarias);
 
                         countComputadorasTarjetaListasH++;
-                        computadorasListasTotalesH++;
+                        computadorasTarjetaListasTotalesH++;
                         HP.actualizarComputadorasTarjetaListas(countComputadorasTarjetaListasH);
                         countComputadoras = 0; // Se reinicia el contador de computadoras para poder contar otra vez la cantidad de computadoras necesarias para ensamblar una con tarjetas gráficas.
+                        HP.actualizarComputadorasTarjetaListasTotalesH(computadorasTarjetaListasTotalesH);
                     } catch (InterruptedException ex) {
                         System.out.println("testttt");
                     }
@@ -169,6 +172,7 @@ public class Ensamblador extends Thread {
                         computadorasListasTotalesH++;
                         HP.actualizarComputadorasListas(countComputadorasListasH);
                         countComputadoras++;
+                        HP.actualizarComputadorasListasTotalesH(computadorasListasTotalesH);
                     } catch (InterruptedException ex) {
                         System.out.println("testttt");
                     }
@@ -176,7 +180,6 @@ public class Ensamblador extends Thread {
                     System.out.println("No hay recursos suficientes para ensamblar el computador.");
                 }
             }
-            HP.actualizarComputadorasListasTotalesH(computadorasListasTotalesH);
         } else {
             // MSI
             if (countComputadoras == 6) {
@@ -211,9 +214,10 @@ public class Ensamblador extends Thread {
                         ProductorTarjetas.setTarjetasListasAlmacenM(tarjetasNecesarias);
 
                         countComputadorasTarjetaListasM++;
-                        computadorasListasTotalesM++;
+                        computadorasTarjetaListasTotalesM++;
                         MSI.actualizarComputadorasTarjetaListas(countComputadorasTarjetaListasM);
                         countComputadoras = 0; // Se reinicia el contador de computadoras para poder contar otra vez la cantidad de computadoras necesarias para ensamblar una con tarjetas gráficas.
+                        MSI.actualizarComputadorasTarjetaListasTotalesM(computadorasTarjetaListasTotalesM);
                     } catch (InterruptedException ex) {
                         System.out.println("testttt");
                     }
@@ -250,6 +254,7 @@ public class Ensamblador extends Thread {
                         computadorasListasTotalesM++;
                         MSI.actualizarComputadorasListas(countComputadorasListasM);
                         countComputadoras++;
+                        MSI.actualizarComputadorasListasTotalesM(computadorasListasTotalesM);
                     } catch (InterruptedException ex) {
                         System.out.println("testttt");
                     }
@@ -257,7 +262,6 @@ public class Ensamblador extends Thread {
                     System.out.println("No hay recursos suficientes para ensamblar la computadora.");
                 }
             }
-            MSI.actualizarComputadorasListasTotalesM(computadorasListasTotalesM);
         }
     }
 

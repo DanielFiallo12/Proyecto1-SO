@@ -3,6 +3,7 @@ package interfaces;
 
 import java.awt.Dimension;
 import javax.swing.JPanel;
+import javax.swing.UIManager;
 
 public class MainInterface extends javax.swing.JFrame {
 
@@ -68,8 +69,19 @@ public class MainInterface extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     public static void main(String args[]) {
-
-        /* Create and display the form */
+        
+        
+        try {
+        for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
+            if ("Nimbus".equals(info.getName())) {
+                UIManager.setLookAndFeel(info.getClassName());
+                break;
+            }
+        }
+        } catch (Exception e) {
+            e.printStackTrace();
+            }
+        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new MainInterface().setVisible(true);

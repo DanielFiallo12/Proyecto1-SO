@@ -30,7 +30,9 @@ public class Funciones extends Thread {
                 HP.costosOperativosH.setText(Integer.toString((HPCompany.totalPayH) + Director.descontadoPmH)); 
                 MSI.costosOperativosM.setText(Integer.toString((MSICompany.totalPayM) + Director.descontadoPmM)); 
                 HP.gananciaH.setText(Integer.toString(Director.ingresoH - HPCompany.totalPayH + Math.abs(Director.descontadoPmH))); 
-                MSI.gananciaM.setText(Integer.toString(Director.ingresoM - MSICompany.totalPayM + Math.abs(Director.descontadoPmM))); 
+                HP.ganaciasTotalesH.setText(Integer.toString(Director.ingresoH - HPCompany.totalPayH + Math.abs(Director.descontadoPmH))); 
+                MSI.gananciaM.setText(Integer.toString(Director.ingresoM - MSICompany.totalPayM + Math.abs(Director.descontadoPmM)));
+                MSI.ganaciasTotalesM.setText(Integer.toString(Director.ingresoM - MSICompany.totalPayM + Math.abs(Director.descontadoPmM))); 
                 HP.ingresosBrutosH.setText(Integer.toString(Director.ingresoH)); 
                 MSI.ingresosBrutosM.setText(Integer.toString(Director.ingresoM)); 
             } catch (InterruptedException ex) {
